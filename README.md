@@ -11,6 +11,10 @@ Il gioco è un'unica pagina HTML, senza installazioni né build:
 - **Online:** attiva GitHub Pages (Settings → Pages → Deploy from a branch → `main` / root) e apri `https://<utente>.github.io/<repo>/`.
 - **In locale:** scarica il repository e apri `index.html` nel browser.
 
+## Sul telefono
+
+Gioca in orizzontale. Al primo tocco il gioco va a schermo intero (Android/Chrome). Per giocare senza barre anche su iPhone, o come un'app vera: apri la pagina di GitHub Pages, poi **Aggiungi alla schermata Home** e avvia Busso! dall'icona. Si apre a tutto schermo e in orizzontale.
+
 Aggiungi `#debug` all'indirizzo per aprire la Galleria debug (tutte le carte, oggetti e avversari, negozio con 999 fiche).
 
 ## Come si gioca, in breve

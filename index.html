@@ -1,6 +1,10 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Busso! Tressette</title></head><body>
+<!doctype html><html><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Busso! Tressette</title><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"></head><body>
 <title>Busso! Tressette</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#120e16">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&family=Rubik:wght@400;500;700&family=Caveat+Brush&family=Courier+Prime:wght@400;700&display=swap">
 <style>
@@ -560,6 +564,7 @@ body{-webkit-user-select:none;user-select:none}
       <p class="blurb">Cinque avversari, uno dopo l'altro, fino al Diavolo. Fai prese di fila per caricare i trucchi, spendi le FICHE al negozio e apri pacchetti che riempiono il mazzo di semi stranieri, jolly e carte troll.</p>
       <div class="row">
         <button class="btn" id="b-new">Nuova partita</button>
+        <button class="btn ghost" id="b-fs" hidden>Schermo intero</button>
         <button class="btn ghost" id="b-rules">Regole</button>
         <button class="btn ghost" id="b-debug">Galleria debug</button>
         <button class="btn ghost b-music" id="b-music1">Musica: sì</button>
@@ -1958,10 +1963,25 @@ function rules(){
 }
 
 
+
+// ================= Schermo intero =================
+const FS={el:document.documentElement};
+function fsActive(){return !!(document.fullscreenElement||document.webkitFullscreenElement)}
+function isPhone(){return matchMedia('(hover: none), (pointer: coarse)').matches}
+function isStandalone(){return matchMedia('(display-mode: fullscreen), (display-mode: standalone)').matches||navigator.standalone===true}
+async function goFullscreen(){
+  if(fsActive())return true;
+  try{const r=FS.el.requestFullscreen||FS.el.webkitRequestFullscreen;if(!r)return false;await r.call(FS.el,{navigationUI:'hide'})}catch(e){return false}
+  try{if(screen.orientation&&screen.orientation.lock)await screen.orientation.lock('landscape')}catch(e){}
+  return fsActive();
+}
+function exitFullscreen(){try{(document.exitFullscreen||document.webkitExitFullscreen).call(document)}catch(e){}}
+function fsSupported(){return !!(FS.el.requestFullscreen||FS.el.webkitRequestFullscreen)}
+
 // ================= Splash e menu =================
-function closeSplash(){const sp=$('#splash');if(!sp||sp.classList.contains('out'))return;sp.classList.add('out');unlockAudio();setTimeout(()=>sp.remove(),650)}
+function closeSplash(ev){const sp=$('#splash');if(!sp||sp.classList.contains('out'))return;if(ev&&isPhone()&&!isStandalone())goFullscreen();sp.classList.add('out');unlockAudio();setTimeout(()=>sp.remove(),650)}
 (()=>{const sp=$('#splash');if(location.hash==='#debug'){sp.remove();return}
-  sp.onclick=closeSplash;addEventListener('keydown',function k(e){if($('#splash')){e.preventDefault();closeSplash();removeEventListener('keydown',k,true)}},true);
+  sp.onclick=e=>closeSplash(e);addEventListener('keydown',function k(e){if($('#splash')){e.preventDefault();closeSplash();removeEventListener('keydown',k,true)}},true);
   setTimeout(closeSplash,RM?1500:3800);try{sp.focus()}catch(e){}})();
 function renderMenu(confirm){
   const box=$('#pausebox');
@@ -1971,6 +1991,7 @@ function renderMenu(confirm){
     <button class="btn" id="pm-back">Torna alla partita</button>
     <button class="btn ghost" id="pm-music">Musica: ${MUS.on?'sì':'no'}</button>
     <button class="btn ghost" id="pm-sfx">Effetti: ${muted?'no':'sì'}</button>
+    ${fsSupported()?`<button class="btn ghost" id="pm-fs">${fsActive()?'Esci dallo schermo intero':'Schermo intero'}</button>`:''}
     ${M&&!M.over&&!$('#scr-game').hidden?'<button class="btn ghost" id="pm-info">Obiettivi e amuleti</button><button class="btn ghost" id="pm-log">Cronaca della partita</button>':''}
     <button class="btn red" id="pm-restart" ${RUN?'':'disabled'}>Ricomincia la run</button>
     <div class="small">Premi Esc per chiudere.</div>`;
@@ -1979,6 +2000,7 @@ function renderMenu(confirm){
   $('#pm-music').onclick=()=>{toggleMusic();renderMenu(false);$('#pm-music').focus()};
   $('#pm-sfx').onclick=()=>{muted=!muted;const b=$('#b-mute');if(b)b.textContent='Effetti: '+(muted?'no':'sì');renderMenu(false);$('#pm-sfx').focus()};
   $('#pm-restart').onclick=()=>renderMenu(true);
+  if($('#pm-fs'))$('#pm-fs').onclick=async()=>{fsActive()?exitFullscreen():await goFullscreen();setTimeout(()=>renderMenu(false),250)};
   if($('#pm-info'))$('#pm-info').onclick=()=>{closeMenu();showInfo()};
   if($('#pm-log'))$('#pm-log').onclick=()=>{$('#pausebox').innerHTML=`<div class="title" id="pause-t">Cronaca</div><div class="receipt" style="max-height:55vh;overflow:auto"><ol id="log" style="margin:0;padding-left:18px">${M.log.map(l=>`<li>${l}</li>`).join('')||'<li>Ancora niente.</li>'}</ol></div><button class="btn" id="pm-b2">Indietro</button>`;$('#pm-b2').onclick=()=>renderMenu(false);$('#pm-b2').focus()};
   $('#pm-back').focus();
@@ -1995,9 +2017,13 @@ const _show=show;show=function(id){_show(id);$('#b-menu').hidden=(id==='title'||
 // ================= Avvio =================
 $('#fan').innerHTML=[{kind:'n',suit:'D',rank:1},{kind:'n',suit:'C',rank:10},{kind:'jolly',suit:'J',rank:3},{kind:'n',suit:'S',rank:9},{kind:'n',suit:'B',rank:8}].map((c,i)=>`<img src="${cardImg(c)}" alt="" style="transform:rotate(${(i-2)*11}deg) translateY(${Math.abs(i-2)*8}px)">`).join('');
 setPal(TITLE_PAL);
-if(matchMedia('(hover: none), (pointer: coarse)').matches)$('#f11').textContent='Ruota il telefono in orizzontale per una migliore esperienza';
+if(matchMedia('(hover: none), (pointer: coarse)').matches){$('#f11').textContent='Ruota il telefono in orizzontale per una migliore esperienza';
+  if(fsSupported()&&!isStandalone())$('#b-fs').hidden=false;
+  else if(!isStandalone())$('#f11').insertAdjacentHTML('afterend','<p class="small" id="ios-tip" style="margin:0">Su iPhone, per giocare senza barre: Condividi → Aggiungi alla schermata Home, poi apri Busso! dall’icona.</p>');}
+$('#b-fs').onclick=async()=>{unlockAudio();await goFullscreen();$('#b-fs').hidden=fsActive()};
+document.addEventListener('fullscreenchange',()=>{$('#b-fs').hidden=fsActive()||!isPhone()||!fsSupported()});
 $('#b-deck').onclick=()=>showDeck(false);
-$('#b-new').onclick=()=>{unlockAudio();showChar()};
+$('#b-new').onclick=()=>{unlockAudio();if(isPhone()&&!isStandalone())goFullscreen();showChar()};
 $('#b-rules').onclick=rules;$('#b-rules2').onclick=rules;
 $('#b-mute').onclick=()=>{muted=!muted;$('#b-mute').textContent='Effetti: '+(muted?'no':'sì')};
 document.querySelectorAll('.b-music').forEach(b=>{b.textContent='Musica: '+(MUS.on?'sì':'no');b.onclick=toggleMusic});
