@@ -1,4 +1,6 @@
-# Busso! — Tressette roguelike (v4)
+# Busso! — Tressette roguelike (v5)
+
+Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un tasto per saltarlo).
 
 ## Stile
 - Carte in pixel art più dettagliate. Denari oro con rosone verde, Coppe rosse con bordo d'oro.
@@ -9,9 +11,12 @@
 
 ## Struttura della run
 - Tressette a due con tallone. Chi prende pesca per primo; le pescate restano coperte. La mano avversaria è in ordine casuale.
-- 5 avversari in fila: Pivellino (×1), Zia Assunta (×1.5), Il Baro (×2), Il Vecchietto del Bar (×2.25), Il Diavolo (×2.75). Pareggio = sconfitta.
-- Dal 2° avversario in poi c'è una **mossa** che scatta ogni 3 sue prese di fila (Zia +0.25 Molt, Baro ruba la tua carta migliore, Vecchietto ti rimischia la mano nel tallone, Diavolo brucia la tua presa più preziosa).
+- Sempre 5 partite: si comincia col Pivellino e si finisce col Diavolo. In mezzo 3 avversari a caso tra Zia Assunta, Nonna Pina, Don Ottavio, Il Capitano, Il Baro, Il Prestigiatore e Il Vecchietto del Bar.
+- Ogni avversario dal 2° in poi ha una **mossa** che scatta ogni 3 sue prese di fila.
+- Obiettivi: 2 nelle prime due partite (in versione più facile), 3 dalla terza in poi, presi da un elenco di 28.
 - Dopo ogni vittoria: riepilogo → pacchetto da 10 carte → negozio → prossimo avversario.
+- Esc (o il pulsante Menu) apre la pausa: torna alla partita, musica sì/no, effetti sì/no, ricomincia la run (con conferma). In pausa l'avversario si ferma.
+- Musica chiptune generata nel browser, diversa tra titolo, partita, negozio e Diavolo.
 
 ## Punteggio
 - Fiche: Asso 30, Tre/Due/figure 10, scartine 0, ultima presa 30. Totale = Fiche × Molt.
@@ -34,7 +39,8 @@ Mano del Ladro, Pioggia d'Assi, Ribaltone, Terremoto, Malocchio, Fiammifero.
 Corno Rosso, Ferro di Cavallo, Gatto Nero, L'Oste, Ruota della Fortuna, Scartine d'Oro, Lente, Sigaro del Nonno, Calamita, Salvadanaio (+30 fiche a vittoria).
 
 ## Negozio
-Sempre almeno 1 trucco, 1 amuleto, 1 potere + 1 casuale.
+Sempre almeno 1 trucco, 1 amuleto, 1 potere + 1 casuale. Un oggetto visto in vetrina non torna più nella stessa run.
+Vende anche 2 carte singole (25–90 FICHE secondo il valore: scartine 25, figure 40, Due e Tre 50, Assi 60, semi stranieri +15, Jolly 90) e un pacchetto da 10 carte (110 FICHE).
 
 ## Pacchetti (10 carte)
 3 semi stranieri (Cuori, Quadri, Fiori, Picche), 3 doppioni toscani, 2 Jolly, 1 troll, 1 a caso. Ne scegli fino a 3; la prima troll del pacchetto entra comunque.
