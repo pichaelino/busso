@@ -13,7 +13,7 @@
   --f-display:'Pixelify Sans','Courier New',monospace;
   --f-body:'Rubik',system-ui,'Segoe UI',sans-serif;
   --f-num:'Rubik',system-ui,'Segoe UI',sans-serif;
-  --cw:84px; --cw-opp:50px; --cw-table:84px;
+  --cw:100px; --cw-opp:58px; --cw-table:100px;
   color-scheme:dark;
 }
 [hidden]{display:none!important}
@@ -163,6 +163,10 @@ button{font:inherit;color:inherit}
 .pop.molt{background:var(--molt)}
 .pop.gold{background:var(--gold);color:#1d120a}
 .pop.bad{background:#3d2253;color:#8bd14f}
+.pop.banner{font-size:20px;padding:6px 16px;z-index:2;animation:banner 1.7s ease-out forwards;box-shadow:0 4px 0 var(--edge)}
+@keyframes banner{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}12%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}22%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-60%)}}
+#trick.go-P .slot .card{transform:translateY(170px) scale(.5) rotate(8deg);opacity:0;transition:transform .45s ease-in,opacity .45s ease-in}
+#trick.go-O .slot .card{transform:translateY(-170px) scale(.5) rotate(-8deg);opacity:0;transition:transform .45s ease-in,opacity .45s ease-in}
 @keyframes pop{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}15%{opacity:1;transform:translate(-50%,-60%) scale(1.15)}30%{transform:translate(-50%,-70%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-160%)}}
 #toasts{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:25;display:flex;flex-direction:column;gap:6px;align-items:center;pointer-events:none;width:min(92%,480px)}
 .toast{background:var(--panel);border:2px solid var(--edge);box-shadow:0 3px 0 var(--edge);border-radius:8px;padding:6px 12px;font-size:15px;text-align:center;animation:toast 3.2s ease forwards}
@@ -243,6 +247,32 @@ button{font:inherit;color:inherit}
 .offer .ds{font-size:13px;line-height:1.25;flex:1}
 .offer.sold{opacity:.35}
 .inv{display:flex;gap:16px;flex-wrap:wrap}
+.chargrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.charcard{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;background:var(--panel-2);border:3px solid var(--edge);border-radius:12px;box-shadow:0 5px 0 var(--edge);padding:16px;cursor:pointer;transition:transform .15s}
+.charcard:hover,.charcard:focus-visible{transform:translateY(-4px);border-color:var(--gold);outline:none}
+.charcard .portrait{width:120px;height:120px}
+.cprev{display:flex;gap:6px}.cprev img{width:52px;image-rendering:pixelated}
+.abil{background:var(--molt-d);color:#fff;border-radius:8px;padding:8px 10px;font-size:14px;line-height:1.3}
+.abil b{display:block;font-family:var(--f-display);font-size:16px;color:var(--gold3,#f6d67a)}
+@media (max-width:620px){.chargrid{grid-template-columns:1fr}}
+.shopcols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+.olist{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.orow{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--cream);color:#2a1d18;border:2px solid var(--edge);border-radius:8px;box-shadow:0 3px 0 var(--edge);padding:6px 8px}
+.orow.sold{opacity:.35}
+.orow .oi{width:44px;height:44px;image-rendering:pixelated;object-fit:contain}
+.orow .ot{min-width:0;display:flex;flex-direction:column;gap:2px}
+.orow .ot b{font-family:var(--f-display);font-size:14px;line-height:1.1}
+.orow .ot span{font-size:12px;line-height:1.2;color:#4a3a30;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.orow .btn{padding:6px 10px;font-size:13px;white-space:nowrap}
+.orow .pk{display:flex;flex-direction:column;width:30px;margin:0 auto}
+.orow .pk img{width:30px;height:auto;image-rendering:pixelated;display:block}
+.srow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;text-align:left;background:var(--panel-2);border:2px solid var(--edge);border-radius:8px;box-shadow:0 3px 0 var(--edge);padding:9px 12px;cursor:pointer;color:var(--ink)}
+.srow:hover:not([disabled]){border-color:var(--gold)}
+.srow[disabled]{opacity:.5;cursor:not-allowed}
+.srow b{font-family:var(--f-display);font-size:17px}
+.srow span{grid-column:1/-1;font-size:13px;color:var(--muted);line-height:1.25}
+.srow span.coin{grid-column:auto;justify-self:end;color:#fff;font-size:14px;line-height:1.2}
+@media (max-width:980px){.shopcols{grid-template-columns:1fr}}
 .services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .service{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;background:var(--panel-2);border:2px solid var(--edge);border-radius:10px;box-shadow:0 4px 0 var(--edge);padding:14px 16px;cursor:pointer}
 .service:hover:not([disabled]){border-color:var(--gold)}
@@ -267,7 +297,7 @@ button{font:inherit;color:inherit}
 .inv>div{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 
 @media (max-width:860px){
-  :root{--cw:60px;--cw-opp:34px;--cw-table:60px}
+  :root{--cw:66px;--cw-opp:38px;--cw-table:66px}
   body{overflow:auto}
   #app{height:auto}
   #scr-game{height:auto;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;grid-template-areas:"a" "t" "b";gap:10px}
@@ -294,6 +324,7 @@ button{font:inherit;color:inherit}
       <div class="fan" id="fan"></div>
       <div class="logo">Busso!</div>
       <div class="tagline">Tressette roguelike</div>
+      <p class="small" id="f11" style="color:var(--gold);margin:0">Premi F11 per andare a schermo intero</p>
       <p class="blurb">Cinque avversari, uno dopo l'altro, fino al Diavolo. Fai prese di fila per caricare i trucchi, spendi le FICHE al negozio e apri pacchetti che riempiono il mazzo di semi stranieri, jolly e carte troll.</p>
       <div class="row">
         <button class="btn" id="b-new">Nuova partita</button>
@@ -304,6 +335,7 @@ button{font:inherit;color:inherit}
     </div>
   </section>
 
+  <section id="scr-char" class="screen center" hidden><div class="bigbox panel" id="charbox" style="max-width:820px"></div></section>
   <section id="scr-intro" class="screen center" hidden><div class="introbox panel" id="introbox"></div></section>
 
   <section id="scr-game" class="screen" hidden>
@@ -334,12 +366,11 @@ button{font:inherit;color:inherit}
       <div class="lbl" id="opp-lbl"></div>
       <div class="hand opp" id="opp-hand"></div>
       <div id="mid">
-        <div id="stock-wrap"><div id="stock"></div><div class="lbl">Tallone <span id="stock-n">0</span></div></div>
+        <div id="stock-wrap"><div id="stock"></div><div class="lbl">Mazzo <span id="stock-n">0</span></div></div>
         <div id="trick"><div class="slot" id="slot-0"></div><div class="slot" id="slot-1"></div></div>
         <div id="info">
           <div class="lbl">Prese di fila</div><div class="streak" id="streak"></div>
           <div class="lbl" style="margin-top:4px">Hai pescato</div><div class="mydraw" id="mydraw"></div>
-          <button class="btn ghost sm" id="b-deck">Vedi mazzo</button>
         </div>
       </div>
       <div id="hint"></div>
@@ -367,7 +398,17 @@ button{font:inherit;color:inherit}
 <script>
 // ================= Basi =================
 const IT=['C','D','B','S'],FR=['H','Q','F','P'];
-const SUIT_NAME={C:'Coppe',D:'Denari',B:'Bastoni',S:'Spade',H:'Cuori',Q:'Quadri',F:'Fiori',P:'Picche',X:'nessuno'};
+const SUIT_RAW={C:'Coppe',D:'Denari',B:'Bastoni',S:'Spade',H:'Cuori',Q:'Quadri',F:'Fiori',P:'Picche',X:'nessuno'};
+const SKINS={toscano:{},straniero:{C:'H',D:'Q',B:'F',S:'P',H:'C',Q:'D',F:'B',P:'S'}};
+let SKIN='toscano';
+const disp=s=>(SKINS[SKIN]||{})[s]||s;
+const SUIT_NAME=new Proxy(SUIT_RAW,{get:(t,k)=>t[disp(k)]});
+const TR_WORDS=[[/Cavalleria/g,'Corte delle Dame'],[/Cavalli/g,'Donne'],[/Cavallo/g,'Donna'],[/ogni Coppa/gi,'ogni carta di Cuori'],[/Coppa/g,'carta di Cuori'],[/Coppe/g,'Cuori'],[/Denari/g,'Quadri'],[/Le Spade/g,'Le Picche'],[/Spade/g,'Picche'],[/Bastoni/g,'Fiori']];
+function tr(t){if(SKIN!=='straniero'||!t)return t;let o=String(t);
+  const sw={Cuori:'§1',Quadri:'§2',Fiori:'§3',Picche:'§4'};for(const k in sw)o=o.split(k).join(sw[k]);
+  for(const [a,b] of TR_WORDS)o=o.replace(a,b);
+  return o.split('§1').join('Coppe').split('§2').join('Denari').split('§3').join('Bastoni').split('§4').join('Spade');}
+const rname=c=>c.rank===9&&c.kind!=='jolly'&&FR.includes(disp(c.suit))?'Donna':RANK_NAME[c.rank];
 const SUIT_ORDER=['C','D','B','S','H','Q','F','P','X'];
 const RANK_NAME={1:'Asso',2:'Due',3:'Tre',4:'Quattro',5:'Cinque',6:'Sei',7:'Sette',8:'Fante',9:'Cavallo',10:'Re'};
 const STR={3:10,2:9,1:8,10:7,9:6,8:5,7:4,6:3,5:2,4:1};
@@ -393,7 +434,7 @@ const normal=c=>c.kind==='n';
 function cardName(c){
   if(c.kind==='troll')return TROLL[c.troll].name+(c.troll==='marcio'?` di ${SUIT_NAME[c.suit]}`:'');
   if(c.kind==='jolly')return `Jolly ${RANK_NAME[c.rank]}`+(c.playSuit?` (${SUIT_NAME[c.playSuit]})`:'');
-  return `${RANK_NAME[c.rank]} di ${SUIT_NAME[c.suit]}`;
+  return `${rname(c)} di ${SUIT_NAME[c.suit]}`;
 }
 function cardDesc(c){
   if(c.kind==='troll')return TROLL[c.troll].desc;
@@ -518,14 +559,14 @@ const SUIT_DRAW={
     d.p([[-u*.18,u*.96],[-u*.04,u*.96],[-u*.1,-u*.8],[-u*.34,-u*.78]],K.green2);
     [[-.5,1],[-.1,-1],[.3,1],[.62,-1]].forEach(([y,sd])=>{d.c(sd*u*.2,y*u,u*.09,K.brown2);d.e(sd*u*.34,y*u-u*.08,u*.12,u*.05,K.green3,sd*.6)});
     d.r(-u*.32,-u*.66,u*.64,u*.12,K.red);d.r(-u*.2,u*.74,u*.4,u*.1,K.gold)},
-  H(d,x,s){const u=s/2;x.fillStyle=K.red;x.beginPath();x.moveTo(0,u*.92);x.bezierCurveTo(-u*1.15,u*.02,-u*.92,-u*.98,0,-u*.42);x.bezierCurveTo(u*.92,-u*.98,u*1.15,u*.02,0,u*.92);x.fill();
-    x.fillStyle=K.red2;x.beginPath();x.moveTo(0,u*.92);x.bezierCurveTo(u*.5,u*.4,u*1.0,0,u*.6,-u*.6);x.bezierCurveTo(u*1.15,-u*.2,u*1.0,u*.2,0,u*.92);x.fill();
-    d.e(-u*.45,-u*.42,u*.18,u*.11,K.white,-.6)},
-  Q(d,x,s){const u=s/2;d.p([[0,-u],[u*.72,0],[0,u],[-u*.72,0]],K.red);d.p([[0,-u],[u*.72,0],[0,u]],K.red2);d.p([[0,-u*.5],[u*.32,0],[0,u*.5],[-u*.32,0]],K.orange);d.p([[-u*.2,-u*.4],[-u*.05,-u*.6],[-u*.42,-u*.05]],K.white)},
-  F(d,x,s){const u=s/2;d.p([[-u*.1,0],[u*.1,0],[u*.32,u*.96],[-u*.32,u*.96]],K.black);
-    [[0,-u*.46],[-u*.46,u*.06],[u*.46,u*.06]].forEach(([a,b])=>{d.c(a,b,u*.36,K.black);d.c(a-u*.12,b-u*.12,u*.09,K.grey2)})},
-  P(d,x,s){const u=s/2;x.fillStyle=K.black;x.beginPath();x.moveTo(0,-u*.96);x.bezierCurveTo(-u*1.15,-u*.1,-u*.8,u*.75,0,u*.3);x.bezierCurveTo(u*.8,u*.75,u*1.15,-u*.1,0,-u*.96);x.fill();
-    d.p([[-u*.08,u*.2],[u*.08,u*.2],[u*.3,u*.96],[-u*.3,u*.96]],K.black);d.e(-u*.42,-u*.1,u*.1,u*.18,K.grey2,.5)},
+  H(d,x,s){const u=s/2;x.fillStyle=K.red;x.beginPath();x.moveTo(0,u*.94);x.bezierCurveTo(-u*1.2,u*.02,-u*.95,-u*1.0,0,-u*.42);x.bezierCurveTo(u*.95,-u*1.0,u*1.2,u*.02,0,u*.94);x.fill();
+    x.fillStyle=K.red2;x.beginPath();x.moveTo(0,u*.94);x.bezierCurveTo(u*.5,u*.4,u*1.0,0,u*.62,-u*.62);x.bezierCurveTo(u*1.18,-u*.2,u*1.0,u*.2,0,u*.94);x.fill();
+    d.e(-u*.45,-u*.42,u*.2,u*.12,K.white,-.6)},
+  Q(d,x,s){const u=s/2;d.p([[0,-u],[u*.78,0],[0,u],[-u*.78,0]],K.blue);d.p([[0,-u],[u*.78,0],[0,u]],K.blue2);d.p([[0,-u*.52],[u*.36,0],[0,u*.52],[-u*.36,0]],K.blue3);d.p([[-u*.22,-u*.42],[-u*.06,-u*.64],[-u*.46,-u*.06]],K.white)},
+  F(d,x,s){const u=s/2;d.p([[-u*.1,u*.05],[u*.1,u*.05],[u*.36,u*.98],[-u*.36,u*.98]],K.green2);
+    d.c(0,-u*.05,u*.26,K.green);[[0,-u*.5],[-u*.48,u*.08],[u*.48,u*.08]].forEach(([a,b])=>{d.c(a,b,u*.4,K.green);d.c(a+u*.12,b+u*.12,u*.2,K.green2);d.c(a-u*.14,b-u*.14,u*.1,K.green3)})},
+  P(d,x,s){const u=s/2;x.fillStyle=K.black;x.beginPath();x.moveTo(0,-u*.98);x.bezierCurveTo(-u*.25,-u*.6,-u*1.2,-u*.15,-u*.82,u*.42);x.bezierCurveTo(-u*.55,u*.78,-u*.15,u*.6,0,u*.3);x.bezierCurveTo(u*.15,u*.6,u*.55,u*.78,u*.82,u*.42);x.bezierCurveTo(u*1.2,-u*.15,u*.25,-u*.6,0,-u*.98);x.fill();
+    d.p([[-u*.08,u*.2],[u*.08,u*.2],[u*.34,u*.98],[-u*.34,u*.98]],K.black);d.e(-u*.42,-u*.06,u*.12,u*.24,K.grey2,.5);d.c(-u*.5,u*.3,u*.06,K.grey)},
 };
 const SYM={};
 function symbol(suit,size,rot=0){
@@ -537,9 +578,21 @@ function put(x,img,cx,cy){x.drawImage(img,Math.round(cx-img.width/2),Math.round(
 
 // ================= Figure =================
 const CLOTH={C:[K.red,K.red2,K.gold],D:[K.green,K.green2,K.gold3],S:[K.blue,K.blue2,K.blue3],B:[K.orange,K.gold2,K.green3],
-  H:[K.red,K.red2,K.pink],Q:[K.orange,K.red2,K.gold3],F:[K.green2,K.black,K.green3],P:[K.blue2,K.black,K.grey3]};
+  H:[K.red,K.red2,K.gold3],Q:[K.blue,K.blue2,K.gold3],F:[K.green,K.green2,K.gold3],P:[K.grey2,K.black,K.grey3]};
 function figure(rank,suit){
   const c=mk(44,64),x=c.getContext('2d'),d=P(x),[M,D,L]=CLOTH[suit]||CLOTH.C;
+  if(rank===9&&FR.includes(suit)){
+    d.p([[16,26],[28,26],[38,63],[6,63]],M);d.p([[24,26],[28,26],[38,63],[28,63]],D);
+    for(let y=34;y<62;y+=6)d.r(9+(y-34)*.2,y,26-(y-34)*.4+((y-34)*.8),1.5,L);
+    d.e(22,27,9,3.5,K.white);d.c(22,30,1.5,K.red);
+    d.p([[15,28],[10,42],[14,44],[18,31]],M);d.p([[29,28],[35,38],[31,40],[26,31]],D);
+    d.c(12.5,43,2.2,K.skin);d.c(33,39,2.2,K.skin);
+    d.p([[14,12],[30,12],[32,30],[27,24],[17,24],[12,30]],K.brown);
+    d.c(22,17,6,K.skin);d.r(19,15.5,1.5,1.5,K.black);d.r(23.5,15.5,1.5,1.5,K.black);d.e(22,20.5,2,.9,K.red);d.c(18,19,1,K.pink);d.c(26,19,1,K.pink);
+    d.p([[16,10],[28,10],[28,5],[25.5,8],[22,3],[18.5,8],[16,5]],K.gold);d.c(22,7,1.2,K.red);
+    d.l([[33,39],[35,30]],K.green2,1.2);d.c(35.5,29,2.2,K.pink);d.c(35.5,29,1,K.gold3);
+    return {c,hold:[34,24]};
+  }
   if(rank===10){
     d.p([[14,26],[30,26],[37,62],[7,62]],M);d.p([[26,26],[30,26],[37,62],[30,62]],D);
     d.r(21,28,2,34,K.gold);d.r(7,59,30,3,K.gold);
@@ -588,7 +641,7 @@ function jester(){
 }
 
 // ================= Carte =================
-const GL={1:[".X.","X.X","XXX","X.X","X.X"],2:["XX.","..X",".X.","X..","XXX"],3:["XX.","..X",".X.","..X","XX."],4:["X.X","X.X","XXX","..X","..X"],5:["XXX","X..","XX.","..X","XX."],6:[".XX","X..","XXX","X.X","XXX"],7:["XXX","..X",".X.",".X.",".X."],8:["XXX","X..","XX.","X..","X.."],9:[".XX","X..","X..","X..",".XX"],10:["XX.","X.X","XX.","X.X","X.X"],J:["..X","..X","..X","X.X",".X."],Q:[".X.","X.X","X.X","XXX",".XX"]};
+const GL={1:[".X.","X.X","XXX","X.X","X.X"],2:["XX.","..X",".X.","X..","XXX"],3:["XX.","..X",".X.","..X","XX."],4:["X.X","X.X","XXX","..X","..X"],5:["XXX","X..","XX.","..X","XX."],6:[".XX","X..","XXX","X.X","XXX"],7:["XXX","..X",".X.",".X.",".X."],8:["XXX","X..","XX.","X..","X.."],9:[".XX","X..","X..","X..",".XX"],10:["XX.","X.X","XX.","X.X","X.X"],J:["..X","..X","..X","X.X",".X."],D:["XX.","X.X","X.X","X.X","XX."],Q:[".X.","X.X","X.X","XXX",".XX"]};
 const INK={C:K.red,D:K.green2,S:K.blue2,B:K.green2,H:K.red,Q:K.red,F:K.black,P:K.black};
 const COLS=[17.5,28,38.5],ROWS=[27,44,61];
 const PIPS={2:[[1,0],[1,2]],3:[[1,0],[1,1],[1,2]],4:[[0,0],[2,0],[0,2],[2,2]],5:[[0,0],[2,0],[1,1],[0,2],[2,2]],6:[[0,0],[2,0],[0,1],[2,1],[0,2],[2,2]],7:[[0,0],[2,0],[1,.5],[0,1],[2,1],[0,2],[2,2]]};
@@ -601,14 +654,14 @@ function base(x,d,bg,l1,l2,speck,key){
   box(2,l1);box(3,l1);box(5,l2);
 }
 function glyph(d,g,X,Y,col,flip,k=2){g.forEach((r,i)=>[...r].forEach((ch,j)=>{if(ch==='X')flip?d.r(X+(2-j)*k,Y+(4-i)*k,k,k,col):d.r(X+j*k,Y+i*k,k,k,col)}))}
-function index(x,d,c,col,g){
+function index(x,d,s,col,g,mini=true){
   glyph(d,g,7,7,col,false);glyph(d,g,43,71,col,true);
-  if(SUIT_DRAW[c.suit]){const m=symbol(c.suit,7);put(x,m,20,11);put(x,m,36,76)}
+  if(mini&&SUIT_DRAW[s]){const m=symbol(s,7);put(x,m,20,11);put(x,m,36,76)}
 }
 const FRAME={C:[K.red,K.gold,K.red2],D:[K.gold,K.gold3,K.gold2],S:[K.blue,K.blue3,K.blue2],B:[K.green,K.green3,K.green2],
-  H:[K.red,K.pink,K.red],Q:[K.orange,K.gold3,K.red2],F:[K.black,K.grey,K.black],P:[K.blue2,K.grey,K.blue2]};
+  H:[K.red,K.pink,K.red2],Q:[K.blue,K.blue3,K.blue2],F:[K.green,K.green3,K.green2],P:[K.black,K.grey,K.black]};
 function cardImg(c){
-  const key=`${c.kind}${c.suit}${c.rank}${c.troll||''}`;if(IMG[key])return IMG[key];
+  const ds=disp(c.suit),key=`${c.kind}${ds}${c.rank}${c.troll||''}`;if(IMG[key])return IMG[key];
   const cn=mk(56,88),x=cn.getContext('2d'),d=P(x);
   if(c.kind==='troll'&&c.troll!=='marcio'){
     base(x,d,K.purple2,K.lime,K.olive,K.purple,key);
@@ -628,16 +681,25 @@ function cardImg(c){
     glyph(d,GL[c.rank],7,7,K.purple,false);glyph(d,GL[c.rank],43,71,K.purple,true);
     return IMG[key]=cn.toDataURL();
   }
-  const fr=FR.includes(c.suit),rot=c.kind==='troll';
-  const FC=FRAME[c.suit]||FRAME.C;
+  const rot=c.kind==='troll';
+  const FC=FRAME[ds]||FRAME.C;
   if(rot)base(x,d,K.paper,K.olive,K.lime,K.olive,key);
   else base(x,d,K.cream,FC[0],FC[1],K.paper,key);
-  const r=c.rank,tilt=(c.suit==='S'||c.suit==='B');
-  if(r===1){put(x,symbol(c.suit,30),28,44);[[45,13],[11,75]].forEach(([a,b])=>d.p([[a,b-2],[a+2,b],[a,b+2],[a-2,b]],FC[2]))}
-  else if(r<=7)PIPS[r].forEach(([ci,ri])=>{const rr=tilt?(ci===0?-.45:ci===2?.45:0):0;put(x,symbol(c.suit,13,rr),COLS[ci],ri===.5?35.5:ROWS[ri])});
-  else{const f=figure(r,c.suit);pixelize(f.c,K.ink);x.drawImage(f.c,6,20);put(x,symbol(c.suit,10),6+f.hold[0],20+f.hold[1])}
+  const r=c.rank,tilt=(ds==='S'||ds==='B');
+  if(r===1){
+    const a=mk(56,88),ax=a.getContext('2d'),ad=P(ax),cx=28,cy=40;
+    ax.strokeStyle=FC[1];ax.lineWidth=1.6;for(let i=0;i<16;i++){const t=i*Math.PI/8;ax.beginPath();ax.moveTo(cx+Math.cos(t)*14,cy+Math.sin(t)*14);ax.lineTo(cx+Math.cos(t)*(i%2?18:21),cy+Math.sin(t)*(i%2?18:21));ax.stroke()}
+    for(let i=0;i<8;i++){const t=Math.PI*.55+i*.17;[t,Math.PI-t].forEach((tt,k)=>{const lx=cx+Math.cos(tt)*19,ly=cy+Math.sin(tt)*19;ad.e(lx,ly,3.2,1.5,i%2?K.green:K.green2,tt+(k?-1:1)*1.2)})}
+    ad.p([[19,19],[37,19],[38,11],[34,15],[31,8],[28,14],[25,8],[22,15],[18,11]],K.gold);ad.r(19,17,18,2.5,K.gold2);ad.c(28,16,1.4,K.red);ad.c(23,17,1,K.blue);ad.c(33,17,1,K.green);
+    ad.p([[11,61],[45,61],[47,65],[45,69],[11,69],[9,65]],K.red);ad.r(11,61,34,1.3,K.gold);ad.r(11,67.7,34,1.3,K.gold);
+    ad.p([[4,63],[11,62],[11,70],[4,71],[7,67]],K.red2);ad.p([[52,63],[45,62],[45,70],[52,71],[49,67]],K.red2);
+    for(let i=0;i<6;i++)ad.r(15+i*5,64.5,2,1.5,K.gold3);
+    pixelize(a,K.ink);x.drawImage(a,0,0);put(x,symbol(ds,26),cx,cy);
+  }
+  else if(r<=7)PIPS[r].forEach(([ci,ri])=>{const rr=tilt?(ci===0?-.45:ci===2?.45:0):0;put(x,symbol(ds,13,rr),COLS[ci],ri===.5?35.5:ROWS[ri])});
+  else{const f=figure(r,ds);pixelize(f.c,K.ink);x.drawImage(f.c,6,20);put(x,symbol(ds,10),6+f.hold[0],20+f.hold[1])}
   if(rot){const R=seedRand(key+'m');for(let i=0;i<7;i++){const a=8+R()*40,b=10+R()*66;d.c(a,b,1.5+R()*2.5,K.lime);d.c(a+1,b+1,1,K.olive)}for(let i=0;i<5;i++)d.r(8+Math.floor(R()*40),8+Math.floor(R()*70),1,1,K.black)}
-  index(x,d,c,rot?K.olive:FC[2],GL[r]);
+  index(x,d,ds,rot?K.olive:FC[2],(r===9&&FR.includes(ds))?GL.D:GL[r],r!==1);
   return IMG[key]=cn.toDataURL();
 }
 function backImg(){
@@ -653,96 +715,83 @@ function backImg(){
 }
 
 // ================= Ritratti =================
+// Stile "pianto e penzoloni": testoni pallidi, occhi neri lucidi, lacrime e roba che pende.
+function head(d,o={}){const cx=o.cx||24,cy=o.cy||23,r=o.r||17;if(o.body)d.e(24,48,13,8,o.body);d.c(cx,cy,r,o.shade||K.skin2);d.c(cx-1.6,cy-1.8,r-1.8,o.skin||K.skin);return {cx,cy,r}}
+function eyes(d,o={}){const y=o.y||24,dx=o.dx||6.5,er=o.er||4.3;
+  [[-1,o.dl||0],[1,o.dr||0]].forEach(([sd,dr])=>{const ex=24+sd*dx,ey=y+dr;d.e(ex,ey,er,er*1.15,o.col||K.black);if(!o.blank){d.c(ex-1.4,ey-1.6,1.25,K.white);d.c(ex+1.3,ey+1.4,.6,K.white)}});
+  if(o.tears){const l=24-dx,r=24+dx;d.l([[l-1,y+4],[l-2.2,y+10],[l-1.2,y+16]],K.blue3,1.8);d.e(l-1.2,y+17.5,1.5,2.1,K.lens);if(o.tears>1){d.l([[r+1,y+4],[r+2,y+9]],K.blue3,1.6);d.e(r+2,y+10.5,1.3,1.8,K.lens)}}}
 const PORTRAIT_DRAW={
-  pivello(d,x){
-    d.r(9,38,30,10,K.green);d.p([[19,38],[24,44],[29,38]],K.white);d.r(21,33,6,6,K.skin2);
-    d.c(9,25,4,K.skin);d.c(39,25,4,K.skin);d.c(24,23,15,K.skin);
-    x.save();x.beginPath();x.rect(0,0,48,17);x.clip();d.c(24,23,15.6,K.green);x.restore();d.r(30,13,15,4,K.green2);d.r(10,15,25,2,K.green2);d.c(24,8,1.5,K.white);
-    d.c(18,24,5.2,K.white);d.c(30,24,5.2,K.white);d.c(19.5,25,1.7,K.black);d.c(29.5,21.8,1.7,K.black);
-    d.e(18,29.5,4,1,K.skin2);d.e(30,29.5,4,1,K.skin2);
-    [[13,28],[15,30],[34,28],[36,30],[14,31]].forEach(([a,b])=>d.r(a,b,1,1,K.brown));
-    d.e(24,33,7.5,3.5,K.red2);d.r(17.5,30.5,5,2.2,K.white);d.r(25.5,30.5,5,2.2,K.white);d.e(24,35,3.5,1,K.pink);
-    d.e(39,16,1.6,2.6,K.blue3)},
-  zia(d,x){
-    d.r(8,38,32,10,K.purple);for(let i=0;i<8;i++)d.c(12.5+i*3.3,39.5,1.3,K.white);d.r(21,33,6,5,K.skin2);
-    d.c(24,7,6.5,K.grey);d.c(24,22,14.5,K.grey);d.e(24,26,12,12,K.skin);
-    d.l([[13,30],[16,31.5]],K.skin2,1);d.l([[32,31.5],[35,30]],K.skin2,1);d.l([[19,18],[29,18]],K.skin2,1);
-    d.c(18,24,6.4,K.grey2);d.c(30,24,6.4,K.grey2);d.c(18,24,5.3,K.lens);d.c(30,24,5.3,K.lens);d.r(23,23,2,1.5,K.grey2);
-    d.c(18,24,3.8,K.white);d.c(30,24,3.8,K.white);d.c(18.5,24.5,2.4,K.black);d.c(29.5,24.5,2.4,K.black);d.c(17.6,23.4,.7,K.white);
-    d.e(24.5,33,6.5,2.4,K.red);d.e(24,32.2,4.6,1.1,K.skin);d.c(31.5,31,1.2,K.brown2);d.r(31.5,29,.6,1.5,K.black);
-    d.c(11,31,1.8,K.gold);d.c(37,31,1.8,K.gold)},
-  baro(d,x){
-    d.p([[5,48],[10,38],[38,38],[43,48]],K.blue2);d.p([[19,38],[24,47],[29,38]],K.white);d.p([[23,40],[25,40],[25.6,46],[22.4,46]],K.red);
-    d.r(21,32,6,7,K.skin2);d.e(24,22,11,15,K.pale);
-    x.save();x.beginPath();x.rect(0,0,48,15);x.clip();d.e(24,22,11.6,15.6,K.black);x.restore();d.p([[19,14],[24,19],[29,14]],K.black);d.l([[16,10],[22,7.5]],K.grey2,1.2);
-    d.l([[16,18],[22,20.5]],K.black,1.6);d.l([[26,20.5],[32,16.5]],K.black,1.6);
-    d.l([[17,23],[21,22.5]],K.black,1.2);d.c(29,22.5,2.5,K.white);d.c(29,22.5,1.4,K.glow);d.c(29,22.5,.7,K.black);
-    d.l([[24,23],[23,28.5],[25.5,28.5]],K.skin2,1);d.e(16,27,2,1.2,K.lens);
-    d.l([[18.5,31],[24,29.8],[29.5,31]],K.black,1.3);d.l([[20,33.5],[26,33.5],[29.5,31.5]],K.red2,1.3);d.r(25,33,1.6,1.6,K.gold);
-    d.p([[4,44],[9,39.5],[14,43],[9,47.5]],K.white);d.c(9,43.5,1.3,K.red)},
-  vecchio(d,x){
-    d.p([[5,48],[9,39],[39,39],[43,48]],K.grey2);d.c(24,42.5,1,K.brown);d.c(24,46,1,K.brown);
-    d.r(20,33,8,7,K.skin2);d.c(10,28,4.6,K.skin);d.c(38,28,4.6,K.skin);d.c(24,27,13.2,K.skin);
-    for(let i=0;i<14;i++)d.r(15+(i*5)%18,34+(i*3)%5,1,1,K.grey);
-    d.e(24,15,15,6.5,K.cap);d.r(9,15,30,4,K.cap);d.e(31,19,11,2.6,K.cap2);
-    for(let i=0;i<8;i++)d.r(12+i*3,12+(i%2)*3,1,1,K.cap2);
-    d.e(18,22.5,4.8,2.2,K.grey3);d.e(30,22.5,4.8,2.2,K.grey3);
-    d.c(18,25.5,1.3,K.black);d.l([[28,25.5],[32,25]],K.black,1.2);
-    d.c(15,31,2.6,K.blush);d.c(33,31,2.6,K.blush);
-    d.c(24,29.5,4.8,K.red);d.c(25.5,30.5,2.4,K.red2);d.c(22.6,28,1.1,K.pink);
-    d.e(24,36,5.2,2,K.black);d.r(25,34.5,1.6,1.6,K.gold3);
-    d.p([[37.5,31],[45.5,31],[44,38],[39,38]],K.lens);d.p([[38.2,33],[44.8,33],[44,38],[39,38]],K.wine);d.r(41,38,1.2,5,K.grey3);d.r(38.5,43,6,1.2,K.grey3)},
-  diavolo(d,x){
-    d.p([[2,48],[7,33],[16,40],[24,44],[32,40],[41,33],[46,48]],K.devil2);d.p([[7,33],[13,24],[16,40]],K.black);d.p([[41,33],[35,24],[32,40]],K.black);
-    d.r(21,33,6,7,K.devil2);
-    d.p([[13,15],[5,1],[9,3],[18,12]],K.grey3);d.p([[35,15],[43,1],[39,3],[30,12]],K.grey3);d.p([[9,9],[5,1],[8,2]],K.pale);d.p([[39,9],[43,1],[40,2]],K.pale);
-    d.c(24,23,13.5,K.devil);d.e(30,27,6,8,K.devil2,0.3);
-    d.p([[13.5,16.5],[22,20.5],[21,22],[13,19]],K.black);d.p([[34.5,16.5],[26,20.5],[27,22],[35,19]],K.black);
-    d.e(18,23.5,3.6,2,K.glow);d.e(30,23.5,3.6,2,K.glow);d.r(17.5,22,1,3,K.black);d.r(29.5,22,1,3,K.black);
-    d.p([[12.5,29],[35.5,29],[30.5,35.5],[17.5,35.5]],K.black);
-    for(let i=0;i<6;i++)d.p([[13.5+i*3.6,29],[17.1+i*3.6,29],[15.3+i*3.6,32.2]],K.white);
-    for(let i=0;i<4;i++)d.p([[18+i*3,35.5],[21+i*3,35.5],[19.5+i*3,32.7]],K.white);
-    d.p([[21,36],[27,36],[24,45]],K.black)},
+  toscano(d,x){head(d,{body:K.white});d.p([[14,40],[34,40],[24,47]],K.red);d.c(24,41,2,K.red2);
+    d.e(24,8,11,4.5,K.black);[[15,9],[19,6],[24,5],[29,6],[33,9]].forEach(([a,b])=>d.c(a,b,2.6,K.black));
+    eyes(d,{y:24});d.r(15,19.5,7,3.2,K.skin);d.r(26,19.5,7,3.2,K.skin);d.l([[15,22.6],[22,22.6]],K.brown2,1);d.l([[26,22.6],[33,22.6]],K.brown2,1);
+    d.c(17,30,2.2,K.blush);d.c(31,30,2.2,K.blush);d.e(24,28.5,2.2,2.6,K.skin2);
+    d.p([[16,33],[24,30.5],[32,33],[33,37],[29,34.5],[24,33.5],[19,34.5],[15,37]],K.black);
+    d.l([[26,35.5],[33,43]],K.brown,2.4);d.r(32,42,2.4,2.4,K.grey);d.c(33.5,42.8,.9,K.orange);d.l([[35,40],[37,36],[35,33],[37,29]],K.grey3,1)},
+  straniero(d,x){d.e(24,48,13,8,K.white);for(let i=0;i<4;i++)d.r(11,41+i*2.4,26,1.2,K.blue);head(d,{});
+    d.e(23,9.5,14,5,K.black);d.c(17,8,1.6,K.black);d.l([[23,4.5],[23,2]],K.black,1.4);d.l([[33,11],[38,17],[37,22]],K.black,1.6);
+    eyes(d,{y:24,tears:2,dl:1});d.l([[15,18.5],[21,19.5]],K.brown2,1.2);d.l([[27,19.5],[33,18.5]],K.brown2,1.2);
+    d.p([[22,25],[26,25],[27,32],[24,33],[21,32]],K.skin2);
+    d.l([[19,35.5],[24,34.2],[29,35.5]],K.black,1);d.l([[21,38],[27,38.5]],K.red2,1.2)},
+  pivello(d,x){head(d,{body:K.green});d.p([[19,40],[24,45],[29,40]],K.white);
+    x.save();x.beginPath();x.rect(0,0,48,14);x.clip();d.c(24,23,17.2,K.green);x.restore();d.r(30,10,14,4,K.green2);d.r(9,12,26,2,K.green2);d.c(24,6.5,1.5,K.white);
+    eyes(d,{y:24,er:5,tears:2,dr:-1});
+    d.e(24,29,1.6,1.4,K.skin2);d.l([[24.8,30],[25.2,35],[24.6,38]],K.green3,1.8);d.c(24.6,38.6,1.3,K.green3);
+    d.e(24,35.5,6,3.2,K.red2);d.r(19.5,33,3.6,2,K.white);d.r(24.8,33,3.6,2,K.white);d.e(24,37.2,3,1,K.pink);
+    [[14,30],[16,32],[33,30],[35,32]].forEach(([a,b])=>d.r(a,b,1,1,K.brown))},
+  zia(d,x){d.e(24,48,13,8,K.purple);for(let i=0;i<8;i++)d.c(13+i*3.1,41,1.3,K.white);
+    d.c(24,5,6.5,K.grey);head(d,{skin:K.skin});x.save();x.beginPath();x.rect(0,0,48,14);x.clip();d.c(24,23,17.3,K.grey);x.restore();
+    d.c(17,24,6.6,K.grey2);d.c(31,24,6.6,K.grey2);d.c(17,24,5.6,K.lens);d.c(31,24,5.6,K.lens);d.r(23,23,2,1.5,K.grey2);
+    eyes(d,{y:24.5,dx:7,er:3.6,tears:1});
+    d.e(24.5,34,6.5,2.6,K.red);d.e(24,33,4.5,1.1,K.skin);d.c(32,31,1.2,K.brown2);
+    d.l([[8,28],[8,34]],K.grey3,1);d.c(8,35.5,1.7,K.white);d.l([[40,28],[40,36]],K.grey3,1);d.c(40,37.5,1.7,K.white)},
+  nonna(d,x){head(d,{body:K.brown});x.save();x.beginPath();x.rect(0,0,48,17);x.clip();d.c(24,23,18,K.red2);x.restore();
+    d.p([[6,18],[8,32],[13,30],[11,17]],K.red2);d.p([[42,18],[40,32],[35,30],[37,17]],K.red2);for(let i=0;i<6;i++)d.c(11+i*5,10+(i%2)*3,1.1,K.gold3);
+    d.p([[20,40],[24,44],[28,40],[24,37]],K.red2);
+    eyes(d,{y:24,dl:-1,dr:3,er:3.8});d.l([[13,30],[16,31.5]],K.skin2,1);d.l([[32,31.5],[35,30]],K.skin2,1);
+    d.e(24,35,5.5,2.2,K.black);d.r(22.5,33.4,1.8,1.8,K.white);
+    d.l([[27,36],[31,41],[30,46]],K.brown,1.8);d.e(30,46.5,2,1.4,K.brown)},
+  prete(d,x){d.e(24,48,13,8,K.black);d.r(20,39,8,3,K.white);head(d,{});
+    d.l([[13,13],[20,9],[30,9],[36,13]],K.brown2,1);d.l([[14,15],[22,11],[34,12]],K.brown2,1);
+    eyes(d,{y:24,col:K.white,blank:1,er:4.2});d.c(17.5,21.3,1.2,K.black);d.c(30.5,21.3,1.2,K.black);
+    d.e(17.5,28.6,4,1,K.skin2);d.e(30.5,28.6,4,1,K.skin2);
+    d.l([[15,34],[19,37],[24,38],[29,37],[33,34]],K.red2,1.4);
+    d.e(38,15,1.4,2.4,K.lens);d.e(10,19,1.2,2,K.lens);
+    d.l([[24,40],[24,46]],K.gold,1);d.r(22.6,44.5,2.8,1,K.gold)},
+  capitano(d,x){head(d,{body:K.blue2});d.r(19,39,10,3,K.gold);
+    d.p([[4,16],[24,4],[44,16],[34,13],[24,15],[14,13]],K.black);d.c(24,10,2.2,K.white);d.r(23,12,2,1,K.white);
+    eyes(d,{y:25,tears:1,dx:6.8});d.e(30.8,25,4.8,5.2,K.black);d.l([[13,18],[36,30]],K.black,1.2);
+    d.l([[13,29],[16,33]],K.red2,1);for(let i=0;i<12;i++)d.r(16+(i*4)%17,34+(i*3)%6,1,1,K.grey2);
+    d.e(24,36,4.5,2,K.black);d.l([[24,37.5],[24.6,42],[24,45]],K.lens,1);
+    d.c(8,30,2.4,K.gold);d.c(8,30,1.2,K.skin)},
+  baro(d,x){d.e(24,48,13,8,K.blue2);d.p([[19,40],[24,46],[29,40]],K.white);d.r(23,41,2,5,K.red);
+    head(d,{skin:K.pale,shade:K.grey});x.save();x.beginPath();x.rect(0,0,48,14);x.clip();d.c(24,23,17.3,K.black);x.restore();d.p([[18,13],[24,18],[30,13]],K.black);d.l([[14,9],[22,6]],K.grey2,1.2);
+    eyes(d,{y:24,dx:6.8});d.r(12,19,9,4,K.pale);d.l([[12,23],[21,22]],K.black,1.4);
+    d.l([[17,31],[24,29.5],[31,31]],K.black,1.4);d.l([[19,34],[27,34],[30,32]],K.red2,1.3);d.r(25.5,33.3,1.6,1.6,K.gold);
+    x.save();x.translate(27,38);x.rotate(.35);d.r(-3,0,6,9,K.white);d.c(0,4.5,1.5,K.red);x.restore()},
+  prestigiatore(d,x){d.e(24,48,13,8,K.black);d.p([[18,41],[24,44],[30,41],[30,46],[24,43.5],[18,46]],K.red);
+    head(d,{skin:K.grey3,shade:K.grey});
+    d.r(13,2,22,10,K.black);d.r(9,11,30,3,K.black);d.r(13,8,22,2.5,K.red);d.e(33,3,2,4.5,K.white,.4);
+    eyes(d,{y:24,er:4.6,blank:1});d.c(17.5,24.5,.9,K.white);d.c(30.5,24.5,.9,K.white);
+    d.l([[13,33],[18,36],[24,37],[30,36],[35,33]],K.black,1.2);for(let i=0;i<6;i++){const X=15+i*3.6;d.l([[X,33.5+Math.sin(i/1.6)*2],[X+1.5,37+Math.sin(i/1.6)*2]],K.black,.8)}
+    d.l([[17.5,29],[17,34]],K.black,.8)},
+  vecchio(d,x){d.e(24,48,13,8,K.grey2);head(d,{cy:24});
+    d.e(24,13,16,6.5,K.cap);d.r(8,13,32,5,K.cap);d.e(31,18,12,2.8,K.cap2);for(let i=0;i<8;i++)d.r(12+i*3,10+(i%2)*3,1,1,K.cap2);
+    eyes(d,{y:26,er:3.4,dl:1,dr:2});d.r(13,21,8,3.4,K.skin);d.r(27,22,8,3.4,K.skin);d.e(17,21.5,4.8,1.8,K.grey3);d.e(31,22.5,4.8,1.8,K.grey3);
+    d.c(15,32,2.6,K.blush);d.c(33,32,2.6,K.blush);d.c(24,30,5,K.red);d.c(25.6,31,2.4,K.red2);d.c(22.5,28.4,1.1,K.pink);
+    d.e(24,37,5,2,K.black);d.l([[21,38.5],[20.5,43],[21.3,46]],K.lens,1);d.c(21.3,46.3,1,K.lens);
+    d.p([[38,32],[46,32],[44.5,39],[39.5,39]],K.lens);d.p([[38.7,34],[45.3,34],[44.5,39],[39.5,39]],K.wine);d.r(41.4,39,1.2,5,K.grey3);d.r(39,44,6,1.2,K.grey3)},
+  diavolo(d,x){d.e(24,48,13,8,K.black);d.p([[12,40],[24,46],[36,40],[34,48],[14,48]],K.devil2);
+    d.p([[12,13],[4,1],[8,3],[17,10]],K.grey3);d.p([[36,13],[44,1],[40,3],[31,10]],K.grey3);
+    head(d,{skin:K.devil,shade:K.devil2});
+    d.p([[12.5,17],[22,21],[21,22.5],[12,19.5]],K.black);d.p([[35.5,17],[26,21],[27,22.5],[36,19.5]],K.black);
+    d.e(17.5,24.5,3.8,2.4,K.glow);d.e(30.5,24.5,3.8,2.4,K.glow);d.r(17,23,1,3,K.black);d.r(30,23,1,3,K.black);
+    d.p([[12,30],[36,30],[31,37],[17,37]],K.black);for(let i=0;i<6;i++)d.p([[13+i*3.7,30],[16.7+i*3.7,30],[14.85+i*3.7,33.4]],K.white);
+    for(let i=0;i<4;i++)d.p([[18+i*3,37],[21+i*3,37],[19.5+i*3,34]],K.white);
+    d.p([[22,36],[26,36],[25.5,43],[27,47],[24.5,44.5],[22,47],[23,43]],K.pink)},
 };
-
-Object.assign(PORTRAIT_DRAW,{
-  nonna(d,x){
-    d.p([[4,48],[8,37],[40,37],[44,48]],K.red);d.p([[18,37],[24,44],[30,37]],K.red2);for(let i=0;i<5;i++)d.c(10+i*7,42,1.2,K.white);
-    d.r(21,32,6,6,K.skin2);for(let i=0;i<9;i++){const a=Math.PI+i*Math.PI/8;d.c(24+Math.cos(a)*13,22+Math.sin(a)*12,4.2,K.grey3)}
-    d.e(24,25,12,12.5,K.skin);d.c(13,20,3.4,K.grey3);d.c(35,20,3.4,K.grey3);
-    d.l([[17,22],[21,21]],K.black,1.3);d.l([[27,21],[31,22]],K.black,1.3);d.l([[16,19],[20,18]],K.skin2,1);d.l([[28,18],[32,19]],K.skin2,1);
-    d.c(16,28,2.8,K.blush);d.c(32,28,2.8,K.blush);d.e(24,27,2,2.4,K.skin2);
-    d.e(24,32.5,6,3,K.red2);d.e(24,31,6,1.5,K.skin);d.r(25,31.5,1.8,2,K.white);
-    d.l([[40,46],[44,30]],K.brown,2.2);d.e(44.5,28,2.6,3.6,K.brown)},
-  prete(d,x){
-    d.p([[4,48],[9,37],[39,37],[44,48]],K.black);d.r(20,36,8,5,K.white);d.r(22.5,37,3,3,K.black);
-    d.r(21,31,6,6,K.skin2);d.e(24,22,12,13.5,K.skin);d.e(13,23,2.5,4,K.skin);d.e(35,23,2.5,4,K.skin);
-    d.l([[16,11],[24,9],[33,12]],K.brown2,1.4);d.l([[17,13],[26,11],[32,13]],K.brown2,1);
-    d.c(19,23,4.2,K.grey2);d.c(29,23,4.2,K.grey2);d.c(19,23,3.3,K.lens);d.c(29,23,3.3,K.lens);d.r(22.8,22.5,2.4,1.2,K.grey2);
-    x.strokeStyle=K.black;x.lineWidth=1.2;x.beginPath();x.arc(19,24,1.8,Math.PI*1.1,Math.PI*1.9);x.stroke();x.beginPath();x.arc(29,24,1.8,Math.PI*1.1,Math.PI*1.9);x.stroke();
-    d.c(15,29,2.2,K.blush);d.c(33,29,2.2,K.blush);
-    x.strokeStyle=K.red2;x.lineWidth=1.4;x.beginPath();x.arc(24,28,6,.15*Math.PI,.85*Math.PI);x.stroke();
-    d.r(38,38,1.6,8,K.gold);d.r(35.5,40.5,6.6,1.6,K.gold)},
-  capitano(d,x){
-    d.p([[4,48],[8,37],[40,37],[44,48]],K.blue2);[[16,41],[16,45],[32,41],[32,45]].forEach(([a,b])=>d.c(a,b,1.2,K.gold));
-    d.c(24,30,13,K.white);d.c(15,33,6,K.white);d.c(33,33,6,K.white);d.c(24,38,7,K.white);
-    d.e(24,23,11,10,K.skin);d.c(24,25.5,2.6,K.blush);
-    d.e(24,12,14,5,K.blue2);d.r(10,12,28,5,K.blue2);d.r(10,16,28,2,K.black);d.e(26,17.5,10,2.2,K.black);d.c(24,13,2.2,K.gold);d.c(24,13,1,K.gold3);
-    d.c(19,22,1.6,K.black);d.p([[25,19],[33,19],[32,25],[26,25]],K.black);d.l([[12,18],[34,22]],K.black,1);
-    d.e(24,30,5,1.6,K.grey3);d.l([[26,31],[33,34]],K.brown,2);d.r(32,32,4,4,K.brown2);d.c(36,28,1.3,K.grey3);d.c(38,25,1,K.grey3)},
-  prestigiatore(d,x){
-    d.p([[2,48],[7,35],[24,44],[41,35],[46,48]],K.purple);d.p([[7,35],[12,30],[18,40]],K.purple2);d.p([[41,35],[36,30],[30,40]],K.purple2);
-    d.r(21,32,6,7,K.grey3);d.e(24,24,11,13,K.white);
-    d.r(13,1,22,11,K.black);d.r(9,11,30,3,K.black);d.r(13,8,22,2.4,K.red);
-    x.strokeStyle=K.black;x.lineWidth=1.3;[[19,23],[29,23]].forEach(([a,b])=>{x.beginPath();for(let t=0;t<12;t+=.5){const r=t*.32;x.lineTo(a+Math.cos(t)*r,b+Math.sin(t)*r)}x.stroke()});
-    d.l([[16,19],[21,20.5]],K.black,1.4);d.l([[27,20.5],[32,19]],K.black,1.4);
-    x.strokeStyle=K.black;x.lineWidth=1.2;x.beginPath();x.moveTo(18,30);x.quadraticCurveTo(20,28,24,29.5);x.quadraticCurveTo(28,28,30,30);x.stroke();
-    x.beginPath();x.moveTo(18,30);x.quadraticCurveTo(16,30,16.5,28.5);x.stroke();x.beginPath();x.moveTo(30,30);x.quadraticCurveTo(32,30,31.5,28.5);x.stroke();
-    d.l([[21,33.5],[27,33.5]],K.red,1.3);star(d,40,10,4,K.gold);star(d,6,20,2.6,K.gold3)},
-});
 function portraitImg(id){
   const key='po'+id;if(IMG[key])return IMG[key];
-  const c=mk(48,48),x=c.getContext('2d');PORTRAIT_DRAW[id](P(x),x);pixelize(c,K.ink);return IMG[key]=c.toDataURL();
+  const c=mk(48,48),x=c.getContext('2d');(PORTRAIT_DRAW[id]||PORTRAIT_DRAW.pivello)(P(x),x);pixelize(c,K.ink);return IMG[key]=c.toDataURL();
 }
 
 // ================= Icone (disegnate e poi pixelate) =================
@@ -813,37 +862,37 @@ function iconImg(id){
 
 // ================= Oggetti =================
 const ITEMS={
-  occhio:{type:'T',name:'Occhio Lungo',soglia:2,price:150,desc:'Vedi la sua mano.',lv:['per 2 prese','per 3 prese','per 5 prese']},
-  sbirciata:{type:'T',name:'Sbirciata',soglia:2,price:145,desc:'Guarda le prime carte del tallone e riordinale.',lv:['prime 2, puoi invertirle','prime 3, scegli la prima','prime 4, scegli la prima']},
-  tintura:{type:'T',name:'Tintura',soglia:3,price:160,desc:'Cambia il seme di carte in mano.',lv:['1 carta','2 carte','3 carte']},
-  mano:{type:'T',name:'Mano Lesta',soglia:3,price:175,desc:'Scambia carte con l’avversario.',lv:['1 carta, la sua a caso','2 carte, vedi la sua mano','3 carte, vedi la sua mano']},
-  pesca:{type:'T',name:'Pesca Truccata',soglia:3,price:155,desc:'Scambia una tua carta con una del tallone.',lv:['scegli tra le prime 2','scegli tra le prime 3','scegli tra le prime 4']},
-  doppio:{type:'T',name:'Raddoppio',soglia:4,price:160,desc:'La prossima presa che vinci vale di più.',lv:['FICHE ×2','FICHE ×3','FICHE ×4']},
-  bacchetta:{type:'T',name:'Bacchetta',soglia:3,price:170,desc:'Trasforma carte della tua mano in Jolly.',lv:['1 carta','2 carte','3 carte']},
-  ladro:{type:'M',name:'Mano del Ladro',price:130,desc:'Ruba l’ultima presa fatta dall’avversario.'},
-  pioggia:{type:'M',name:'Pioggia d’Assi',price:125,desc:'Mischia due Assi in più nel tallone.'},
-  ribaltone:{type:'M',name:'Ribaltone',price:145,desc:'Scambia tutta la tua mano con la sua. Solo quando esci tu.'},
-  terremoto:{type:'M',name:'Terremoto',price:125,desc:'La sua mano torna nel tallone, si rimischia e lui ripesca.'},
-  malocchio:{type:'M',name:'Malocchio',price:135,desc:'Toglie 0.5 al Molt dell’avversario (minimo 1).'},
-  fiammifero:{type:'M',name:'Fiammifero',price:125,desc:'Brucia le prime 2 carte del tallone. Le vedi bruciare.'},
-  specchio:{type:'M',name:'Specchio',price:140,desc:'La prossima presa che vincerebbe lui la prendi tu.'},
-  nebbia:{type:'M',name:'Nebbia',price:130,desc:'Per 3 prese l’avversario non vede niente e gioca a caso.'},
-  calice:{type:'M',name:'Calice Avvelenato',price:125,desc:'Mischia due Tre Marci nel tallone. Speriamo li peschi lui.'},
-  spinta:{type:'M',name:'Spinta',price:130,desc:'+2 alle tue prese di fila: carica subito i trucchi.'},
-  corno:{type:'A',name:'Corno Rosso',price:170,desc:'+1 Molt fisso.'},
-  ferro:{type:'A',name:'Ferro di Cavallo',price:190,desc:'×1.5 Molt se fai più prese dell’avversario.'},
-  gatto:{type:'A',name:'Gatto Nero',price:155,desc:'L’ultima presa vale 60 FICHE in più.'},
-  oste:{type:'A',name:'L’Oste',price:155,desc:'Ogni Coppa che prendi vale +5 FICHE.'},
-  ruota:{type:'A',name:'Ruota della Fortuna',price:180,desc:'+0.5 Molt per ogni Asso che prendi.'},
-  scartine:{type:'A',name:'Scartine d’Oro',price:170,desc:'Le scartine (4, 5, 6, 7) valgono 5 FICHE.'},
-  lente:{type:'A',name:'Lente',price:155,desc:'Vedi sempre la prima carta del tallone.'},
-  sigaro:{type:'A',name:'Sigaro del Nonno',price:180,desc:'+1 Molt per ogni obiettivo completato.'},
-  calamita:{type:'A',name:'Calamita',price:210,desc:'I trucchi si caricano con una presa di fila in meno.'},
-  salvadanaio:{type:'A',name:'Salvadanaio',price:155,desc:'+30 FICHE in più a ogni vittoria.'},
-  grappa:{type:'A',name:'Grappa della Casa',price:165,desc:'+0.5 Molt per ogni Re che prendi.'},
-  santino:{type:'A',name:'Santino',price:160,desc:'Le carte troll che prendi non ti tolgono FICHE.'},
-  quadrifoglio:{type:'A',name:'Quadrifoglio',price:175,desc:'+0.25 Molt per ogni carta di seme straniero che prendi.'},
-  orologio:{type:'A',name:'Orologio del Bar',price:185,desc:'Le ultime 3 prese che vinci valgono FICHE doppie.'},
+  occhio:{type:'T',name:'Occhio Lungo',soglia:2,price:190,desc:'Scopri carte della sua mano: restano scoperte finché non le gioca.',lv:['1 carta','2 carte','3 carte']},
+  sbirciata:{type:'T',name:'Sbirciata',soglia:2,price:180,desc:'Guarda le prime carte del mazzo e riordinale.',lv:['vedi la prima','prime 2, puoi invertirle','prime 3, scegli la prima']},
+  tintura:{type:'T',name:'Tintura',soglia:3,price:200,desc:'Cambia il seme di carte in mano.',lv:['1 carta','2 carte','3 carte']},
+  mano:{type:'T',name:'Mano Lesta',soglia:3,price:220,desc:'Scambia carte con l’avversario.',lv:['1 carta, la sua a caso','1 carta, scegli tra le sue scoperte','2 carte, scegli tra le sue scoperte']},
+  pesca:{type:'T',name:'Pesca Truccata',soglia:3,price:195,desc:'Scambia una tua carta con una del mazzo.',lv:['scegli tra le prime 2','scegli tra le prime 3','scegli tra le prime 4']},
+  doppio:{type:'T',name:'Raddoppio',soglia:4,price:200,desc:'La prossima presa che vinci vale di più.',lv:['FICHE ×2','FICHE ×3','FICHE ×4']},
+  bacchetta:{type:'T',name:'Bacchetta',soglia:3,price:210,desc:'Trasforma carte della tua mano in Jolly.',lv:['1 carta','2 carte','3 carte']},
+  ladro:{type:'M',name:'Mano del Ladro',price:160,desc:'Ruba l’ultima presa fatta dall’avversario.'},
+  pioggia:{type:'M',name:'Pioggia d’Assi',price:155,desc:'Mischia due Assi in più nel mazzo.'},
+  ribaltone:{type:'M',name:'Ribaltone',price:180,desc:'Scambia tutta la tua mano con la sua. Solo quando esci tu.'},
+  terremoto:{type:'M',name:'Terremoto',price:155,desc:'La sua mano torna nel mazzo, si rimischia e lui ripesca.'},
+  malocchio:{type:'M',name:'Malocchio',price:170,desc:'Toglie 0.5 al Molt dell’avversario (minimo 1).'},
+  fiammifero:{type:'M',name:'Fiammifero',price:155,desc:'Brucia le prime 2 carte del mazzo. Le vedi bruciare.'},
+  specchio:{type:'M',name:'Specchio',price:175,desc:'La prossima presa che vincerebbe lui la prendi tu.'},
+  nebbia:{type:'M',name:'Nebbia',price:160,desc:'Per 3 prese l’avversario non vede niente e gioca a caso.'},
+  calice:{type:'M',name:'Calice Avvelenato',price:155,desc:'Mischia due Tre Marci nel mazzo. Speriamo li peschi lui.'},
+  spinta:{type:'M',name:'Spinta',price:160,desc:'+2 alle tue prese di fila: carica subito i trucchi.'},
+  corno:{type:'A',name:'Corno Rosso',price:210,desc:'+1 Molt fisso.'},
+  ferro:{type:'A',name:'Ferro di Cavallo',price:240,desc:'×1.5 Molt se fai più prese dell’avversario.'},
+  gatto:{type:'A',name:'Gatto Nero',price:195,desc:'L’ultima presa vale 60 FICHE in più.'},
+  oste:{type:'A',name:'L’Oste',price:195,desc:'Ogni Coppa che prendi vale +5 FICHE.'},
+  ruota:{type:'A',name:'Ruota della Fortuna',price:225,desc:'+0.5 Molt per ogni Asso che prendi.'},
+  scartine:{type:'A',name:'Scartine d’Oro',price:210,desc:'Le scartine (4, 5, 6, 7) valgono 5 FICHE.'},
+  lente:{type:'A',name:'Lente',price:195,desc:'Vedi sempre la prima carta del mazzo.'},
+  sigaro:{type:'A',name:'Sigaro del Nonno',price:225,desc:'+1 Molt per ogni obiettivo completato.'},
+  calamita:{type:'A',name:'Calamita',price:260,desc:'I trucchi si caricano con una presa di fila in meno.'},
+  salvadanaio:{type:'A',name:'Salvadanaio',price:195,desc:'+30 FICHE in più a ogni vittoria.'},
+  grappa:{type:'A',name:'Grappa della Casa',price:205,desc:'+0.5 Molt per ogni Re che prendi.'},
+  santino:{type:'A',name:'Santino',price:200,desc:'Le carte troll che prendi non ti tolgono FICHE.'},
+  quadrifoglio:{type:'A',name:'Quadrifoglio',price:220,desc:'+0.25 Molt per ogni carta di seme straniero che prendi.'},
+  orologio:{type:'A',name:'Orologio del Bar',price:230,desc:'Le ultime 3 prese che vinci valgono FICHE doppie.'},
 };
 const TYPE_NAME={T:'Trucco',A:'Amuleto',M:'Potere'};
 const soglia=id=>Math.max(1,ITEMS[id].soglia-(has('calamita')?1:0));
@@ -903,7 +952,7 @@ const NPC={
   capitano:{name:'Il Capitano',molt:2,rnd:.05,cheat:false,quirk:'Le Spade che prende valgono +5 FICHE.',mossa:'Arrembaggio: ogni 3 prese di fila ti ruba la tua ultima presa.',pal:[[12,24,36],[18,38,56],[28,56,82],[60,96,130]]},
   baro:{name:'Il Baro',molt:2,rnd:0,cheat:true,quirk:'Conosce la tua mano. A inizio partita ti sfila la carta migliore.',mossa:'Asso nella manica: ogni 3 prese di fila ti ruba la carta migliore e ti rifila la peggiore.',pal:[[18,18,36],[28,28,54],[44,42,80],[70,66,120]]},
   prestigiatore:{name:'Il Prestigiatore',molt:2.25,rnd:0,cheat:false,quirk:'A inizio partita trasforma una tua carta in uno Spettro.',mossa:'Puff!: ogni 3 prese di fila trasforma un’altra tua carta in uno Spettro.',pal:[[26,14,34],[40,22,52],[60,32,76],[98,56,118]]},
-  vecchio:{name:'Il Vecchietto del Bar',molt:2.25,rnd:0,cheat:false,quirk:'Sessant’anni di tressette: conta ogni carta, e l’ultima presa per lui vale 90.',mossa:'“Ma che fai?!”: ogni 3 prese di fila ti rimischia la mano nel tallone e ti fa ripescare.',pal:[[32,26,18],[48,40,28],[70,58,40],[104,88,58]]},
+  vecchio:{name:'Il Vecchietto del Bar',molt:2.25,rnd:0,cheat:false,quirk:'Sessant’anni di tressette: conta ogni carta, e l’ultima presa per lui vale 90.',mossa:'“Ma che fai?!”: ogni 3 prese di fila ti rimischia la mano nel mazzo e ti fa ripescare.',pal:[[32,26,18],[48,40,28],[70,58,40],[104,88,58]]},
   diavolo:{name:'Il Diavolo',molt:2.75,rnd:0,cheat:false,quirk:'Ogni Asso che prende vale 60 FICHE invece di 30.',mossa:'Fiamma: ogni 3 prese di fila brucia la carta più preziosa che hai preso.',pal:[[30,10,12],[48,16,18],[72,24,26],[110,40,36]]},
 };
 Object.keys(NPC).forEach(k=>NPC[k].id=k);
@@ -956,7 +1005,7 @@ function accusi(hand){
 function cardBase(c){if(c.troll==='marcio')return -40;if(c.troll==='spettro')return -20;if(c.troll==='bomba')return 0;return c.rank===1?30:PTS(c.rank)?10:0}
 function cardFiche(c,s){
   let v=cardBase(c);if(c.kind==='troll')return (s==='P'&&has('santino'))?Math.max(0,v):v;
-  if(s==='P'){if(has('scartine')&&PTS(c.rank)===0)v+=5;if(has('oste')&&c.kind==='n'&&c.suit==='C')v+=5}
+  if(s==='P'){if(RUN&&RUN.char==='straniero'&&c.kind==='n'&&c.rank>=8)v+=5;if(has('scartine')&&PTS(c.rank)===0)v+=5;if(has('oste')&&c.kind==='n'&&c.suit==='C')v+=5}
   else{const b=M.boss.id;if(b==='zia'&&c.suit==='C')v+=5;if(b==='diavolo'&&c.rank===1)v+=30;if(b==='nonna'&&c.rank===10)v+=20;if(b==='capitano'&&c.suit==='S')v+=5}
   return v;
 }
@@ -1053,12 +1102,12 @@ function openJolly(c){
   const ls=M.table.length?es(M.table[0].card):null;
   let opts=suitsInPlay();if(ls&&ls!=='X')opts=[ls,...opts.filter(s=>s!==ls)];
   modal(`<div class="title">Jolly ${RANK_NAME[c.rank]}</div><div class="small">Di che seme lo giochi?${ls&&ls!=='X'?` Per stare nella presa serve ${SUIT_NAME[ls]}.`:''}</div>
-  <div class="choices">${opts.map(s=>`<button class="suitbtn" data-s="${s}"><img src="${symbol(s,22).toDataURL()}" alt="">${SUIT_NAME[s]}</button>`).join('')}</div>
+  <div class="choices">${opts.map(s=>`<button class="suitbtn" data-s="${s}"><img src="${symbol(disp(s),22).toDataURL()}" alt="">${SUIT_NAME[s]}</button>`).join('')}</div>
   <div class="row"><button class="btn ghost" id="m-x">Annulla</button></div>`);
   $('#modal').querySelectorAll('.suitbtn').forEach(b=>b.onclick=()=>{c.playSuit=b.dataset.s;closeModal();M.busy=true;log(`Giochi ${cardName(c)}`);playCard('P',c)});
   $('#m-x').onclick=closeModal;
 }
-function addMolt(v,label,delay){M.P.moltAdd+=v;setTimeout(()=>{pop(`+${fmt(v)} Molt · ${label}`,'molt');SFX.molt()},delay);log(`${label} +${fmt(v)} Molt`)}
+function addMolt(v,label,delay){M.P.moltAdd+=v;setTimeout(()=>{pop(`+${fmt(v)} Molt · ${label}`,'molt','P');SFX.molt()},delay);log(`${label} +${fmt(v)} Molt`)}
 function chargeTrucchi(){
   const s=M.P.streak;
   for(const id of RUN.trucchi){const so=soglia(id);if(s%so===0){const l=Math.min(3,s/so);if(l>(M.charge[id]||0)){M.charge[id]=l;toast(`${ITEMS[id].name} carico: livello ${l}`,'gold');SFX.magic()}}}
@@ -1085,12 +1134,14 @@ async function resolveTrick(){
     if(lastNow)W.lastTrick=true;
     M.lastWin=w;
     const fiche=cards.reduce((t,c)=>t+cardFiche(c,w),0);let d=0;
-    if(fiche)pop(`${fiche>0?'+':''}${fiche} FICHE`,fiche<0?'bad':w==='P'?'fiche':'gold');
+    const who=w==='P'?'Presa tua':`Presa di ${M.boss.name}`,pts=fiche?` · ${fiche>0?'+':''}${fiche} FICHE`:' · nessun punto';
+    pop(who+pts,'banner '+(fiche<0?'bad':w==='P'?'fiche':'gold'),w);
     if(w==='P'){
       const Pp=M.P;Pp.streak++;Pp.maxStreak=Math.max(Pp.maxStreak,Pp.streak);M.O.streak=0;
-      if(Pp.doubleMul>1&&fiche>0){const extra=fiche*(Pp.doubleMul-1);Pp.bonusFiche+=extra;d+=350;setTimeout(()=>pop(`Raddoppio +${extra} FICHE`,'fiche'),d);log(`Raddoppio: +${extra} FICHE`);Pp.doubleMul=1}
-      if(lateBonus&&fiche>0){Pp.bonusFiche+=fiche;d+=350;setTimeout(()=>pop(`Orologio +${fiche} FICHE`,'fiche'),d)}
+      if(Pp.doubleMul>1&&fiche>0){const extra=fiche*(Pp.doubleMul-1);Pp.bonusFiche+=extra;d+=350;setTimeout(()=>pop(`Raddoppio +${extra} FICHE`,'fiche','P'),d);log(`Raddoppio: +${extra} FICHE`);Pp.doubleMul=1}
+      if(lateBonus&&fiche>0){Pp.bonusFiche+=fiche;d+=350;setTimeout(()=>pop(`Orologio +${fiche} FICHE`,'fiche','P'),d)}
       if(normal(oc)&&oc.rank===1){Pp.strozzi++;d+=350;addMolt(.5,'Strozzo',d)}
+      if(RUN.char==='toscano'&&a.who==='P'&&normal(pc)&&pc.rank===3){d+=350;addMolt(.5,'Busso!',d)}
       if(Pp.streak%3===0){d+=350;addMolt(1,`Striscia di ${Pp.streak}`,d)}
       if(a.who==='P'&&!isWild(oc)&&oc.suit!==es(pc)&&cardBase(oc)>0){Pp.piombi++;d+=350;addMolt(.5,'Piombo',d)}
       if(normal(pc)&&pc.suit==='S'&&pc.rank===3)Pp.lamaDone=true;
@@ -1098,16 +1149,17 @@ async function resolveTrick(){
       chargeTrucchi();
       SFX.win();log(`Prendi tu (${fiche} FICHE)`);
     }else{M.P.streak=0;M.O.streak++;SFX.lose();log(`Prende ${M.boss.name} (${fiche} FICHE)`)}
-    if(W.lastTrick){d+=350;const lf=30+(w==='P'&&has('gatto')?60:0)+(w==='O'&&M.boss.id==='vecchio'?60:0);setTimeout(()=>pop(`Ultima presa +${lf}`,w==='P'?'fiche':'gold'),d)}
+    if(W.lastTrick){d+=350;const lf=30+(w==='P'&&has('gatto')?60:0)+(w==='O'&&M.boss.id==='vecchio'?60:0);setTimeout(()=>pop(`Ultima presa +${lf}`,w==='P'?'fiche':'gold',w),d)}
     announce(updateObjectives(),d+400);
     render();
-    await sleep(1150);
-    M.table=[];M.lastWin=null;
+    await sleep(850);
+    const trk=$('#trick');trk.classList.add('go-'+w);await sleep(480);
+    M.table=[];M.lastWin=null;trk.classList.remove('go-P','go-O');
   }
   if(M.stock.length>=2){
     const L=w==='P'?'O':'P',d1=M.stock.shift(),d2=M.stock.shift();
     M[w].hand.push(d1);M[L].hand.push(d2);M.myDraw=w==='P'?d1:d2;shuffle(M.O.hand);SFX.draw();
-  }else if(M.stock.length===1){const c=M.stock.shift();M.burned.push(c);toast(`Il tallone era dispari: ${cardName(c)} va bruciato`)}
+  }else if(M.stock.length===1){const c=M.stock.shift();M.burned.push(c);toast(`Il mazzo era dispari: ${cardName(c)} va bruciato`)}
   if(M.reveal>0)M.reveal--;
   if(M.fog>0)M.fog--;
   M.leader=w;
@@ -1128,10 +1180,10 @@ async function bossMossa(){
   if(b==='zia'){M.oMolt+=.25;toast('Zia Assunta si fa un caffè corretto: +0.25 Molt','molt');log('Zia Assunta: +0.25 Molt')}
   if(b==='baro'&&M.P.hand.length&&M.O.hand.length){
     const best=M.P.hand.slice().sort((x,y)=>(cardBase(y)*3+str(y))-(cardBase(x)*3+str(x)))[0],worst=M.O.hand.slice().sort(cheap)[0];
-    M.P.hand[M.P.hand.indexOf(best)]=worst;M.O.hand[M.O.hand.indexOf(worst)]=best;shuffle(M.O.hand);
+    M.P.hand[M.P.hand.indexOf(best)]=worst;M.O.hand[M.O.hand.indexOf(worst)]=best;best.seen=true;worst.seen=false;shuffle(M.O.hand);
     toast(`Il Baro ti sfila ${cardName(best)} e ti rifila ${cardName(worst)}`,'molt');log(`Il Baro ti ruba ${cardName(best)}`)}
   if(b==='vecchio'&&M.P.hand.length){const n=M.P.hand.length;M.stock.push(...M.P.hand);M.P.hand=[];shuffle(M.stock);M.P.hand=M.stock.splice(0,n);
-    toast('“Ma che fai?!” Il Vecchietto ti rimischia la mano nel tallone','molt');log('Il Vecchietto ti rimischia la mano')}
+    toast('“Ma che fai?!” Il Vecchietto ti rimischia la mano nel mazzo','molt');log('Il Vecchietto ti rimischia la mano')}
   if(b==='nonna'){M.charge={};toast('“Mangia, mangia!” Nonna Pina ti scarica tutti i trucchi','molt');log('Nonna Pina scarica i tuoi trucchi')}
   if(b==='prete'){M.P.moltAdd=Math.max(0,M.P.moltAdd-.5);toast('Penitenza: Don Ottavio ti toglie 0.5 Molt','molt');log('Don Ottavio: -0.5 Molt')}
   if(b==='capitano'&&M.P.tricks.length){const t=M.P.tricks.pop();M.P.captured=M.P.captured.filter(c=>!t.includes(c));M.P.tricksWon--;M.O.tricks.push(t);M.O.captured.push(...t);M.O.tricksWon++;
@@ -1148,47 +1200,47 @@ function trUsable(id){return isMyTurn()&&!M.mode&&(M.charge[id]||0)>0&&((id!=='s
 function done(msg,cls='gold'){M.mode=null;M.act=null;if(msg){toast(msg,cls);log(msg)}SFX.magic();announce(updateObjectives());render()}
 function useTrucco(id){
   if(!trUsable(id))return;const lvl=M.charge[id];M.charge[id]=0;M.trucchiUsati++;
-  if(id==='occhio'){M.reveal=Math.max(M.reveal,[2,3,5][lvl-1]);done(`Occhio Lungo: vedi la sua mano per ${M.reveal} prese`)}
+  if(id==='occhio'){const hid=shuffle(M.O.hand.filter(c=>!c.seen)).slice(0,lvl);hid.forEach(c=>c.seen=true);done(hid.length?`Occhio Lungo: scopri ${hid.map(cardName).join(', ')}`:'Occhio Lungo: le vedi già tutte')}
   else if(id==='doppio'){M.P.doubleMul=lvl+1;done(`Raddoppio pronto: la prossima presa vale ×${lvl+1}`)}
   else if(id==='tintura'){M.act={id,left:lvl};M.mode='tint';render()}
   else if(id==='bacchetta'){M.act={id,left:lvl};M.mode='wand';render()}
-  else if(id==='mano'){M.act={id,left:lvl,see:lvl>=2};M.mode='mano-own';render()}
+  else if(id==='mano'){M.act={id,left:lvl===3?2:1,see:lvl>=2};M.mode='mano-own';render()}
   else if(id==='sbirciata')openPeek(lvl);
   else if(id==='pesca')openFish(lvl);
 }
 function stepDone(msg){M.act.left--;log(msg);toast(msg,'gold');if(M.act.left<=0)done();else{SFX.magic();render()}}
 function swapWith(mine,theirs){
-  const i=M.P.hand.indexOf(mine),j=M.O.hand.indexOf(theirs);M.P.hand[i]=theirs;M.O.hand[j]=mine;shuffle(M.O.hand);
+  const i=M.P.hand.indexOf(mine),j=M.O.hand.indexOf(theirs);M.P.hand[i]=theirs;M.O.hand[j]=mine;theirs.seen=false;mine.seen=true;shuffle(M.O.hand);
   M.mode='mano-own';stepDone(`Prendi ${cardName(theirs)}, gli dai ${cardName(mine)}`);
 }
 function onHandClick(c){
-  if(M.mode==='mano-own'){if(M.act.see){M.act.pending=c;M.mode='mano-opp';render()}else swapWith(c,pick(M.O.hand));return}
+  if(M.mode==='mano-own'){if(M.act.see&&M.O.hand.some(o=>o.seen)){M.act.pending=c;M.mode='mano-opp';render()}else swapWith(c,pick(M.O.hand));return}
   if(M.mode==='wand'){if(c.kind==='jolly'){toast('È già un Jolly');return}const old=cardName(c);Object.assign(c,{kind:'jolly',suit:'J',troll:undefined,tinted:false,playSuit:null});if(c.rank===4&&old.startsWith('Lo'))c.rank=rint(4,7);stepDone(`${old} diventa ${cardName(c)}`);return}
   if(M.mode==='tint'){if(c.kind!=='n'){toast('Questa carta non si può ridipingere');return}openTint(c);return}
-  if(M.mode==='pesca-own'){const k=M.act.idx,top=M.stock[k];M.P.hand[M.P.hand.indexOf(c)]=top;M.stock[k]=c;done(`Peschi ${cardName(top)}, ${cardName(c)} finisce nel tallone`);return}
+  if(M.mode==='pesca-own'){const k=M.act.idx,top=M.stock[k];M.P.hand[M.P.hand.indexOf(c)]=top;M.stock[k]=c;done(`Peschi ${cardName(top)}, ${cardName(c)} finisce nel mazzo`);return}
   if(!M.mode)playerPlay(c);
 }
-function onOppClick(c){if(M.mode==='mano-opp'&&M.act.pending){const p=M.act.pending;M.act.pending=null;swapWith(p,c)}}
+function onOppClick(c){if(M.mode==='mano-opp'&&M.act.pending&&c.seen){const p=M.act.pending;M.act.pending=null;swapWith(p,c)}}
 function cancelMode(){M.mode=null;M.act=null;render()}
 function openTint(c){
   modal(`<div class="title">Tintura</div><div class="small">Di che seme vuoi ${cardName(c)}?</div>
-  <div class="choices">${suitsInPlay().filter(s=>s!==c.suit).map(s=>`<button class="suitbtn" data-s="${s}"><img src="${symbol(s,22).toDataURL()}" alt="">${SUIT_NAME[s]}</button>`).join('')}</div>`);
+  <div class="choices">${suitsInPlay().filter(s=>s!==c.suit).map(s=>`<button class="suitbtn" data-s="${s}"><img src="${symbol(disp(s),22).toDataURL()}" alt="">${SUIT_NAME[s]}</button>`).join('')}</div>`);
   $('#modal').querySelectorAll('.suitbtn').forEach(b=>b.onclick=()=>{const old=cardName(c);c.suit=b.dataset.s;c.tinted=true;closeModal();stepDone(`${old} diventa ${cardName(c)}`)});
 }
 function openPeek(lvl){
-  const k=Math.min(M.stock.length,[2,3,4][lvl-1]);
-  const draw=()=>`<div class="title">Sbirciata · livello ${lvl}</div><div class="small">${lvl===1?'Puoi invertire le prime due.':'Tocca una carta per metterla in cima.'} La prima la pesca chi vince la prossima presa.</div>
+  const k=Math.min(M.stock.length,[1,2,3][lvl-1]);
+  const draw=()=>`<div class="title">Sbirciata · livello ${lvl}</div><div class="small">${lvl===1?'Ecco la prima carta del mazzo.':lvl===2?'Puoi invertire le prime due.':'Tocca una carta per metterla in cima.'} La prima la pesca chi vince la prossima presa.</div>
   <div class="choices">${M.stock.slice(0,k).map((c,i)=>`<div style="text-align:center"><button class="card" data-i="${i}" style="--cw:84px"><img src="${cardImg(c)}" alt="${cardName(c)}"></button><div class="small">${i+1}ª</div></div>`).join('')}</div>
-  <div class="row">${lvl===1&&k>1?'<button class="btn red" id="m-inv">Inverti</button>':''}<button class="btn" id="m-ok">Fatto</button></div>`;
+  <div class="row">${lvl===2&&k>1?'<button class="btn red" id="m-inv">Inverti</button>':''}<button class="btn" id="m-ok">Fatto</button></div>`;
   const bind=()=>{
     const inv=$('#m-inv');if(inv)inv.onclick=()=>{[M.stock[0],M.stock[1]]=[M.stock[1],M.stock[0]];$('#modal').innerHTML=draw();bind();SFX.draw()};
-    if(lvl>1)$('#modal').querySelectorAll('.card').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;const [c]=M.stock.splice(i,1);M.stock.unshift(c);$('#modal').innerHTML=draw();bind();SFX.draw()});
-    $('#m-ok').onclick=()=>{closeModal();done('Hai sistemato il tallone')}};
+    if(lvl>2)$('#modal').querySelectorAll('.card').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;const [c]=M.stock.splice(i,1);M.stock.unshift(c);$('#modal').innerHTML=draw();bind();SFX.draw()});
+    $('#m-ok').onclick=()=>{closeModal();done('Hai sistemato il mazzo')}};
   modal(draw());bind();
 }
 function openFish(lvl){
   const k=Math.min(M.stock.length,[2,3,4][lvl-1]);
-  modal(`<div class="title">Pesca Truccata · livello ${lvl}</div><div class="small">Scegli la carta del tallone che vuoi, poi quale carta dare in cambio.</div>
+  modal(`<div class="title">Pesca Truccata · livello ${lvl}</div><div class="small">Scegli la carta del mazzo che vuoi, poi quale carta dare in cambio.</div>
   <div class="choices">${M.stock.slice(0,k).map((c,i)=>`<button class="card" data-i="${i}" style="--cw:84px"><img src="${cardImg(c)}" alt="${cardName(c)}"></button>`).join('')}</div>`);
   $('#modal').querySelectorAll('.card').forEach(b=>b.onclick=()=>{M.act={id:'pesca',idx:+b.dataset.i,left:1};M.mode='pesca-own';closeModal();render()});
 }
@@ -1208,24 +1260,27 @@ function usePotere(i){
   if(id==='ladro'){const t=M.O.tricks.pop();M.O.captured=M.O.captured.filter(c=>!t.includes(c));M.O.tricksWon--;M.P.tricks.push(t);M.P.captured.push(...t);M.P.tricksWon++;
     done(`Rubata! Ti prendi ${t.map(cardName).join(' e ')||'una presa vuota'}`,'magic')}
   if(id==='pioggia'){const add=[0,1].map(()=>inst({kind:'n',suit:pick(IT),rank:1}));add.forEach(c=>{M.deck.push(c);M.stock.splice(rint(0,M.stock.length),0,c)});
-    done(`Piovono assi: ${add.map(cardName).join(' e ')} entrano nel tallone`,'magic')}
-  if(id==='ribaltone'){[M.P.hand,M.O.hand]=[M.O.hand,M.P.hand];shuffle(M.O.hand);done('Ribaltone! Vi siete scambiati le mani','magic')}
-  if(id==='terremoto'){const n=M.O.hand.length;M.stock.push(...M.O.hand);M.O.hand=[];shuffle(M.stock);M.O.hand=M.stock.splice(0,n);done('Terremoto! La sua mano è tornata nel tallone','magic')}
+    done(`Piovono assi: ${add.map(cardName).join(' e ')} entrano nel mazzo`,'magic')}
+  if(id==='ribaltone'){[M.P.hand,M.O.hand]=[M.O.hand,M.P.hand];M.P.hand.forEach(c=>c.seen=false);M.O.hand.forEach(c=>c.seen=true);shuffle(M.O.hand);done('Ribaltone! Vi siete scambiati le mani','magic')}
+  if(id==='terremoto'){const n=M.O.hand.length;M.O.hand.forEach(c=>c.seen=false);M.stock.push(...M.O.hand);M.O.hand=[];shuffle(M.stock);M.O.hand=M.stock.splice(0,n);done('Terremoto! La sua mano è tornata nel mazzo','magic')}
   if(id==='malocchio'){M.oMolt=Math.max(1,Math.round((M.oMolt-.5)*100)/100);done(`Malocchio: il suo Molt scende a ×${fmt(M.oMolt)}`,'magic')}
   if(id==='fiammifero'){const b=M.stock.splice(0,2);M.burned.push(...b);done(`Bruciate: ${b.map(cardName).join(' e ')}`,'magic')}
   if(id==='specchio'){M.mirror=true;done('Specchio pronto: la prossima presa che vincerebbe lui è tua','magic')}
   if(id==='nebbia'){M.fog=3;done('Nebbia: per 3 prese l’avversario gioca alla cieca','magic')}
-  if(id==='calice'){const add=[0,1].map(()=>inst({kind:'troll',troll:'marcio',suit:pick(IT),rank:3}));add.forEach(c=>{M.deck.push(c);M.stock.splice(rint(0,M.stock.length),0,c)});done('Due Tre Marci finiscono nel tallone','magic')}
+  if(id==='calice'){const add=[0,1].map(()=>inst({kind:'troll',troll:'marcio',suit:pick(IT),rank:3}));add.forEach(c=>{M.deck.push(c);M.stock.splice(rint(0,M.stock.length),0,c)});done('Due Tre Marci finiscono nel mazzo','magic')}
   if(id==='spinta'){for(let i=0;i<2;i++){M.P.streak++;M.P.maxStreak=Math.max(M.P.maxStreak,M.P.streak);chargeTrucchi()}done(`Spinta: ${M.P.streak} prese di fila`,'magic')}
 }
 
 // ================= Effetti =================
 let popN=0;
-function pop(text,cls){
+function pop(text,cls,who){
   if($('#scr-game').hidden)return;
   const fx=$('#fx'),tw=$('#tablewrap').getBoundingClientRect(),tr=$('#trick').getBoundingClientRect();
   const el=document.createElement('div');el.className='pop '+cls;el.textContent=text;
-  el.style.left=(tr.left-tw.left+tr.width/2)+'px';el.style.top=(tr.top-tw.top+tr.height/2+(popN++%3-1)*26)+'px';
+  let y=tr.top-tw.top+tr.height/2+(popN++%3-1)*26;
+  if(who==='P'){const h=$('#my-hand').getBoundingClientRect();y=h.top-tw.top-6-((popN%3)*30)}
+  if(who==='O'){const h=$('#opp-hand').getBoundingClientRect();y=h.bottom-tw.top+22+((popN%3)*30)}
+  el.style.left=(tr.left-tw.left+tr.width/2)+'px';el.style.top=y+'px';
   fx.appendChild(el);setTimeout(()=>el.remove(),1600);bumpScore();
 }
 function toast(msg,cls=''){const t=document.createElement('div');t.className='toast '+cls;t.textContent=msg;$('#toasts').appendChild(t);setTimeout(()=>t.remove(),3300)}
@@ -1262,20 +1317,20 @@ function render(){
   $('#o-label').textContent=`${M.boss.name} · ${so.fiche} × ${fmt(so.molt)}`;$('#o-total').textContent=so.total;
   $('#s-molt').textContent='Molt ×'+fmt(M.oMolt);
   const sum=sp.total+so.total;$('#bar-p').style.width=(sum?sp.total/sum*100:50)+'%';
-  $('#objs').innerHTML=M.objs.map(o=>`<li class="obj ${o.done?'done':o.failed?'failed':''}"><b>${o.d.name}</b><span class="rw">${rewTxt(o.d.reward)}</span><span class="d">${o.d.desc(M.easy)}</span><span class="pg">${o.done?'✔ completato':o.failed?'✘ sfumato':o.prog}</span></li>`).join('');
+  $('#objs').innerHTML=M.objs.map(o=>`<li class="obj ${o.done?'done':o.failed?'failed':''}"><b>${o.d.name}</b><span class="rw">${rewTxt(o.d.reward)}</span><span class="d">${tr(o.d.desc(M.easy))}</span><span class="pg">${o.done?'✔ completato':o.failed?'✘ sfumato':o.prog}</span></li>`).join('');
   $('#stats').innerHTML=`<div><b>${M.P.tricksWon}</b><span>tue prese</span></div><div><b>${M.O.tricksWon}</b><span>sue prese</span></div><div><b>${remTricks()}</b><span>prese rimaste</span></div>`;
-  $('#amus').innerHTML=RUN.amuleti.length?RUN.amuleti.map(a=>`<li><img class="ic" src="${iconImg(a)}" alt=""><div><b>${ITEMS[a].name}</b><span>${ITEMS[a].desc}</span></div></li>`).join(''):'<li><span>Nessuno. Si comprano al negozio.</span></li>';
+  $('#amus').innerHTML=RUN.amuleti.length?RUN.amuleti.map(a=>`<li><img class="ic" src="${iconImg(a)}" alt=""><div><b>${ITEMS[a].name}</b><span>${tr(ITEMS[a].desc)}</span></div></li>`).join(''):'<li><span>Nessuno. Si comprano al negozio.</span></li>';
   $('#log').innerHTML=M.log.map(l=>`<li>${l}</li>`).join('');
 
-  const rev=M.reveal>0||M.mode==='mano-opp';
-  $('#opp-lbl').textContent=M.reveal>0?`Mano di ${M.boss.name} · scoperta ancora ${M.reveal} prese`:`Mano di ${M.boss.name} · ${M.O.hand.length} carte`;
+  const nSeen=M.O.hand.filter(c=>c.seen).length;
+  $('#opp-lbl').textContent=`Mano di ${M.boss.name} · ${M.O.hand.length} carte`+(nSeen?` · ${nSeen} scoperte`:'');
   const oh=$('#opp-hand');oh.innerHTML='';
-  M.O.hand.forEach(c=>{const b=cardEl(c,rev,M.mode==='mano-opp'?'pick':'');b.onclick=()=>onOppClick(c);oh.appendChild(b)});
+  M.O.hand.forEach(c=>{const b=cardEl(c,!!c.seen,M.mode==='mano-opp'&&c.seen?'pick':'');b.onclick=()=>onOppClick(c);oh.appendChild(b)});
   fitRow(oh);
 
   const st=$('#stock');st.innerHTML='';const n=M.stock.length;$('#stock-n').textContent=n;
   if(n){for(let i=0;i<Math.min(4,Math.ceil(n/5));i++)st.insertAdjacentHTML('beforeend',`<img src="${backImg()}" style="transform:translate(${-i*2}px,${-i*2}px)" alt="">`);
-    if(has('lente'))st.insertAdjacentHTML('beforeend',`<img src="${cardImg(M.stock[0])}" style="transform:translate(-8px,-8px)" alt="Prima del tallone: ${cardName(M.stock[0])}" title="${cardName(M.stock[0])}">`)}
+    if(has('lente'))st.insertAdjacentHTML('beforeend',`<img src="${cardImg(M.stock[0])}" style="transform:translate(-8px,-8px)" alt="Prima del mazzo: ${cardName(M.stock[0])}" title="${cardName(M.stock[0])}">`)}
   else st.innerHTML='<div class="slot" style="width:100%"></div>';
 
   [0,1].forEach(i=>{const sl=$('#slot-'+i);sl.innerHTML='';sl.classList.remove('win');const t=M.table[i];
@@ -1285,7 +1340,7 @@ function render(){
   $('#mydraw').innerHTML=M.myDraw?`<img src="${cardImg(M.myDraw)}" alt="${cardName(M.myDraw)}" title="${cardName(M.myDraw)}">`:'<div class="empty"></div>';
 
   let txt='';
-  const modeTxt={'mano-own':`Mano Lesta: scegli la carta da dare (ancora ${M.act?.left||0})`,'mano-opp':'Mano Lesta: ora scegli la sua carta','tint':`Tintura: scegli la carta da ridipingere (ancora ${M.act?.left||0})`,'pesca-own':'Pesca Truccata: scegli la carta da rimettere nel tallone','wand':`Bacchetta: scegli la carta da trasformare in Jolly (ancora ${M.act?.left||0})`};
+  const modeTxt={'mano-own':`Mano Lesta: scegli la carta da dare (ancora ${M.act?.left||0})`,'mano-opp':'Mano Lesta: ora scegli una delle sue carte scoperte','tint':`Tintura: scegli la carta da ridipingere (ancora ${M.act?.left||0})`,'pesca-own':'Pesca Truccata: scegli la carta da rimettere nel mazzo','wand':`Bacchetta: scegli la carta da trasformare in Jolly (ancora ${M.act?.left||0})`};
   if(M.mode)txt=modeTxt[M.mode];
   else if(M.over)txt='Fine smazzata';
   else if(isMyTurn()){if(M.table.length){const ls=es(M.table[0].card);txt=ls==='X'?'Ha giocato una carta senza seme: rispondi con quello che vuoi':M.P.hand.some(c=>!isWild(c)&&c.suit===ls)?`Rispondi a ${SUIT_NAME[ls]}`:`Non hai ${SUIT_NAME[ls]}: scarta quello che vuoi`}else txt='Tocca a te: esci con una carta'}
@@ -1297,11 +1352,11 @@ function render(){
   const pw=$('#powers');pw.innerHTML='';
   RUN.trucchi.forEach(id=>{const it=ITEMS[id],lvl=M.charge[id]||0,so=soglia(id);const b=document.createElement('button');b.type='button';
     b.className='tr'+(lvl?' ready':'');b.disabled=!trUsable(id);
-    b.title=`${it.desc} Si carica ogni ${so} prese di fila: ${it.lv.map((l,i)=>`liv ${i+1} ${l}`).join(', ')}.`;
+    b.title=`${tr(it.desc)} Si carica ogni ${so} prese di fila: ${it.lv.map((l,i)=>`liv ${i+1} ${l}`).join(', ')}.`;
     b.innerHTML=`<img class="ic" src="${iconImg(id)}" alt=""><div><b>${it.name}<span class="pips">${[1,2,3].map(i=>`<i class="${i<=lvl?'on':''}"></i>`).join('')}</span></b><span class="sub">${lvl?`Liv ${lvl}: ${it.lv[lvl-1]}`:`Carica: ${so} prese di fila`}</span></div>`;
     b.onclick=()=>useTrucco(id);pw.appendChild(b)});
   RUN.poteri.forEach((id,i)=>{const it=ITEMS[id];const b=document.createElement('button');b.type='button';b.className='tr magic';b.disabled=!poUsable(id);b.title=it.desc;
-    b.innerHTML=`<img class="ic" src="${iconImg(id)}" alt=""><div><b>${it.name}</b><span class="sub">${it.desc}</span></div>`;b.onclick=()=>usePotere(i);pw.appendChild(b)});
+    b.innerHTML=`<img class="ic" src="${iconImg(id)}" alt=""><div><b>${it.name}</b><span class="sub">${tr(it.desc)}</span></div>`;b.onclick=()=>usePotere(i);pw.appendChild(b)});
 
   const mh=$('#my-hand');mh.innerHTML='';
   const mine=isMyTurn(),legal=legalSet(M.P.hand),picking=['mano-own','tint','pesca-own','wand'].includes(M.mode);
@@ -1321,7 +1376,7 @@ function showDeck(purge){
   const order=[...SUIT_ORDER.map(s=>SUIT_NAME[s]),'Jolly','Troll'];
   const live=inMatch?cards.filter(c=>!status(c)).length:cards.length;
   modal(`<div class="title">${purge?'Togli una carta dal mazzo':'Il mazzo'}</div>
-  <div class="small">${inMatch?`${cards.length} carte in tutto. ${live} ancora in giro, nel tallone o in mano sua: possono capitare a te o a lui.`:`${cards.length} carte.${purge?` Tocca la carta da eliminare (costa ${PURGE_COST} FICHE).`:''}`}</div>
+  <div class="small">${inMatch?`${cards.length} carte in tutto. ${live} ancora in giro, nel mazzo o in mano sua: possono capitare a te o a lui.`:`${cards.length} carte.${purge?` Tocca la carta da eliminare (costa ${PURGE_COST} FICHE).`:''}`}</div>
   ${inMatch?`<div class="legend"><span><i style="background:var(--gold)"></i>in mano tua</span><span><i style="background:#555"></i>presa da te</span><span><i style="background:#8a3a20"></i>presa da lui</span><span><i style="background:#222"></i>bruciata</span><span><i style="background:var(--cream)"></i>ancora in giro</span></div>`:''}
   ${order.filter(g=>groups[g]).map(g=>`<div class="dgroup"><h4>${g} · ${groups[g].length}</h4><div class="dcards">${groups[g].sort((a,b)=>str(b)-str(a)).map(c=>`<button class="dcard st-${status(c)}${purge?' purge':''}" ${purge?`data-i="${c._i}"`:'tabindex="-1"'} title="${cardName(c)} — ${cardDesc(c)}"><img src="${cardImg(c)}" alt="${cardName(c)}"></button>`).join('')}</div></div>`).join('')}
   <div class="row"><button class="btn" id="m-x">Chiudi</button></div>`,true);
@@ -1330,17 +1385,37 @@ function showDeck(purge){
 }
 
 // ================= Schermate =================
-function show(id){['title','intro','game','pack','shop','end','debug'].forEach(s=>$('#scr-'+s).hidden=s!==id);scrollTo(0,0)}
+function show(id){['title','char','intro','game','pack','shop','end','debug'].forEach(s=>$('#scr-'+s).hidden=s!==id);scrollTo(0,0)}
 function ladder(){return `<div class="ladder">${RUN.bosses.map((b,i)=>`<span class="${i<RUN.stage?'done':i===RUN.stage?'on':''}"></span>`).join('')}</div>`}
-function newRun(){RUN={stage:0,bosses:makeLadder(),trucchi:['occhio'],amuleti:[],poteri:['ladro'],deck:baseDeck(),fiche:0,beaten:[],seen:['occhio','ladro']};showIntro()}
+const CHARS={
+  toscano:{name:'Il Toscano',deck:'Mazzo toscano: Coppe, Denari, Spade e Bastoni.',ability:'Busso!',adesc:'Quando esci con un Tre e vinci la presa guadagni +0.5 Molt.',preview:[{kind:'n',suit:'D',rank:1},{kind:'n',suit:'C',rank:3},{kind:'n',suit:'S',rank:9}]},
+  straniero:{name:'Lo Straniero',deck:'Mazzo francese: Cuori, Quadri, Fiori e Picche.',ability:'Doppia valuta',adesc:'Le figure che prendi (Fante, Donna, Re) valgono 15 FICHE invece di 10.',preview:[{kind:'n',suit:'C',rank:1},{kind:'n',suit:'D',rank:9},{kind:'n',suit:'B',rank:10}]},
+};
+function imgIn(skin,c){const o=SKIN;SKIN=skin;const u=cardImg(c);SKIN=o;return u}
+function showChar(){
+  setPal(TITLE_PAL);
+  $('#charbox').innerHTML=`<div class="eyebrow">Nuova run</div><div class="title">Scegli il tuo giocatore</div>
+  <div class="small">Ognuno ha un mazzo e una sola abilità. Altri giocatori arriveranno più avanti.</div>
+  <div class="chargrid">${Object.entries(CHARS).map(([id,c])=>`<button class="charcard" data-c="${id}" type="button">
+    <img class="portrait" src="${portraitImg(id)}" alt="">
+    <span class="title">${c.name}</span>
+    <span class="cprev">${c.preview.map(p=>`<img src="${imgIn(id,p)}" alt="">`).join('')}</span>
+    <span class="small">${c.deck}</span>
+    <span class="abil"><b>${c.ability}</b>${c.adesc}</span></button>`).join('')}</div>
+  <div class="row" style="justify-content:flex-start"><button class="btn ghost sm" id="ch-back">Indietro</button></div>`;
+  $('#charbox').querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{unlockAudio();newRun(b.dataset.c)});
+  $('#ch-back').onclick=()=>show('title');
+  show('char');
+}
+function newRun(ch){ch=ch||RUN?.char||'toscano';SKIN=ch;RUN={char:ch,stage:0,bosses:makeLadder(),trucchi:['occhio'],amuleti:[],poteri:['ladro'],deck:baseDeck(),fiche:0,beaten:[],seen:['occhio','ladro']};showIntro()}
 function showIntro(){
-  const b=RUN.bosses[RUN.stage];M=createMatch(b);setPal(b.pal);setMusic(b.id==='diavolo'?'boss':'game');
+  SKIN=RUN.char||'toscano';const b=RUN.bosses[RUN.stage];M=createMatch(b);setPal(b.pal);setMusic(b.id==='diavolo'?'boss':'game');
   $('#introbox').innerHTML=`${ladder()}
   <div class="introhead"><img class="portrait" src="${portraitImg(b.id)}" alt="">
   <div><div class="eyebrow">Avversario ${RUN.stage+1} di 5</div><div class="title" style="font-size:32px">${b.name}</div><span class="bossmolt">Molt ×${fmt(b.molt)}</span></div></div>
-  <div style="font-size:16px">${b.quirk}</div>
-  ${b.mossa?`<div class="mossa"><b>La sua mossa</b>${b.mossa}</div>`:''}
-  <div><div class="ph">Obiettivi di questa partita</div><ul class="objs">${M.objs.map(o=>`<li class="obj"><b>${o.d.name}</b><span class="rw">${rewTxt(o.d.reward)}</span><span class="d">${o.d.desc(M.easy)}</span></li>`).join('')}</ul></div>
+  <div style="font-size:16px">${tr(b.quirk)}</div>
+  ${b.mossa?`<div class="mossa"><b>La sua mossa</b>${tr(b.mossa)}</div>`:''}
+  <div><div class="ph">Obiettivi di questa partita</div><ul class="objs">${M.objs.map(o=>`<li class="obj"><b>${o.d.name}</b><span class="rw">${rewTxt(o.d.reward)}</span><span class="d">${tr(o.d.desc(M.easy))}</span></li>`).join('')}</ul></div>
   <div class="small">Mazzo da ${M.deck.length} carte. Vinci se a fine smazzata il tuo FICHE × Molt supera il suo; a parità vince lui.</div>
   <div class="row" style="justify-content:flex-start"><button class="btn" id="b-go">Si gioca!</button><button class="btn ghost" id="b-deck2">Vedi mazzo</button></div>`;
   $('#b-go').onclick=startMatch;$('#b-deck2').onclick=()=>showDeck(false);show('intro');
@@ -1455,8 +1530,8 @@ async function openPackAnim(){
 
 // ================= Negozio =================
 let SHOP=null;
-const PACK_PRICE=110;
-function cardPrice(c){if(c.kind==='jolly')return 90;let p=c.rank===1?60:(c.rank===2||c.rank===3)?50:c.rank>=8?40:25;if(FR.includes(c.suit))p+=15;return p}
+const PACK_PRICE=150;
+function cardPrice(c){if(c.kind==='jolly')return 120;let p=c.rank===1?80:(c.rank===2||c.rank===3)?65:c.rank>=8?50:35;if(FR.includes(c.suit))p+=20;return p}
 function genSingle(){const r=Math.random();if(r<.2)return {kind:'jolly',suit:'J',rank:rint(1,10)};if(r<.6)return {kind:'n',suit:pick(FR),rank:rint(1,10)};return {kind:'n',suit:pick(IT),rank:rint(1,10)}}
 function rollShop(){
   const seen=new Set(RUN.seen);
@@ -1474,31 +1549,29 @@ function renderShop(){
   const box=$('#shopbox');
   const canBuy=o=>!o.sold&&RUN.fiche>=o.price&&(ITEMS[o.k].type!=='T'||RUN.trucchi.length<4)&&(ITEMS[o.k].type!=='A'||RUN.amuleti.length<5)&&(ITEMS[o.k].type!=='M'||RUN.poteri.length<3);
   const pa=packArt(SHOP.pack.st);
+  const tip=it=>it.type==='T'?`${tr(it.desc)} Carica: ${it.soglia} prese di fila. ${it.lv.map((l,i)=>`Liv ${i+1}: ${l}`).join(' · ')}`:tr(it.desc);
   box.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
     <div><div class="eyebrow">Bottega del Barbiere · prossimo: ${RUN.bosses[RUN.stage].name}</div><div class="title">Spendi le tue FICHE</div></div>
     <span class="coin" style="font-size:22px">${RUN.fiche} FICHE</span></div>
-  <div class="small">Più distacco fai sull’avversario, più FICHE guadagni. Un oggetto che hai già visto in vetrina non torna più.</div>
-  <div class="ph">Oggetti</div>
-  <div class="shopgrid">${SHOP.items.length?SHOP.items.map((o,i)=>{const it=ITEMS[o.k];return `<div class="offer ${o.sold?'sold':''}"><img src="${iconImg(o.k)}" alt=""><span class="tag ${it.type}">${TYPE_NAME[it.type]}</span><b>${it.name}</b>
-    <span class="ds">${it.desc}${it.type==='T'?`<br><span style="color:#7d1f1b">Carica: ${it.soglia} prese di fila · ${it.lv.join(' / ')}</span>`:''}</span>
-    <button class="btn ${it.type==='M'?'':'blue'} sm" data-i="${i}" ${canBuy(o)?'':'disabled'}>${o.sold?'Venduto':`Compra · <span class="num">${o.price}</span>`}</button></div>`}).join(''):'<div class="small">La vetrina è vuota: hai già visto tutti gli oggetti.</div>'}</div>
-  <div class="ph">Carte e pacchetti</div>
-  <div class="shopgrid">${SHOP.cards.map((o,i)=>`<div class="offer ${o.sold?'sold':''}"><img class="cimg" src="${cardImg(o.c)}" alt=""><span class="tag C">Carta</span><b>${cardName(o.c)}</b><span class="ds">${cardDesc(o.c)}</span>
-    <button class="btn blue sm" data-c="${i}" ${!o.sold&&RUN.fiche>=o.price?'':'disabled'}>${o.sold?'Nel mazzo':`Compra · <span class="num">${o.price}</span>`}</button></div>`).join('')}
-    <div class="offer ${SHOP.pack.sold?'sold':''}"><div class="packmini"><img src="${pa.top}" alt=""><img src="${pa.body}" alt=""></div><span class="tag M">Pacchetto</span><b>${SHOP.pack.st.name}</b><span class="ds">10 carte, ne tieni fino a 3. Può contenere una troll maledetta.</span>
-    <button class="btn red sm" id="sh-pack" ${!SHOP.pack.sold&&RUN.fiche>=SHOP.pack.price?'':'disabled'}>${SHOP.pack.sold?'Aperto':`Compra · <span class="num">${SHOP.pack.price}</span>`}</button></div></div>
-  <div class="services">
-    <button class="service" id="sh-roll" ${RUN.fiche>=SHOP.reroll?'':'disabled'}><span class="sv-t">Rimescola gli oggetti</span><span class="sv-d">Cambia oggetti e carte in vetrina. Il prezzo sale di 10 ogni volta.</span><span class="coin sv-p">${SHOP.reroll} FICHE</span></button>
-    <button class="service" id="sh-purge" ${RUN.fiche>=PURGE_COST&&!RUN.purged&&RUN.deck.length>30?'':'disabled'}><span class="sv-t">Togli una carta dal mazzo</span><span class="sv-d">${RUN.purged?'Già usato in questo negozio.':RUN.deck.length<=30?'Il mazzo è già al minimo di 30 carte.':'Elimina per sempre una carta che non vuoi, anche una troll. Una volta per negozio.'}</span><span class="coin sv-p">${PURGE_COST} FICHE</span></button>
-    <button class="service" id="sh-deck"><span class="sv-t">Vedi mazzo</span><span class="sv-d">${RUN.deck.length} carte in tutto.</span></button>
+  <div class="shopcols">
+   <section><div class="ph">Oggetti · non tornano più</div><div class="olist">${SHOP.items.length?SHOP.items.map((o,i)=>{const it=ITEMS[o.k];return `<div class="orow ${o.sold?'sold':''}" title="${tip(it)}"><img class="oi" src="${iconImg(o.k)}" alt=""><div class="ot"><b>${it.name} <span class="tag ${it.type}" style="display:inline">${TYPE_NAME[it.type]}</span></b><span>${it.type==='T'?`Carica: ${it.soglia} prese di fila · `:''}${tr(it.desc)}</span></div>
+     <button class="btn ${it.type==='M'?'':'blue'}" data-i="${i}" ${canBuy(o)?'':'disabled'}>${o.sold?'Preso':`<span class="num">${o.price}</span>`}</button></div>`}).join(''):'<div class="small">Hai già visto tutti gli oggetti.</div>'}</div></section>
+   <section><div class="ph">Carte e pacchetti</div><div class="olist">${SHOP.cards.map((o,i)=>`<div class="orow ${o.sold?'sold':''}" title="${cardDesc(o.c)}"><img class="oi" src="${cardImg(o.c)}" alt=""><div class="ot"><b>${cardName(o.c)}</b><span>${cardDesc(o.c)}</span></div>
+     <button class="btn blue" data-c="${i}" ${!o.sold&&RUN.fiche>=o.price?'':'disabled'}>${o.sold?'Preso':`<span class="num">${o.price}</span>`}</button></div>`).join('')}
+     <div class="orow ${SHOP.pack.sold?'sold':''}"><div class="pk"><img src="${pa.top}" alt=""><img src="${pa.body}" alt=""></div><div class="ot"><b>${SHOP.pack.st.name}</b><span>10 carte, ne tieni fino a 3. Può contenere una troll.</span></div>
+     <button class="btn red" id="sh-pack" ${!SHOP.pack.sold&&RUN.fiche>=SHOP.pack.price?'':'disabled'}>${SHOP.pack.sold?'Aperto':`<span class="num">${SHOP.pack.price}</span>`}</button></div></div></section>
+   <section><div class="ph">Servizi</div><div class="olist">
+     <button class="srow" id="sh-roll" ${RUN.fiche>=SHOP.reroll?'':'disabled'}><b>Rimescola la vetrina</b><span class="coin">${SHOP.reroll} FICHE</span><span>Nuovi oggetti e carte. Costa 10 in più ogni volta.</span></button>
+     <button class="srow" id="sh-purge" ${RUN.fiche>=PURGE_COST&&!RUN.purged&&RUN.deck.length>30?'':'disabled'}><b>Togli una carta dal mazzo</b><span class="coin">${PURGE_COST} FICHE</span><span>${RUN.purged?'Già usato in questo negozio.':RUN.deck.length<=30?'Il mazzo è già al minimo di 30 carte.':'Elimina per sempre una carta, anche una troll.'}</span></button>
+     <button class="srow" id="sh-deck"><b>Vedi mazzo</b><span class="coin" style="background:var(--panel)">${RUN.deck.length} carte</span><span>Si può guardare solo tra una partita e l’altra.</span></button>
+    </div>
+    <div class="inv" style="margin-top:10px;flex-direction:column;gap:6px">
+     <div><span class="ph">Trucchi ${RUN.trucchi.length}/4</span>${RUN.trucchi.map(k=>`<img class="ic" src="${iconImg(k)}" title="${ITEMS[k].name}" alt="${ITEMS[k].name}">`).join('')}</div>
+     <div><span class="ph">Amuleti ${RUN.amuleti.length}/5</span>${RUN.amuleti.map(k=>`<img class="ic" src="${iconImg(k)}" title="${ITEMS[k].name}" alt="${ITEMS[k].name}">`).join('')}</div>
+     <div><span class="ph">Poteri ${RUN.poteri.length}/3</span>${RUN.poteri.map(k=>`<img class="ic" src="${iconImg(k)}" title="${ITEMS[k].name}" alt="${ITEMS[k].name}">`).join('')}</div>
+    </div></section>
   </div>
-  <div class="inv">
-    <div><span class="ph">Trucchi ${RUN.trucchi.length}/4</span>${RUN.trucchi.map(k=>`<img class="ic" src="${iconImg(k)}" title="${ITEMS[k].name}" alt="${ITEMS[k].name}">`).join('')}</div>
-    <div><span class="ph">Amuleti ${RUN.amuleti.length}/5</span>${RUN.amuleti.map(k=>`<img class="ic" src="${iconImg(k)}" title="${ITEMS[k].name}" alt="${ITEMS[k].name}">`).join('')}</div>
-    <div><span class="ph">Poteri ${RUN.poteri.length}/3</span>${RUN.poteri.map(k=>`<img class="ic" src="${iconImg(k)}" title="${ITEMS[k].name}" alt="${ITEMS[k].name}">`).join('')}</div>
-  </div>
-  <div class="small" id="shoptoast" style="color:var(--gold);min-height:20px"></div>
-  <div class="row" style="justify-content:flex-end"><button class="btn" id="sh-go">Avanti: ${RUN.bosses[RUN.stage].name}</button></div>`;
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div class="small" id="shoptoast" style="color:var(--gold);min-height:20px"></div><button class="btn" id="sh-go">Avanti: ${RUN.bosses[RUN.stage].name}</button></div>`;
   box.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const o=SHOP.items[+b.dataset.i];if(!canBuy(o))return;RUN.fiche-=o.price;o.sold=true;
     const t=ITEMS[o.k].type;(t==='T'?RUN.trucchi:t==='A'?RUN.amuleti:RUN.poteri).push(o.k);SFX.big();renderShop();shopToast(`Comprato: ${ITEMS[o.k].name}`)});
   box.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const o=SHOP.cards[+b.dataset.c];if(o.sold||RUN.fiche<o.price)return;RUN.fiche-=o.price;o.sold=true;RUN.deck.push({...o.c});SFX.big();renderShop();shopToast(`${cardName(o.c)} aggiunto al mazzo`)});
@@ -1515,11 +1588,11 @@ function showEnd(won,p,o){
     <button class="btn" id="b-again">Un altro giro</button>`
    :`<img class="portrait" src="${portraitImg(RUN.bosses[RUN.stage].id)}" alt=""><div class="verdict lose">Sconfitta</div><p class="blurb">${RUN.bosses[RUN.stage].name} ti batte ${o} a ${p}. Sei arrivato all’avversario ${RUN.stage+1} di 5.</p>${ladder()}
     <button class="btn" id="b-again">Ricomincia</button>`;
-  $('#b-again').onclick=newRun;show('end');if(won)SFX.big();
+  $('#b-again').onclick=showChar;show('end');if(won)SFX.big();
 }
 function rules(){
   modal(`<div class="title">Regole</div><ol class="rules">
-  <li>Si parte con il mazzo toscano da 40. Dieci a testa, il resto è il tallone. Le carte pescate restano coperte.</li>
+  <li>Si parte con il mazzo toscano da 40. Dieci a testa, il resto è il mazzo. Le carte pescate restano coperte.</li>
   <li>Rispondi al seme di uscita se puoi. Niente briscola: prende la più alta del seme di uscita. Forza: <b>3 · 2 · Asso · Re · Cavallo · Fante · 7 · 6 · 5 · 4</b>.</li>
   <li><b>FICHE</b>: Asso 30, Tre / Due / figure 10, scartine 0, ultima presa 30. <b>Punteggio = FICHE × Molt</b>.</li>
   <li><b>Accusi</b> a inizio partita: Napoletana 90, tre Tre / Due / Assi 90, quattro 120.</li>
@@ -1558,7 +1631,7 @@ function renderMenu(confirm){
 }
 function openMenu(){PAUSED=true;renderMenu(false);$('#pause').hidden=false}
 function closeMenu(){$('#pause').hidden=true;PAUSED=false}
-function restartRun(){GEN++;closeMenu();closeModal();M=null;PACK=null;SHOP=null;unlockAudio();newRun()}
+function restartRun(){GEN++;closeMenu();closeModal();M=null;PACK=null;SHOP=null;unlockAudio();showChar()}
 addEventListener('keydown',e=>{if(e.key!=='Escape'||$('#splash'))return;e.preventDefault();$('#pause').hidden?openMenu():closeMenu()});
 $('#b-menu').onclick=openMenu;
 const _show=show;show=function(id){_show(id);$('#b-menu').hidden=(id==='title'||id==='debug')};
@@ -1566,8 +1639,8 @@ const _show=show;show=function(id){_show(id);$('#b-menu').hidden=(id==='title'||
 // ================= Avvio =================
 $('#fan').innerHTML=[{kind:'n',suit:'D',rank:1},{kind:'n',suit:'C',rank:10},{kind:'jolly',suit:'J',rank:3},{kind:'n',suit:'S',rank:9},{kind:'n',suit:'B',rank:8}].map((c,i)=>`<img src="${cardImg(c)}" alt="" style="transform:rotate(${(i-2)*11}deg) translateY(${Math.abs(i-2)*8}px)">`).join('');
 setPal(TITLE_PAL);
-$('#b-new').onclick=()=>{unlockAudio();newRun()};
-$('#b-rules').onclick=rules;$('#b-rules2').onclick=rules;$('#b-deck').onclick=()=>showDeck(false);
+$('#b-new').onclick=()=>{unlockAudio();showChar()};
+$('#b-rules').onclick=rules;$('#b-rules2').onclick=rules;
 $('#b-mute').onclick=()=>{muted=!muted;$('#b-mute').textContent='Effetti: '+(muted?'no':'sì')};
 document.querySelectorAll('.b-music').forEach(b=>{b.textContent='Musica: '+(MUS.on?'sì':'no');b.onclick=toggleMusic});
 
@@ -1576,27 +1649,28 @@ function showDebug(){
   setPal(SHOP_PAL);
   const fig=c=>`<figure title="${cardName(c)} — ${cardDesc(c)}"><img src="${cardImg(c)}" alt="${cardName(c)}"><figcaption>${cardName(c)}</figcaption></figure>`;
   const set=(suits)=>suits.map(s=>`<h3 class="ph" style="margin:6px 0 2px">${SUIT_NAME[s]}</h3><div class="dbcards">${[1,2,3,4,5,6,7,8,9,10].map(r=>fig({kind:'n',suit:s,rank:r})).join('')}</div>`).join('');
-  const item=k=>{const it=ITEMS[k];return `<div class="dbitem"><img class="ic" src="${iconImg(k)}" alt=""><div style="min-width:0"><b>${it.name}</b><span class="tag ${it.type}">${TYPE_NAME[it.type]}</span> <span class="coin" style="font-size:12px">${it.price}</span><div style="margin-top:4px">${it.desc}</div>${it.type==='T'?`<div class="small" style="margin-top:4px">Soglia ${it.soglia} prese di fila<br>${it.lv.map((l,i)=>`Liv ${i+1}: ${l}`).join('<br>')}</div>`:''}<div class="row" style="justify-content:flex-start;margin-top:6px"><button class="btn ghost sm" data-try="${k}">Prova</button></div></div></div>`};
+  const item=k=>{const it=ITEMS[k];return `<div class="dbitem"><img class="ic" src="${iconImg(k)}" alt=""><div style="min-width:0"><b>${it.name}</b><span class="tag ${it.type}">${TYPE_NAME[it.type]}</span> <span class="coin" style="font-size:12px">${it.price}</span><div style="margin-top:4px">${tr(it.desc)}</div>${it.type==='T'?`<div class="small" style="margin-top:4px">Soglia ${it.soglia} prese di fila<br>${it.lv.map((l,i)=>`Liv ${i+1}: ${l}`).join('<br>')}</div>`:''}<div class="row" style="justify-content:flex-start;margin-top:6px"><button class="btn ghost sm" data-try="${k}">Prova</button></div></div></div>`};
   const byType=t=>Object.keys(ITEMS).filter(k=>ITEMS[k].type===t).map(item).join('');
   $('#debugbox').innerHTML=`<div class="dbg" style="display:flex;flex-direction:column;gap:10px">
   <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><div class="eyebrow">Pagina di prova</div><div class="title">Galleria debug</div></div><button class="btn ghost sm" id="dbg-back">Torna al titolo</button></div>
   <div class="small">Tutte le carte, gli oggetti e gli avversari del gioco. “Prova” avvia una partita contro l’avversario scelto qui sotto con quell’oggetto già in tasca.</div>
-  <div class="row" style="justify-content:flex-start"><span class="ph">Avversario per le prove</span><select id="dbg-boss" style="font:inherit;background:var(--panel-2);color:var(--ink);border:2px solid var(--edge);border-radius:6px;padding:4px 8px">${Object.values(NPC).map(b=>`<option value="${b.id}">${b.name}</option>`).join('')}</select>
+  <div class="row" style="justify-content:flex-start"><span class="ph">Giocatore</span><select id="dbg-char" style="font:inherit;background:var(--panel-2);color:var(--ink);border:2px solid var(--edge);border-radius:6px;padding:4px 8px">${Object.entries(CHARS).map(([k,c])=>`<option value="${k}" ${k===SKIN?"selected":""}>${c.name}</option>`).join("")}</select><span class="ph">Avversario per le prove</span><select id="dbg-boss" style="font:inherit;background:var(--panel-2);color:var(--ink);border:2px solid var(--edge);border-radius:6px;padding:4px 8px">${Object.values(NPC).map(b=>`<option value="${b.id}">${b.name}</option>`).join('')}</select>
     <button class="btn sm" id="dbg-all">Partita con tutto</button><button class="btn ghost sm" id="dbg-pack">Apri un pacchetto</button><button class="btn ghost sm" id="dbg-shop">Negozio con 999 FICHE</button></div>
-  <div class="row" style="justify-content:flex-start"><button class="btn ghost sm b-music" id="b-music3">Musica</button></div><h2>Avversari</h2><div class="small">La scaletta è sempre di 5: il Pivellino per primo, il Diavolo per ultimo e in mezzo tre avversari presi a caso tra gli altri, dal più facile al più difficile.</div><div class="dbgrid">${Object.values(NPC).map(b=>`<div class="dbitem"><img class="portrait" style="width:84px;height:84px;animation:none" src="${portraitImg(b.id)}" alt=""><div><b>${b.name}${b.id==='pivello'?' · sempre 1°':b.id==='diavolo'?' · sempre 5°':''}</b><span class="bossmolt" style="margin:0 0 4px">Molt ×${fmt(b.molt)}</span><div>${b.quirk}</div>${b.mossa?`<div class="small" style="margin-top:4px">Mossa: ${b.mossa}</div>`:''}<div class="small">Casualità ${Math.round(b.rnd*100)}%${b.cheat?' · bara':''}</div></div></div>`).join('')}</div>
+  <div class="row" style="justify-content:flex-start"><button class="btn ghost sm b-music" id="b-music3">Musica</button></div><h2>Avversari</h2><div class="small">La scaletta è sempre di 5: il Pivellino per primo, il Diavolo per ultimo e in mezzo tre avversari presi a caso tra gli altri, dal più facile al più difficile.</div><div class="dbgrid">${Object.values(NPC).map(b=>`<div class="dbitem"><img class="portrait" style="width:84px;height:84px;animation:none" src="${portraitImg(b.id)}" alt=""><div><b>${b.name}${b.id==='pivello'?' · sempre 1°':b.id==='diavolo'?' · sempre 5°':''}</b><span class="bossmolt" style="margin:0 0 4px">Molt ×${fmt(b.molt)}</span><div>${tr(b.quirk)}</div>${b.mossa?`<div class="small" style="margin-top:4px">Mossa: ${tr(b.mossa)}</div>`:''}<div class="small">Casualità ${Math.round(b.rnd*100)}%${b.cheat?' · bara':''}</div></div></div>`).join('')}</div>
   <h2>Trucchi</h2><div class="dbgrid">${byType('T')}</div>
   <h2>Poteri magici</h2><div class="dbgrid">${byType('M')}</div>
   <h2>Amuleti</h2><div class="dbgrid">${byType('A')}</div>
   <h2>Jolly e carte troll</h2><div class="dbcards">${[1,2,3,4,5,6,7,8,9,10].map(r=>fig({kind:'jolly',suit:'J',rank:r})).join('')}</div>
   <div class="dbcards" style="margin-top:6px">${IT.map(s=>fig({kind:'troll',troll:'marcio',suit:s,rank:3})).join('')}${fig({kind:'troll',troll:'bomba',suit:'X',rank:4})}${fig({kind:'troll',troll:'spettro',suit:'X',rank:4})}<figure><img src="${backImg()}" alt="Dorso"><figcaption>Dorso</figcaption></figure></div>
   <div class="small">${Object.values(TROLL).map(t=>`<b style="color:#8bd14f;font-weight:400">${t.name}</b>: ${t.desc}`).join('<br>')}<br><b style="color:var(--magic);font-weight:400">Jolly</b>: ${JOLLY_DESC}</div>
-  <h2>Semi stranieri</h2>${set(FR)}
-  <h2>Mazzo toscano</h2>${set(IT)}
+  <h2>Semi stranieri (dai pacchetti)</h2>${set(FR)}
+  <h2>Mazzo di partenza</h2>${set(IT)}
   <h2>Obiettivi (${OBJ.length})</h2><div class="dbgrid">${OBJ.map(o=>`<div class="dbitem"><div><b>${o.name}</b><span class="rw">${rewTxt(o.reward)}</span><div style="margin-top:4px">${o.desc(false)}</div><div class="small">Versione facile: ${o.desc(true)}</div>${o.ok?'<div class="small">Solo se il mazzo lo permette</div>':''}</div></div>`).join('')}</div>
   </div>`;
   const run=(extra={})=>{const id=$('#dbg-boss').value,bosses=makeLadder();let stage=bosses.findIndex(b=>b.id===id);
     if(stage<0){bosses[2]=NPC[id];stage=2}
-    RUN={stage,bosses,trucchi:[],amuleti:[],poteri:[],deck:baseDeck(),fiche:0,seen:[],beaten:[{name:'la Galleria',p:0,o:0}],...extra}};
+    const ch=$('#dbg-char').value;SKIN=ch;RUN={char:ch,stage,bosses,trucchi:[],amuleti:[],poteri:[],deck:baseDeck(),fiche:0,seen:[],beaten:[{name:'la Galleria',p:0,o:0}],...extra}};
+  $('#dbg-char').onchange=e=>{SKIN=e.target.value;showDebug()};
   $('#debugbox').querySelectorAll('[data-try]').forEach(b=>b.onclick=()=>{const k=b.dataset.try,t=ITEMS[k].type;run();(t==='T'?RUN.trucchi:t==='A'?RUN.amuleti:RUN.poteri).push(k);unlockAudio();showIntro()});
   $('#dbg-all').onclick=()=>{const ks=t=>Object.keys(ITEMS).filter(k=>ITEMS[k].type===t);
     const deck=baseDeck();genPack().forEach(c=>deck.push(c));
