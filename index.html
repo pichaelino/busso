@@ -13,7 +13,7 @@
   --f-display:'Pixelify Sans','Courier New',monospace;
   --f-body:'Rubik',system-ui,'Segoe UI',sans-serif;
   --f-num:'Rubik',system-ui,'Segoe UI',sans-serif;
-  --cw:100px; --cw-opp:58px; --cw-table:100px;
+  --cw:116px; --cw-opp:64px; --cw-table:112px;
   color-scheme:dark;
 }
 [hidden]{display:none!important}
@@ -149,6 +149,9 @@ button{font:inherit;color:inherit}
 .tr[disabled]{opacity:.5;cursor:not-allowed}
 .tr.ready{border-color:var(--gold);box-shadow:0 3px 0 var(--edge),0 0 10px rgba(242,179,63,.5)}
 .tr.magic{background:var(--magic-d)}
+.tr.acc{background:var(--fiche-d);padding:6px 12px}
+.tr.acc .sub{color:#cfe4ff}
+.card .badge.acc{background:var(--molt);color:#fff}
 .tr.magic .sub{color:#d9c6f5}
 .pips{display:inline-flex;gap:2px;margin-left:4px;vertical-align:middle}
 .pips i{width:8px;height:8px;border-radius:2px;background:#3a3046;border:1px solid var(--edge)}
@@ -297,7 +300,7 @@ button{font:inherit;color:inherit}
 .inv>div{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 
 @media (max-width:860px){
-  :root{--cw:66px;--cw-opp:38px;--cw-table:66px}
+  :root{--cw:72px;--cw-opp:40px;--cw-table:70px}
   body{overflow:auto}
   #app{height:auto}
   #scr-game{height:auto;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;grid-template-areas:"a" "t" "b";gap:10px}
@@ -371,6 +374,7 @@ button{font:inherit;color:inherit}
         <div id="info">
           <div class="lbl">Prese di fila</div><div class="streak" id="streak"></div>
           <div class="lbl" style="margin-top:4px">Hai pescato</div><div class="mydraw" id="mydraw"></div>
+          <button class="btn ghost sm" id="b-deck">Carte del mazzo</button>
         </div>
       </div>
       <div id="hint"></div>
@@ -719,7 +723,7 @@ function backImg(){
 function head(d,o={}){const cx=o.cx||24,cy=o.cy||23,r=o.r||17;if(o.body)d.e(24,48,13,8,o.body);d.c(cx,cy,r,o.shade||K.skin2);d.c(cx-1.6,cy-1.8,r-1.8,o.skin||K.skin);return {cx,cy,r}}
 function eyes(d,o={}){const y=o.y||24,dx=o.dx||6.5,er=o.er||4.3;
   [[-1,o.dl||0],[1,o.dr||0]].forEach(([sd,dr])=>{const ex=24+sd*dx,ey=y+dr;d.e(ex,ey,er,er*1.15,o.col||K.black);if(!o.blank){d.c(ex-1.4,ey-1.6,1.25,K.white);d.c(ex+1.3,ey+1.4,.6,K.white)}});
-  if(o.tears){const l=24-dx,r=24+dx;d.l([[l-1,y+4],[l-2.2,y+10],[l-1.2,y+16]],K.blue3,1.8);d.e(l-1.2,y+17.5,1.5,2.1,K.lens);if(o.tears>1){d.l([[r+1,y+4],[r+2,y+9]],K.blue3,1.6);d.e(r+2,y+10.5,1.3,1.8,K.lens)}}}
+  if(o.tears&&false){const l=24-dx,r=24+dx;d.l([[l-1,y+4],[l-2.2,y+10],[l-1.2,y+16]],K.blue3,1.8);d.e(l-1.2,y+17.5,1.5,2.1,K.lens);if(o.tears>1){d.l([[r+1,y+4],[r+2,y+9]],K.blue3,1.6);d.e(r+2,y+10.5,1.3,1.8,K.lens)}}}
 const PORTRAIT_DRAW={
   toscano(d,x){head(d,{body:K.white});d.p([[14,40],[34,40],[24,47]],K.red);d.c(24,41,2,K.red2);
     d.e(24,8,11,4.5,K.black);[[15,9],[19,6],[24,5],[29,6],[33,9]].forEach(([a,b])=>d.c(a,b,2.6,K.black));
@@ -862,37 +866,37 @@ function iconImg(id){
 
 // ================= Oggetti =================
 const ITEMS={
-  occhio:{type:'T',name:'Occhio Lungo',soglia:2,price:190,desc:'Scopri carte della sua mano: restano scoperte finché non le gioca.',lv:['1 carta','2 carte','3 carte']},
-  sbirciata:{type:'T',name:'Sbirciata',soglia:2,price:180,desc:'Guarda le prime carte del mazzo e riordinale.',lv:['vedi la prima','prime 2, puoi invertirle','prime 3, scegli la prima']},
-  tintura:{type:'T',name:'Tintura',soglia:3,price:200,desc:'Cambia il seme di carte in mano.',lv:['1 carta','2 carte','3 carte']},
-  mano:{type:'T',name:'Mano Lesta',soglia:3,price:220,desc:'Scambia carte con l’avversario.',lv:['1 carta, la sua a caso','1 carta, scegli tra le sue scoperte','2 carte, scegli tra le sue scoperte']},
-  pesca:{type:'T',name:'Pesca Truccata',soglia:3,price:195,desc:'Scambia una tua carta con una del mazzo.',lv:['scegli tra le prime 2','scegli tra le prime 3','scegli tra le prime 4']},
-  doppio:{type:'T',name:'Raddoppio',soglia:4,price:200,desc:'La prossima presa che vinci vale di più.',lv:['FICHE ×2','FICHE ×3','FICHE ×4']},
-  bacchetta:{type:'T',name:'Bacchetta',soglia:3,price:210,desc:'Trasforma carte della tua mano in Jolly.',lv:['1 carta','2 carte','3 carte']},
-  ladro:{type:'M',name:'Mano del Ladro',price:160,desc:'Ruba l’ultima presa fatta dall’avversario.'},
-  pioggia:{type:'M',name:'Pioggia d’Assi',price:155,desc:'Mischia due Assi in più nel mazzo.'},
-  ribaltone:{type:'M',name:'Ribaltone',price:180,desc:'Scambia tutta la tua mano con la sua. Solo quando esci tu.'},
-  terremoto:{type:'M',name:'Terremoto',price:155,desc:'La sua mano torna nel mazzo, si rimischia e lui ripesca.'},
-  malocchio:{type:'M',name:'Malocchio',price:170,desc:'Toglie 0.5 al Molt dell’avversario (minimo 1).'},
-  fiammifero:{type:'M',name:'Fiammifero',price:155,desc:'Brucia le prime 2 carte del mazzo. Le vedi bruciare.'},
-  specchio:{type:'M',name:'Specchio',price:175,desc:'La prossima presa che vincerebbe lui la prendi tu.'},
-  nebbia:{type:'M',name:'Nebbia',price:160,desc:'Per 3 prese l’avversario non vede niente e gioca a caso.'},
-  calice:{type:'M',name:'Calice Avvelenato',price:155,desc:'Mischia due Tre Marci nel mazzo. Speriamo li peschi lui.'},
-  spinta:{type:'M',name:'Spinta',price:160,desc:'+2 alle tue prese di fila: carica subito i trucchi.'},
-  corno:{type:'A',name:'Corno Rosso',price:210,desc:'+1 Molt fisso.'},
-  ferro:{type:'A',name:'Ferro di Cavallo',price:240,desc:'×1.5 Molt se fai più prese dell’avversario.'},
-  gatto:{type:'A',name:'Gatto Nero',price:195,desc:'L’ultima presa vale 60 FICHE in più.'},
-  oste:{type:'A',name:'L’Oste',price:195,desc:'Ogni Coppa che prendi vale +5 FICHE.'},
-  ruota:{type:'A',name:'Ruota della Fortuna',price:225,desc:'+0.5 Molt per ogni Asso che prendi.'},
-  scartine:{type:'A',name:'Scartine d’Oro',price:210,desc:'Le scartine (4, 5, 6, 7) valgono 5 FICHE.'},
-  lente:{type:'A',name:'Lente',price:195,desc:'Vedi sempre la prima carta del mazzo.'},
-  sigaro:{type:'A',name:'Sigaro del Nonno',price:225,desc:'+1 Molt per ogni obiettivo completato.'},
-  calamita:{type:'A',name:'Calamita',price:260,desc:'I trucchi si caricano con una presa di fila in meno.'},
-  salvadanaio:{type:'A',name:'Salvadanaio',price:195,desc:'+30 FICHE in più a ogni vittoria.'},
-  grappa:{type:'A',name:'Grappa della Casa',price:205,desc:'+0.5 Molt per ogni Re che prendi.'},
-  santino:{type:'A',name:'Santino',price:200,desc:'Le carte troll che prendi non ti tolgono FICHE.'},
-  quadrifoglio:{type:'A',name:'Quadrifoglio',price:220,desc:'+0.25 Molt per ogni carta di seme straniero che prendi.'},
-  orologio:{type:'A',name:'Orologio del Bar',price:230,desc:'Le ultime 3 prese che vinci valgono FICHE doppie.'},
+  occhio:{type:'T',name:'Occhio Lungo',soglia:2,price:220,desc:'Scopri carte della sua mano: restano scoperte finché non le gioca.',lv:['1 carta','2 carte','3 carte']},
+  sbirciata:{type:'T',name:'Sbirciata',soglia:2,price:205,desc:'Guarda le prime carte del mazzo e riordinale.',lv:['vedi la prima','prime 2, puoi invertirle','prime 3, scegli la prima']},
+  tintura:{type:'T',name:'Tintura',soglia:3,price:230,desc:'Cambia il seme di carte in mano.',lv:['1 carta','2 carte','3 carte']},
+  mano:{type:'T',name:'Mano Lesta',soglia:3,price:255,desc:'Scambia carte con l’avversario.',lv:['1 carta, la sua a caso','1 carta, scegli tra le sue scoperte','2 carte, scegli tra le sue scoperte']},
+  pesca:{type:'T',name:'Pesca Truccata',soglia:3,price:225,desc:'Scambia una tua carta con una del mazzo.',lv:['scegli tra le prime 2','scegli tra le prime 3','scegli tra le prime 4']},
+  doppio:{type:'T',name:'Raddoppio',soglia:4,price:230,desc:'La prossima presa che vinci vale di più.',lv:['FICHE ×2','FICHE ×3','FICHE ×4']},
+  bacchetta:{type:'T',name:'Bacchetta',soglia:3,price:240,desc:'Trasforma carte della tua mano in Jolly.',lv:['1 carta','2 carte','3 carte']},
+  ladro:{type:'M',name:'Mano del Ladro',price:185,desc:'Ruba l’ultima presa fatta dall’avversario.'},
+  pioggia:{type:'M',name:'Pioggia d’Assi',price:180,desc:'Mischia due Assi in più nel mazzo.'},
+  ribaltone:{type:'M',name:'Ribaltone',price:205,desc:'Scambia tutta la tua mano con la sua. Solo quando esci tu.'},
+  terremoto:{type:'M',name:'Terremoto',price:180,desc:'La sua mano torna nel mazzo, si rimischia e lui ripesca.'},
+  malocchio:{type:'M',name:'Malocchio',price:195,desc:'Toglie 0.5 al Molt dell’avversario (minimo 1).'},
+  fiammifero:{type:'M',name:'Fiammifero',price:180,desc:'Brucia le prime 2 carte del mazzo. Le vedi bruciare.'},
+  specchio:{type:'M',name:'Specchio',price:200,desc:'La prossima presa che vincerebbe lui la prendi tu.'},
+  nebbia:{type:'M',name:'Nebbia',price:185,desc:'Per 3 prese l’avversario non vede niente e gioca a caso.'},
+  calice:{type:'M',name:'Calice Avvelenato',price:180,desc:'Mischia due Tre Marci nel mazzo. Speriamo li peschi lui.'},
+  spinta:{type:'M',name:'Spinta',price:185,desc:'+2 alle tue prese di fila: carica subito i trucchi.'},
+  corno:{type:'A',name:'Corno Rosso',price:240,desc:'+1 Molt fisso.'},
+  ferro:{type:'A',name:'Ferro di Cavallo',price:275,desc:'×1.5 Molt se fai più prese dell’avversario.'},
+  gatto:{type:'A',name:'Gatto Nero',price:225,desc:'L’ultima presa vale 60 FICHE in più.'},
+  oste:{type:'A',name:'L’Oste',price:225,desc:'Ogni Coppa che prendi vale +5 FICHE.'},
+  ruota:{type:'A',name:'Ruota della Fortuna',price:260,desc:'+0.5 Molt per ogni Asso che prendi.'},
+  scartine:{type:'A',name:'Scartine d’Oro',price:240,desc:'Le scartine (4, 5, 6, 7) valgono 5 FICHE.'},
+  lente:{type:'A',name:'Lente',price:225,desc:'Vedi sempre la prima carta del mazzo.'},
+  sigaro:{type:'A',name:'Sigaro del Nonno',price:260,desc:'+1 Molt per ogni obiettivo completato.'},
+  calamita:{type:'A',name:'Calamita',price:300,desc:'I trucchi si caricano con una presa di fila in meno.'},
+  salvadanaio:{type:'A',name:'Salvadanaio',price:225,desc:'+30 FICHE in più a ogni vittoria.'},
+  grappa:{type:'A',name:'Grappa della Casa',price:235,desc:'+0.5 Molt per ogni Re che prendi.'},
+  santino:{type:'A',name:'Santino',price:230,desc:'Le carte troll che prendi non ti tolgono FICHE.'},
+  quadrifoglio:{type:'A',name:'Quadrifoglio',price:255,desc:'+0.25 Molt per ogni carta di seme straniero che prendi.'},
+  orologio:{type:'A',name:'Orologio del Bar',price:265,desc:'Le ultime 3 prese che vinci valgono FICHE doppie.'},
 };
 const TYPE_NAME={T:'Trucco',A:'Amuleto',M:'Potere'};
 const soglia=id=>Math.max(1,ITEMS[id].soglia-(has('calamita')?1:0));
@@ -945,15 +949,15 @@ const rewTxt=r=>r.t==='add'?`+${r.v} Molt`:`×${r.v} Molt`;
 
 // ================= Avversari =================
 const NPC={
-  pivello:{name:'Il Pivellino',molt:1,rnd:.5,cheat:false,quirk:'Gioca un po’ a caso. Suda freddo.',mossa:null,pal:[[14,30,26],[22,46,40],[34,66,56],[60,96,80]]},
-  zia:{name:'Zia Assunta',molt:1.5,rnd:.18,cheat:false,quirk:'Ogni Coppa che prende vale +5 FICHE per lei.',mossa:'Caffè corretto: ogni 3 prese di fila guadagna +0.25 Molt.',pal:[[38,22,16],[56,34,24],[82,50,32],[120,80,48]]},
-  nonna:{name:'Nonna Pina',molt:1.75,rnd:.15,cheat:false,quirk:'I suoi Re valgono 30 FICHE invece di 10.',mossa:'“Mangia, mangia!”: ogni 3 prese di fila ti scarica tutti i trucchi.',pal:[[34,22,26],[52,34,38],[78,50,56],[118,78,84]]},
-  prete:{name:'Don Ottavio',molt:1.75,rnd:.1,cheat:false,quirk:'Benedice il mazzo: i tuoi accusi non valgono niente.',mossa:'Penitenza: ogni 3 prese di fila ti toglie 0.5 Molt guadagnato con le giocate.',pal:[[20,20,24],[32,30,36],[50,46,54],[86,80,92]]},
-  capitano:{name:'Il Capitano',molt:2,rnd:.05,cheat:false,quirk:'Le Spade che prende valgono +5 FICHE.',mossa:'Arrembaggio: ogni 3 prese di fila ti ruba la tua ultima presa.',pal:[[12,24,36],[18,38,56],[28,56,82],[60,96,130]]},
-  baro:{name:'Il Baro',molt:2,rnd:0,cheat:true,quirk:'Conosce la tua mano. A inizio partita ti sfila la carta migliore.',mossa:'Asso nella manica: ogni 3 prese di fila ti ruba la carta migliore e ti rifila la peggiore.',pal:[[18,18,36],[28,28,54],[44,42,80],[70,66,120]]},
-  prestigiatore:{name:'Il Prestigiatore',molt:2.25,rnd:0,cheat:false,quirk:'A inizio partita trasforma una tua carta in uno Spettro.',mossa:'Puff!: ogni 3 prese di fila trasforma un’altra tua carta in uno Spettro.',pal:[[26,14,34],[40,22,52],[60,32,76],[98,56,118]]},
-  vecchio:{name:'Il Vecchietto del Bar',molt:2.25,rnd:0,cheat:false,quirk:'Sessant’anni di tressette: conta ogni carta, e l’ultima presa per lui vale 90.',mossa:'“Ma che fai?!”: ogni 3 prese di fila ti rimischia la mano nel mazzo e ti fa ripescare.',pal:[[32,26,18],[48,40,28],[70,58,40],[104,88,58]]},
-  diavolo:{name:'Il Diavolo',molt:2.75,rnd:0,cheat:false,quirk:'Ogni Asso che prende vale 60 FICHE invece di 30.',mossa:'Fiamma: ogni 3 prese di fila brucia la carta più preziosa che hai preso.',pal:[[30,10,12],[48,16,18],[72,24,26],[110,40,36]]},
+  pivello:{name:'Il Pivellino',molt:1.25,rnd:.5,cheat:false,quirk:'Gioca un po’ a caso. Suda freddo.',mossa:null,pal:[[14,30,26],[22,46,40],[34,66,56],[60,96,80]]},
+  zia:{name:'Zia Assunta',molt:1.75,rnd:.18,cheat:false,quirk:'Ogni Coppa che prende vale +5 FICHE per lei.',mossa:'Caffè corretto: ogni 3 prese di fila guadagna +0.25 Molt.',pal:[[38,22,16],[56,34,24],[82,50,32],[120,80,48]]},
+  nonna:{name:'Nonna Pina',molt:2.0,rnd:.15,cheat:false,quirk:'I suoi Re valgono 30 FICHE invece di 10.',mossa:'“Mangia, mangia!”: ogni 3 prese di fila ti scarica tutti i trucchi.',pal:[[34,22,26],[52,34,38],[78,50,56],[118,78,84]]},
+  prete:{name:'Don Ottavio',molt:2.0,rnd:.1,cheat:false,quirk:'Benedice il mazzo: i tuoi accusi non valgono niente.',mossa:'Penitenza: ogni 3 prese di fila ti toglie 0.5 Molt guadagnato con le giocate.',pal:[[20,20,24],[32,30,36],[50,46,54],[86,80,92]]},
+  capitano:{name:'Il Capitano',molt:2.25,rnd:.05,cheat:false,quirk:'Le Spade che prende valgono +5 FICHE.',mossa:'Arrembaggio: ogni 3 prese di fila ti ruba la tua ultima presa.',pal:[[12,24,36],[18,38,56],[28,56,82],[60,96,130]]},
+  baro:{name:'Il Baro',molt:2.25,rnd:0,cheat:true,quirk:'Conosce la tua mano. A inizio partita ti sfila la carta migliore.',mossa:'Asso nella manica: ogni 3 prese di fila ti ruba la carta migliore e ti rifila la peggiore.',pal:[[18,18,36],[28,28,54],[44,42,80],[70,66,120]]},
+  prestigiatore:{name:'Il Prestigiatore',molt:2.5,rnd:0,cheat:false,quirk:'A inizio partita trasforma una tua carta in uno Spettro.',mossa:'Puff!: ogni 3 prese di fila trasforma un’altra tua carta in uno Spettro.',pal:[[26,14,34],[40,22,52],[60,32,76],[98,56,118]]},
+  vecchio:{name:'Il Vecchietto del Bar',molt:2.5,rnd:0,cheat:false,quirk:'Sessant’anni di tressette: conta ogni carta, e l’ultima presa per lui vale 90.',mossa:'“Ma che fai?!”: ogni 3 prese di fila ti rimischia la mano nel mazzo e ti fa ripescare.',pal:[[32,26,18],[48,40,28],[70,58,40],[104,88,58]]},
+  diavolo:{name:'Il Diavolo',molt:3.0,rnd:0,cheat:false,quirk:'Ogni Asso che prende vale 60 FICHE invece di 30.',mossa:'Fiamma: ogni 3 prese di fila brucia la carta più preziosa che hai preso.',pal:[[30,10,12],[48,16,18],[72,24,26],[110,40,36]]},
 };
 Object.keys(NPC).forEach(k=>NPC[k].id=k);
 const MIDDLE=['zia','nonna','prete','capitano','baro','prestigiatore','vecchio'];
@@ -983,7 +987,7 @@ function setPal(p){PAL=p;drawTiles()}
 let RUN=null,M=null;
 const has=a=>!!RUN&&RUN.amuleti.includes(a);
 function baseDeck(){const d=[];for(const s of IT)for(let r=1;r<=10;r++)d.push({kind:'n',suit:s,rank:r});return d}
-function side(){return {hand:[],captured:[],tricks:[],tricksWon:0,streak:0,maxStreak:0,moltAdd:0,strozzi:0,piombi:0,accusi:[],accusiFiche:0,lastTrick:false,bonusFiche:0,lamaDone:false,jollyWin:false,doubleMul:1}}
+function side(){return {hand:[],captured:[],tricks:[],tricksWon:0,streak:0,maxStreak:0,moltAdd:0,strozzi:0,piombi:0,accusi:[],accusiFiche:0,declared:{},lastTrick:false,bonusFiche:0,lamaDone:false,jollyWin:false,doubleMul:1}}
 let UID=0;
 function inst(t){return {...t,id:UID++,tinted:false,playSuit:null}}
 function createMatch(boss){
@@ -994,6 +998,24 @@ function createMatch(boss){
   return m;
 }
 function remTricks(){return M?Math.floor((M.P.hand.length+M.O.hand.length+M.stock.length+M.table.length)/2):0}
+function accusiAvail(S){
+  const n=S.hand.filter(normal),out=[],dec=S.declared;
+  for(const s of [...IT,...FR]){const k='nap'+s;if(!dec[k]&&[1,2,3].every(r=>n.some(c=>c.suit===s&&c.rank===r)))out.push({k,v:90,full:90,name:`Napoletana di ${SUIT_NAME[s]}`,cards:[1,2,3].map(r=>n.find(c=>c.suit===s&&c.rank===r))})}
+  for(const [r,nm] of [[3,'Tre'],[2,'Due'],[1,'Assi']]){const cs=n.filter(c=>c.rank===r),k='r'+r;if(cs.length>=3){const full=cs.length>=4?120:90,prev=dec[k]||0;if(full>prev)out.push({k,v:full-prev,full,name:`${cs.length>=4?'Quattro':'Tre'} ${nm}`,cards:cs})}}
+  return out;
+}
+function declare(side,a){const S=M[side];S.declared[a.k]=a.full;let v=a.v;if(side==='P'&&M.boss.id==='prete')v=0;S.accusiFiche+=v;S.accusi.push(a.name);return v}
+function playerAccusa(i){
+  if(!isMyTurn()||M.mode)return;const a=accusiAvail(M.P)[i];if(!a)return;const v=declare('P',a);
+  if(v){pop(`Accuso: ${a.name} · +${v} FICHE`,'banner fiche','P');toast(`Accusi ${a.name}: +${v} FICHE`,'gold');SFX.big()}
+  else{toast('Don Ottavio non riconosce i tuoi accusi: valgono 0','molt');SFX.lose()}
+  log(`Accusi ${a.name} (+${v})`);render();
+}
+function aiAccusi(){
+  const av=accusiAvail(M.O);
+  av.forEach((a,i)=>{const v=declare('O',a);a.cards.forEach(c=>c.shown=true);setTimeout(()=>{toast(`${M.boss.name} accusa ${a.name} (+${v} FICHE): ti mostra le carte`,'molt');SFX.molt()},i*600);log(`${M.boss.name} accusa ${a.name}`)});
+  if(av.length)render();
+}
 function accusi(hand){
   const out=[];let f=0;const n=hand.filter(normal);
   for(const s of [...IT,...FR])if([1,2,3].every(r=>n.some(c=>c.suit===s&&c.rank===r))){out.push(`Napoletana di ${SUIT_NAME[s]}`);f+=90}
@@ -1163,6 +1185,7 @@ async function resolveTrick(){
   if(M.reveal>0)M.reveal--;
   if(M.fog>0)M.fog--;
   M.leader=w;
+  {const before=accusiAvail(M.P).length;aiAccusi();void before}
   if(!bomb&&w==='O'&&M.O.streak%3===0&&M.boss.mossa&&(M.P.hand.length||M.P.captured.length))await bossMossa();
   updateObjectives();render();
   if(M.P.hand.length===0&&M.O.hand.length===0){await sleep(700);endMatch();return}
@@ -1210,17 +1233,17 @@ function useTrucco(id){
 }
 function stepDone(msg){M.act.left--;log(msg);toast(msg,'gold');if(M.act.left<=0)done();else{SFX.magic();render()}}
 function swapWith(mine,theirs){
-  const i=M.P.hand.indexOf(mine),j=M.O.hand.indexOf(theirs);M.P.hand[i]=theirs;M.O.hand[j]=mine;theirs.seen=false;mine.seen=true;shuffle(M.O.hand);
+  const i=M.P.hand.indexOf(mine),j=M.O.hand.indexOf(theirs);M.P.hand[i]=theirs;M.O.hand[j]=mine;theirs.seen=false;theirs.shown=false;mine.seen=true;shuffle(M.O.hand);
   M.mode='mano-own';stepDone(`Prendi ${cardName(theirs)}, gli dai ${cardName(mine)}`);
 }
 function onHandClick(c){
-  if(M.mode==='mano-own'){if(M.act.see&&M.O.hand.some(o=>o.seen)){M.act.pending=c;M.mode='mano-opp';render()}else swapWith(c,pick(M.O.hand));return}
+  if(M.mode==='mano-own'){if(M.act.see&&M.O.hand.some(o=>o.seen||o.shown)){M.act.pending=c;M.mode='mano-opp';render()}else swapWith(c,pick(M.O.hand));return}
   if(M.mode==='wand'){if(c.kind==='jolly'){toast('È già un Jolly');return}const old=cardName(c);Object.assign(c,{kind:'jolly',suit:'J',troll:undefined,tinted:false,playSuit:null});if(c.rank===4&&old.startsWith('Lo'))c.rank=rint(4,7);stepDone(`${old} diventa ${cardName(c)}`);return}
   if(M.mode==='tint'){if(c.kind!=='n'){toast('Questa carta non si può ridipingere');return}openTint(c);return}
   if(M.mode==='pesca-own'){const k=M.act.idx,top=M.stock[k];M.P.hand[M.P.hand.indexOf(c)]=top;M.stock[k]=c;done(`Peschi ${cardName(top)}, ${cardName(c)} finisce nel mazzo`);return}
   if(!M.mode)playerPlay(c);
 }
-function onOppClick(c){if(M.mode==='mano-opp'&&M.act.pending&&c.seen){const p=M.act.pending;M.act.pending=null;swapWith(p,c)}}
+function onOppClick(c){if(M.mode==='mano-opp'&&M.act.pending&&(c.seen||c.shown)){const p=M.act.pending;M.act.pending=null;swapWith(p,c)}}
 function cancelMode(){M.mode=null;M.act=null;render()}
 function openTint(c){
   modal(`<div class="title">Tintura</div><div class="small">Di che seme vuoi ${cardName(c)}?</div>
@@ -1261,8 +1284,8 @@ function usePotere(i){
     done(`Rubata! Ti prendi ${t.map(cardName).join(' e ')||'una presa vuota'}`,'magic')}
   if(id==='pioggia'){const add=[0,1].map(()=>inst({kind:'n',suit:pick(IT),rank:1}));add.forEach(c=>{M.deck.push(c);M.stock.splice(rint(0,M.stock.length),0,c)});
     done(`Piovono assi: ${add.map(cardName).join(' e ')} entrano nel mazzo`,'magic')}
-  if(id==='ribaltone'){[M.P.hand,M.O.hand]=[M.O.hand,M.P.hand];M.P.hand.forEach(c=>c.seen=false);M.O.hand.forEach(c=>c.seen=true);shuffle(M.O.hand);done('Ribaltone! Vi siete scambiati le mani','magic')}
-  if(id==='terremoto'){const n=M.O.hand.length;M.O.hand.forEach(c=>c.seen=false);M.stock.push(...M.O.hand);M.O.hand=[];shuffle(M.stock);M.O.hand=M.stock.splice(0,n);done('Terremoto! La sua mano è tornata nel mazzo','magic')}
+  if(id==='ribaltone'){[M.P.hand,M.O.hand]=[M.O.hand,M.P.hand];M.P.hand.forEach(c=>{c.seen=false;c.shown=false});M.O.hand.forEach(c=>c.seen=true);shuffle(M.O.hand);done('Ribaltone! Vi siete scambiati le mani','magic')}
+  if(id==='terremoto'){const n=M.O.hand.length;M.O.hand.forEach(c=>{c.seen=false;c.shown=false});M.stock.push(...M.O.hand);M.O.hand=[];shuffle(M.stock);M.O.hand=M.stock.splice(0,n);done('Terremoto! La sua mano è tornata nel mazzo','magic')}
   if(id==='malocchio'){M.oMolt=Math.max(1,Math.round((M.oMolt-.5)*100)/100);done(`Malocchio: il suo Molt scende a ×${fmt(M.oMolt)}`,'magic')}
   if(id==='fiammifero'){const b=M.stock.splice(0,2);M.burned.push(...b);done(`Bruciate: ${b.map(cardName).join(' e ')}`,'magic')}
   if(id==='specchio'){M.mirror=true;done('Specchio pronto: la prossima presa che vincerebbe lui è tua','magic')}
@@ -1322,10 +1345,10 @@ function render(){
   $('#amus').innerHTML=RUN.amuleti.length?RUN.amuleti.map(a=>`<li><img class="ic" src="${iconImg(a)}" alt=""><div><b>${ITEMS[a].name}</b><span>${tr(ITEMS[a].desc)}</span></div></li>`).join(''):'<li><span>Nessuno. Si comprano al negozio.</span></li>';
   $('#log').innerHTML=M.log.map(l=>`<li>${l}</li>`).join('');
 
-  const nSeen=M.O.hand.filter(c=>c.seen).length;
+  const nSeen=M.O.hand.filter(c=>c.seen||c.shown).length;
   $('#opp-lbl').textContent=`Mano di ${M.boss.name} · ${M.O.hand.length} carte`+(nSeen?` · ${nSeen} scoperte`:'');
   const oh=$('#opp-hand');oh.innerHTML='';
-  M.O.hand.forEach(c=>{const b=cardEl(c,!!c.seen,M.mode==='mano-opp'&&c.seen?'pick':'');b.onclick=()=>onOppClick(c);oh.appendChild(b)});
+  M.O.hand.forEach(c=>{const vis=!!(c.seen||c.shown);const b=cardEl(c,vis,M.mode==='mano-opp'&&vis?'pick':'');if(c.shown&&!c.seen)b.insertAdjacentHTML('beforeend','<span class="badge acc">Accuso</span>');b.onclick=()=>onOppClick(c);oh.appendChild(b)});
   fitRow(oh);
 
   const st=$('#stock');st.innerHTML='';const n=M.stock.length;$('#stock-n').textContent=n;
@@ -1355,6 +1378,9 @@ function render(){
     b.title=`${tr(it.desc)} Si carica ogni ${so} prese di fila: ${it.lv.map((l,i)=>`liv ${i+1} ${l}`).join(', ')}.`;
     b.innerHTML=`<img class="ic" src="${iconImg(id)}" alt=""><div><b>${it.name}<span class="pips">${[1,2,3].map(i=>`<i class="${i<=lvl?'on':''}"></i>`).join('')}</span></b><span class="sub">${lvl?`Liv ${lvl}: ${it.lv[lvl-1]}`:`Carica: ${so} prese di fila`}</span></div>`;
     b.onclick=()=>useTrucco(id);pw.appendChild(b)});
+  accusiAvail(M.P).forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.className='tr ready acc';b.disabled=!(isMyTurn()&&!M.mode);
+    b.title='Dichiara l’accuso: le FICHE si aggiungono subito al tuo punteggio';
+    b.innerHTML=`<div><b>Accusa: ${a.name}</b><span class="sub">+${M.boss.id==='prete'?0:a.v} FICHE</span></div>`;b.onclick=()=>playerAccusa(i);pw.appendChild(b)});
   RUN.poteri.forEach((id,i)=>{const it=ITEMS[id];const b=document.createElement('button');b.type='button';b.className='tr magic';b.disabled=!poUsable(id);b.title=it.desc;
     b.innerHTML=`<img class="ic" src="${iconImg(id)}" alt=""><div><b>${it.name}</b><span class="sub">${tr(it.desc)}</span></div>`;b.onclick=()=>usePotere(i);pw.appendChild(b)});
 
@@ -1371,13 +1397,12 @@ const PURGE_COST=200;
 function showDeck(purge){
   const inMatch=!!M&&!M.over&&!purge&&!$('#scr-game').hidden;
   const cards=inMatch?M.deck:RUN.deck.map((t,i)=>({...t,_i:i}));
-  const status=c=>{if(!inMatch)return '';if(M.P.hand.includes(c))return 'mano';if(M.P.captured.includes(c))return 'tua';if(M.O.captured.includes(c))return 'sua';if(M.burned.includes(c))return 'bruciata';if(M.table.some(t=>t.card===c))return 'tavolo';return ''};
+  const status=c=>'';
   const groups={};cards.forEach(c=>{const g=c.kind==='jolly'?'Jolly':(c.kind==='troll'&&c.troll!=='marcio')?'Troll':SUIT_NAME[c.suit];(groups[g]=groups[g]||[]).push(c)});
   const order=[...SUIT_ORDER.map(s=>SUIT_NAME[s]),'Jolly','Troll'];
   const live=inMatch?cards.filter(c=>!status(c)).length:cards.length;
   modal(`<div class="title">${purge?'Togli una carta dal mazzo':'Il mazzo'}</div>
-  <div class="small">${inMatch?`${cards.length} carte in tutto. ${live} ancora in giro, nel mazzo o in mano sua: possono capitare a te o a lui.`:`${cards.length} carte.${purge?` Tocca la carta da eliminare (costa ${PURGE_COST} FICHE).`:''}`}</div>
-  ${inMatch?`<div class="legend"><span><i style="background:var(--gold)"></i>in mano tua</span><span><i style="background:#555"></i>presa da te</span><span><i style="background:#8a3a20"></i>presa da lui</span><span><i style="background:#222"></i>bruciata</span><span><i style="background:var(--cream)"></i>ancora in giro</span></div>`:''}
+  <div class="small">${inMatch?`Tutte le ${cards.length} carte di questa partita. Non ti dice dove sono: in mano, nel mazzo o già uscite.`:`${cards.length} carte.${purge?` Tocca la carta da eliminare (costa ${PURGE_COST} FICHE).`:''}`}</div>
   ${order.filter(g=>groups[g]).map(g=>`<div class="dgroup"><h4>${g} · ${groups[g].length}</h4><div class="dcards">${groups[g].sort((a,b)=>str(b)-str(a)).map(c=>`<button class="dcard st-${status(c)}${purge?' purge':''}" ${purge?`data-i="${c._i}"`:'tabindex="-1"'} title="${cardName(c)} — ${cardDesc(c)}"><img src="${cardImg(c)}" alt="${cardName(c)}"></button>`).join('')}</div></div>`).join('')}
   <div class="row"><button class="btn" id="m-x">Chiudi</button></div>`,true);
   $('#m-x').onclick=closeModal;
@@ -1422,12 +1447,10 @@ function showIntro(){
 }
 async function startMatch(){
   show('game');const b=M.boss;shuffle(M.O.hand);
-  for(const s of ['P','O']){const a=accusi(M[s].hand);M[s].accusi=a.out;M[s].accusiFiche=a.f}
   $('#s-portrait').src=portraitImg(b.id);$('#s-name').textContent=b.name;$('#s-stage').textContent=RUN.stage+1;
   log(`Si comincia contro ${b.name}`);render();await sleep(300);
-  if(M.P.accusi.length){toast(`Accusi: ${M.P.accusi.join(', ')} (+${M.P.accusiFiche} FICHE)`,'gold');log(`Accusi tuoi: ${M.P.accusi.join(', ')}`);SFX.big()}
-  if(M.O.accusi.length){toast(`${b.name} accusa: ${M.O.accusi.join(', ')} (+${M.O.accusiFiche})`);log(`${b.name} accusa ${M.O.accusi.join(', ')}`)}
-  if(b.id==='prete'&&M.P.accusiFiche){M.P.accusiFiche=0;await sleep(400);toast('Don Ottavio benedice il mazzo: i tuoi accusi non valgono','molt')}
+  aiAccusi();
+  if(accusiAvail(M.P).length){await sleep(500);toast('Hai un accuso in mano: premi il tasto Accusa quando vuoi','gold')}
   if(b.id==='prestigiatore'){await sleep(400);spettrifica()}
   if(b.id==='baro'){
     const best=M.P.hand.slice().sort((x,y)=>(cardBase(y)*3+str(y))-(cardBase(x)*3+str(x)))[0],worst=M.O.hand.slice().sort(cheap)[0];
@@ -1530,8 +1553,8 @@ async function openPackAnim(){
 
 // ================= Negozio =================
 let SHOP=null;
-const PACK_PRICE=150;
-function cardPrice(c){if(c.kind==='jolly')return 120;let p=c.rank===1?80:(c.rank===2||c.rank===3)?65:c.rank>=8?50:35;if(FR.includes(c.suit))p+=20;return p}
+const PACK_PRICE=175;
+function cardPrice(c){if(c.kind==='jolly')return 140;let p=c.rank===1?95:(c.rank===2||c.rank===3)?75:c.rank>=8?60:40;if(FR.includes(c.suit))p+=20;return p}
 function genSingle(){const r=Math.random();if(r<.2)return {kind:'jolly',suit:'J',rank:rint(1,10)};if(r<.6)return {kind:'n',suit:pick(FR),rank:rint(1,10)};return {kind:'n',suit:pick(IT),rank:rint(1,10)}}
 function rollShop(){
   const seen=new Set(RUN.seen);
@@ -1595,7 +1618,7 @@ function rules(){
   <li>Si parte con il mazzo toscano da 40. Dieci a testa, il resto è il mazzo. Le carte pescate restano coperte.</li>
   <li>Rispondi al seme di uscita se puoi. Niente briscola: prende la più alta del seme di uscita. Forza: <b>3 · 2 · Asso · Re · Cavallo · Fante · 7 · 6 · 5 · 4</b>.</li>
   <li><b>FICHE</b>: Asso 30, Tre / Due / figure 10, scartine 0, ultima presa 30. <b>Punteggio = FICHE × Molt</b>.</li>
-  <li><b>Accusi</b> a inizio partita: Napoletana 90, tre Tre / Due / Assi 90, quattro 120.</li>
+  <li><b>Accusi</b>: quando hai in mano una Napoletana (Asso, Due e Tre dello stesso seme, 90) o tre Tre / Due / Assi (90, quattro 120) compare il tasto <b>Accusa</b>. Premilo quando vuoi, nel tuo turno. Se accusa l’avversario, le sue carte dell’accuso restano scoperte finché non le gioca.</li>
   <li><b>Giocate</b>: Strozzo (prendi un suo Asso) +0.5 Molt · Striscia (ogni 3 prese di fila) +1 · Piombo (sulla tua uscita lui scarta punti di un altro seme) +0.5.</li>
   <li><b>Trucchi</b>: si caricano con le prese di fila. Ogni trucco ha una soglia (2, 3 o 4): al doppio della soglia sale al livello 2, al triplo al livello 3.</li>
   <li><b>Poteri</b>: una sola volta, poi spariscono. <b>Amuleti</b>: sempre attivi.</li>
@@ -1639,6 +1662,7 @@ const _show=show;show=function(id){_show(id);$('#b-menu').hidden=(id==='title'||
 // ================= Avvio =================
 $('#fan').innerHTML=[{kind:'n',suit:'D',rank:1},{kind:'n',suit:'C',rank:10},{kind:'jolly',suit:'J',rank:3},{kind:'n',suit:'S',rank:9},{kind:'n',suit:'B',rank:8}].map((c,i)=>`<img src="${cardImg(c)}" alt="" style="transform:rotate(${(i-2)*11}deg) translateY(${Math.abs(i-2)*8}px)">`).join('');
 setPal(TITLE_PAL);
+$('#b-deck').onclick=()=>showDeck(false);
 $('#b-new').onclick=()=>{unlockAudio();showChar()};
 $('#b-rules').onclick=rules;$('#b-rules2').onclick=rules;
 $('#b-mute').onclick=()=>{muted=!muted;$('#b-mute').textContent='Effetti: '+(muted?'no':'sì')};

@@ -1,4 +1,4 @@
-# Busso! — Tressette roguelike (v6)
+# Busso! — Tressette roguelike (v7)
 
 Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un tasto per saltarlo).
 
@@ -16,7 +16,11 @@ Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un 
 - Mazzo francese a quattro colori per distinguerli: Cuori rosso, Quadri blu, Fiori verde, Picche nero.
 
 ## Partita
-- Il tallone si chiama **Mazzo**. "Vedi mazzo" solo tra una partita e l'altra (intro e negozio).
+- Molt degli avversari (v7, +0.25 a tutti): Pivellino ×1.25, Zia ×1.75, Nonna e Don Ottavio ×2, Capitano e Baro ×2.25, Prestigiatore e Vecchietto ×2.5, Diavolo ×3.
+- **Accusi a tasto**: quando hai un accuso in mano compare il tasto *Accusa* (Napoletana 90, tre Tre/Due/Assi 90, passare a quattro aggiunge 30). Lo premi quando vuoi nel tuo turno. L'avversario accusa da solo appena può, e le carte dell'accuso restano scoperte nella sua mano finché non le gioca. Don Ottavio azzera i tuoi accusi.
+- *Carte del mazzo* si apre anche in partita, ma mostra solo la composizione: non dice quali carte sono in mano, nel mazzo o già uscite.
+- Ritratti senza lacrime. Carte ancora più grandi.
+- Il tallone si chiama **Mazzo**.
 - Quando una presa finisce compare un'etichetta dal lato di chi la vince ("Presa tua · +40 FICHE" in blu sopra la tua mano, "Presa di … " in oro sotto la sua) e le carte volano verso di lui.
 - Carte più grandi. Assi ridisegnati con raggi, corona, alloro e nastro.
 - Ritratti rifatti: testoni pallidi, occhi neri lucidi, lacrime e roba che pende.
@@ -42,7 +46,7 @@ Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un 
 
 ## Economia
 - Guadagno per vittoria = 120 + distacco (fino a +110, in base al rapporto tra il tuo totale e il suo) + 10 per obiettivo (max +30). Tetto 260 (290 con Salvadanaio).
-- Prezzi (v6, +25%): poteri ~155–185, trucchi ~180–220, amuleti ~195–265. Carte singole 35–120, pacchetto 150.
+- Prezzi (v7, +15%): poteri ~180–215, trucchi ~205–255, amuleti ~225–305. Carte singole 40–140, pacchetto 175.
 - Con questi prezzi una vittoria di misura spesso non basta per un oggetto: conviene risparmiare o vincere largo. Le FICHE non spese restano.
 - Rimescola vetrina 25 (+10 ogni volta). Togli una carta dal mazzo 200, una volta per negozio, mazzo minimo 30.
 
@@ -58,7 +62,7 @@ Corno Rosso, Ferro di Cavallo, Gatto Nero, L'Oste, Ruota della Fortuna, Scartine
 
 ## Negozio
 Sempre almeno 1 trucco, 1 amuleto, 1 potere + 1 casuale. Un oggetto visto in vetrina non torna più nella stessa run.
-Vende anche 2 carte singole (scartine 35, figure 50, Due e Tre 65, Assi 80, semi stranieri +20, Jolly 120) e un pacchetto da 10 carte (150 FICHE). Il negozio sta in una schermata sola, senza scorrere.
+Vende anche 2 carte singole (scartine 40, figure 60, Due e Tre 75, Assi 95, semi stranieri +20, Jolly 140) e un pacchetto da 10 carte (175 FICHE). Il negozio sta in una schermata sola, senza scorrere.
 
 ## Pacchetti (10 carte)
 3 semi stranieri (Cuori, Quadri, Fiori, Picche), 3 doppioni toscani, 2 Jolly, 1 troll, 1 a caso. Ne scegli fino a 3; la prima troll del pacchetto entra comunque.
