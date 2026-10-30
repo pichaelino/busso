@@ -1,4 +1,4 @@
-# Busso! — Tressette roguelike (v8)
+# Busso! — Tressette roguelike (v9)
 
 Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un tasto per saltarlo).
 
@@ -16,7 +16,7 @@ Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un 
 - Mazzo francese a quattro colori per distinguerli: Cuori rosso, Quadri blu, Fiori verde, Picche nero.
 
 ## Partita
-- Molt degli avversari (v7, +0.25 a tutti): Pivellino ×1.25, Zia ×1.75, Nonna e Don Ottavio ×2, Capitano e Baro ×2.25, Prestigiatore e Vecchietto ×2.5, Diavolo ×3.
+- Molt degli avversari (v9): Pivellino ×1.1, Zia ×1.6, Nonna e Don Ottavio ×1.85, Capitano e Baro ×2.1, Prestigiatore e Vecchietto ×2.35, Diavolo ×2.85.
 - **Accusi a tasto**: quando hai un accuso in mano compare il tasto *Accusa* (Napoletana 90, tre Tre/Due/Assi 90, passare a quattro aggiunge 30). Lo premi quando vuoi nel tuo turno. L'avversario accusa da solo appena può, e le carte dell'accuso restano scoperte nella sua mano finché non le gioca. Don Ottavio azzera i tuoi accusi.
 - *Carte del mazzo* si apre anche in partita, ma mostra solo la composizione: non dice quali carte sono in mano, nel mazzo o già uscite.
 - Ritratti senza lacrime. Carte ancora più grandi.
@@ -55,7 +55,10 @@ Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un 
 - Ogni avversario ha il suo **tavolo**: tovaglia/panno con motivo e due oggetti negli angoli.
   Pivellino panno verde, lattina e telefono crepato · Zia Assunta tovaglia a fiori, flacone di pillole e moka · Nonna Pina tovaglia a quadri, piatto di pasta e mattarello · Don Ottavio velluto viola con croci, rosario e candela · Il Capitano assi di legno, rum e bussola · Il Baro panno da bisca, dadi e posacenere · Il Prestigiatore velluto nero stellato, cilindro col coniglio e bacchetta · Il Vecchietto formica da bar, bicchiere di rosso e giornale · Il Diavolo pietra con crepe di fuoco, teschio con candela e contratto che brucia.
 - La carta appena pescata è evidenziata nella mano (alone dorato, etichetta "Nuova").
-- Trucchi e poteri come tessere grandi sotto il tavolo; l'accuso è un pulsante rosso grande e pulsante accanto al suggerimento.
+- Trucchi e poteri in colonna a sinistra del Mazzo (due colonne quando sono più di 3); l'accuso è un pulsante rosso grande accanto al suggerimento.
+- Contatore delle prese di fila: fiamma che si accende, numero grande e tre tacche verso la prossima Striscia.
+- La cronaca della partita si apre dal menu di pausa (Esc).
+- Lavagna e scontrini su carta più scura, niente bianco acceso. Niente selezione del testo col doppio clic.
 
 ## Livelli degli oggetti (0–4)
 - Ogni oggetto ha un livello. Il negozio propone livelli diversi a seconda di quanto sei avanti: dopo la 1ª vittoria 0–2, dopo la 2ª 1–3, poi 2–4.
@@ -80,6 +83,11 @@ Corno Rosso, Ferro di Cavallo, Gatto Nero, L'Oste, Ruota della Fortuna, Scartine
 ## Negozio
 Sempre almeno 1 trucco, 1 amuleto, 1 potere + 1 casuale. Un oggetto visto in vetrina non torna più nella stessa run.
 Vende anche 2 carte singole (scartine 40, figure 60, Due e Tre 75, Assi 95, semi stranieri +20, Jolly 140) e un pacchetto da 10 carte (175 FICHE). Il negozio sta in una schermata sola, senza scorrere.
+
+## Seme delle Ossa
+- Nuovo seme a tema (Ossa, simbolo teschio e ossa incrociate, bordo viola). Ogni carta di Ossa vale 5 FICHE in più a chi la prende; chi non ha Ossa non può rispondere.
+- Si trova nella **Cassetta del Becchino** (6 Ossa, 1 Jolly, 1 troll a caso, 1 Spettro, 1 tra Ossa e Jolly) e a volte come carta singola in bottega.
+- Il Jolly si può giocare solo come uno dei semi ancora in gioco (mani e Mazzo).
 
 ## Pacchetti (10 carte)
 3 semi stranieri (Cuori, Quadri, Fiori, Picche), 3 doppioni toscani, 2 Jolly, 1 troll, 1 a caso. Ne scegli fino a 3; la prima troll del pacchetto entra comunque.

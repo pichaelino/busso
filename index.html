@@ -65,7 +65,7 @@ button{font:inherit;color:inherit}
 #side-a{grid-area:a;display:flex;flex-direction:column;gap:10px;min-width:0}
 #side-b{grid-area:b;display:flex;flex-direction:column;gap:10px;overflow:auto;min-height:0;min-width:0;padding-bottom:6px}
 #tablewrap{grid-area:t;position:relative;min-width:0;min-height:0;background:var(--felt);border:2px solid var(--edge);border-radius:14px;box-shadow:inset 0 0 0 3px var(--felt-line),0 4px 0 var(--edge);
-  display:grid;grid-template-rows:auto auto minmax(0,1fr) auto auto auto;gap:8px;padding:12px 14px 16px;overflow:hidden}
+  display:grid;grid-template-rows:auto auto minmax(0,1fr) auto auto;gap:8px;padding:12px 14px 16px;overflow:hidden}
 .opphead{display:flex;gap:10px;align-items:center}
 .opphead .portrait{width:60px;height:60px;animation:none}
 .eq{display:flex;align-items:stretch;gap:6px}
@@ -122,7 +122,7 @@ button{font:inherit;color:inherit}
 .card .badge.troll{background:#8bd14f}
 .card .badge.jolly{background:var(--magic);color:#fff}
 
-#mid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;min-height:0}
+#mid{display:grid;grid-template-columns:minmax(0,1fr) auto auto minmax(0,1fr);align-items:center;gap:16px;min-height:0}
 #stock-wrap,#info{display:flex;flex-direction:column;align-items:center;gap:6px}
 #stock{position:relative;width:var(--cw-table);aspect-ratio:56/88}
 #stock img{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;filter:drop-shadow(0 2px 0 rgba(0,0,0,.6))}
@@ -253,7 +253,7 @@ button{font:inherit;color:inherit}
 .offer.sold{opacity:.35}
 .inv{display:flex;gap:16px;flex-wrap:wrap}
 /* Colonna sinistra: foto segnaletica, lavagna da bar col gesso, scontrini */
-.polaroid{position:relative;display:flex;gap:10px;align-items:center;background:#f4efe2;color:#2a1d18;padding:8px 10px 8px 8px;border-radius:3px;transform:rotate(-1.2deg);box-shadow:0 5px 0 rgba(0,0,0,.45)}
+.polaroid{position:relative;display:flex;gap:10px;align-items:center;background:#cbbd9c;color:#2a1d18;padding:8px 10px 8px 8px;border-radius:3px;transform:rotate(-1.2deg);box-shadow:0 5px 0 rgba(0,0,0,.45)}
 .polaroid::before{content:"";position:absolute;top:-8px;left:50%;width:70px;height:16px;margin-left:-35px;background:rgba(242,214,122,.75);transform:rotate(2deg)}
 .polaroid .portrait{width:66px;height:66px;border:0;border-radius:2px;animation:none;background:#2a2236}
 .pol-eye{font-family:var(--f-receipt);font-size:12px;color:#6a5a50}
@@ -275,14 +275,14 @@ button{font:inherit;color:inherit}
 .sl-stats div{border:2px dashed rgba(236,235,228,.25);border-radius:6px;padding:2px}
 .sl-stats b{display:block;font-family:var(--f-num);font-size:20px;color:#fff3c2}
 .sl-stats span{font-family:var(--f-chalk);font-size:15px;color:#cfd6cc}
-.receipt{background:#fbf7ec;color:#2a2420;font-family:var(--f-receipt);padding:10px 12px 18px;box-shadow:0 4px 0 rgba(0,0,0,.4);
+.receipt{background:#c9b88f;background-image:linear-gradient(rgba(90,60,30,.12),rgba(90,60,30,.04));color:#2a2420;font-family:var(--f-receipt);padding:10px 12px 18px;box-shadow:0 4px 0 rgba(0,0,0,.4);
   -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 8px repeat-x;
   mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 8px repeat-x}
-.rc-h{font-weight:700;font-size:14px;letter-spacing:.08em;text-align:center;border-bottom:2px dashed #b9ad98;padding-bottom:4px;margin-bottom:4px}
+.rc-h{font-weight:700;font-size:14px;letter-spacing:.08em;text-align:center;border-bottom:2px dashed #8f7d5c;padding-bottom:4px;margin-bottom:4px}
 .receipt .objs{gap:0;margin:0}
-.receipt .obj{background:none;border:0;border-bottom:1px dashed #b9ad98;border-radius:0;padding:6px 0;box-shadow:none}
+.receipt .obj{background:none;border:0;border-bottom:1px dashed #8f7d5c;border-radius:0;padding:6px 0;box-shadow:none}
 .receipt .obj b{font-family:var(--f-receipt);font-size:14px;font-weight:700;color:#2a2420}
-.receipt .obj .d{color:#5a4e44;font-size:12.5px}
+.receipt .obj .d{color:#4a3e30;font-size:12.5px}
 .receipt .obj .pg{font-size:12.5px;color:#2a2420}
 .receipt .rw{background:none;color:#c33a2c;border:2px solid #c33a2c;transform:rotate(-4deg);font-family:var(--f-receipt);font-weight:700}
 .receipt .obj.done{box-shadow:none}.receipt .obj.done .pg{color:#2f7d4f;font-weight:700}
@@ -291,6 +291,29 @@ button{font:inherit;color:inherit}
 .receipt #log{color:#5a4e44;font-size:12.5px}.receipt #log li:first-child{color:#2a2420;font-weight:700}
 .tier{display:inline-block;font-family:var(--f-num);font-weight:700;font-size:11px;line-height:1;border-radius:4px;padding:2px 5px;color:#fff;border:1px solid var(--edge);vertical-align:middle}
 .tier.t0{background:#7a7684}.tier.t1{background:#3f8f4a}.tier.t2{background:#3767b0}.tier.t3{background:#7b3fa6}.tier.t4{background:linear-gradient(135deg,#e2a83a,#f6d67a);color:#2a1d18}
+
+/* abilità a colonna accanto al mazzo */
+#powers{display:grid;grid-template-columns:repeat(var(--pcols,1),minmax(0,170px));gap:6px;justify-content:end;align-content:center;min-height:0}
+#powers .tr.tile{flex-direction:row;width:auto;max-width:none;padding:4px 8px 4px 4px;gap:8px;text-align:left;align-items:center}
+#powers .tr.tile>div{align-items:flex-start}
+#powers .tr.tile .ic{width:42px;height:42px}
+#powers .tr.tile .pips{justify-content:flex-start}
+#powers .tr.tile .sub{-webkit-line-clamp:1}
+/* contatore prese di fila */
+.streakbox{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.35);border:2px solid var(--edge);border-radius:12px;padding:6px 14px 6px 8px}
+.streakbox img{width:52px;height:52px;image-rendering:pixelated;filter:grayscale(1) brightness(.6)}
+.streakbox.hot img{filter:none;animation:flick .5s steps(2) infinite}
+.streakbox .sn{font-family:var(--f-num);font-weight:700;font-size:40px;line-height:1;color:#8a8496}
+.streakbox.hot .sn{color:var(--gold);text-shadow:0 0 10px rgba(242,179,63,.7),2px 2px 0 var(--molt-d)}
+.streakbox .sl{display:flex;flex-direction:column;gap:3px}
+.streakbox .sl span{font-family:var(--f-display);font-size:12px;color:var(--felt-ink)}
+.streakbox .sp{display:flex;gap:3px}.streakbox .sp i{width:14px;height:8px;border-radius:2px;background:#20403a;border:1px solid var(--edge)}.streakbox .sp i.on{background:var(--molt)}
+@keyframes flick{50%{transform:scale(1.08) rotate(-3deg)}}
+.streakbox.pop{animation:spop .4s}
+@keyframes spop{40%{transform:scale(1.2)}}
+/* niente selezioni col doppio click */
+body{-webkit-user-select:none;user-select:none}
+#props img{width:100px}
 /* barra oggetti a tessere */
 #powers{gap:8px}
 .tr.tile{flex-direction:column;width:124px;max-width:124px;padding:6px 6px 7px;gap:4px;text-align:center;align-items:center}
@@ -438,20 +461,19 @@ button{font:inherit;color:inherit}
       <div class="lbl" id="opp-lbl"></div>
       <div class="hand opp" id="opp-hand"></div>
       <div id="mid">
+        <div id="powers"></div>
         <div id="stock-wrap"><div id="stock"></div><div class="lbl">Mazzo <span id="stock-n">0</span></div></div>
         <div id="trick"><div class="slot" id="slot-0"></div><div class="slot" id="slot-1"></div></div>
         <div id="info">
-          <div class="lbl">Prese di fila</div><div class="streak" id="streak"></div>
+          <div class="streakbox" id="streak"></div>
           <button class="btn ghost sm" id="b-deck">Carte del mazzo</button>
         </div>
       </div>
       <div id="hint"></div>
-      <div id="powers"></div>
       <div class="hand" id="my-hand"></div>
     </div>
     <div id="side-b">
       <div class="receipt"><div class="rc-h">Amuleti</div><ul class="amus" id="amus"></ul></div>
-      <div class="receipt"><div class="rc-h">Cronaca</div><ol id="log"></ol></div>
       <div class="row" style="justify-content:flex-start"><button class="btn ghost sm" id="b-rules2">Regole</button><button class="btn ghost sm" id="b-mute">Effetti: sì</button><button class="btn ghost sm b-music" id="b-music2">Musica: sì</button></div>
     </div>
   </section>
@@ -469,7 +491,7 @@ button{font:inherit;color:inherit}
 <script>
 // ================= Basi =================
 const IT=['C','D','B','S'],FR=['H','Q','F','P'];
-const SUIT_RAW={C:'Coppe',D:'Denari',B:'Bastoni',S:'Spade',H:'Cuori',Q:'Quadri',F:'Fiori',P:'Picche',X:'nessuno'};
+const SUIT_RAW={Z:'Ossa',C:'Coppe',D:'Denari',B:'Bastoni',S:'Spade',H:'Cuori',Q:'Quadri',F:'Fiori',P:'Picche',X:'nessuno'};
 const SKINS={toscano:{},straniero:{C:'H',D:'Q',B:'F',S:'P',H:'C',Q:'D',F:'B',P:'S'}};
 let SKIN='toscano';
 const disp=s=>(SKINS[SKIN]||{})[s]||s;
@@ -480,7 +502,8 @@ function tr(t){if(SKIN!=='straniero'||!t)return t;let o=String(t);
   for(const [a,b] of TR_WORDS)o=o.replace(a,b);
   return o.split('§1').join('Coppe').split('§2').join('Denari').split('§3').join('Bastoni').split('§4').join('Spade');}
 const rname=c=>c.rank===9&&c.kind!=='jolly'&&FR.includes(disp(c.suit))?'Donna':RANK_NAME[c.rank];
-const SUIT_ORDER=['C','D','B','S','H','Q','F','P','X'];
+const SUIT_ORDER=['C','D','B','S','H','Q','F','P','Z','X'];
+const ALLS=['C','D','B','S','H','Q','F','P','Z'];
 const RANK_NAME={1:'Asso',2:'Due',3:'Tre',4:'Quattro',5:'Cinque',6:'Sei',7:'Sette',8:'Fante',9:'Cavallo',10:'Re'};
 const STR={3:10,2:9,1:8,10:7,9:6,8:5,7:4,6:3,5:2,4:1};
 const PTS=r=>r===1?3:([2,3,8,9,10].includes(r)?1:0);
@@ -510,6 +533,7 @@ function cardName(c){
 function cardDesc(c){
   if(c.kind==='troll')return TROLL[c.troll].desc;
   if(c.kind==='jolly')return JOLLY_DESC;
+  if(c.suit==='Z')return 'Seme delle Ossa: chi la prende guadagna 5 FICHE in più. Chi non ha Ossa non può rispondere.';
   if(FR.includes(c.suit))return 'Seme straniero: chi non ce l’ha non può rispondere.';
   return 'Carta in più per il mazzo.';
 }
@@ -636,6 +660,8 @@ const SUIT_DRAW={
   Q(d,x,s){const u=s/2;d.p([[0,-u],[u*.78,0],[0,u],[-u*.78,0]],K.blue);d.p([[0,-u],[u*.78,0],[0,u]],K.blue2);d.p([[0,-u*.52],[u*.36,0],[0,u*.52],[-u*.36,0]],K.blue3);d.p([[-u*.22,-u*.42],[-u*.06,-u*.64],[-u*.46,-u*.06]],K.white)},
   F(d,x,s){const u=s/2;d.p([[-u*.1,u*.05],[u*.1,u*.05],[u*.36,u*.98],[-u*.36,u*.98]],K.green2);
     d.c(0,-u*.05,u*.26,K.green);[[0,-u*.5],[-u*.48,u*.08],[u*.48,u*.08]].forEach(([a,b])=>{d.c(a,b,u*.4,K.green);d.c(a+u*.12,b+u*.12,u*.2,K.green2);d.c(a-u*.14,b-u*.14,u*.1,K.green3)})},
+  Z(d,x,s){const u=s/2;if(s<16){d.c(0,-u*.12,u*.78,K.pale);d.r(-u*.45,u*.35,u*.9,u*.5,K.pale);d.e(-u*.3,-u*.1,u*.22,u*.26,K.black);d.e(u*.3,-u*.1,u*.22,u*.26,K.black);d.r(-u*.08,u*.22,u*.16,u*.16,K.black);for(let i=0;i<3;i++)d.r(-u*.34+i*u*.28,u*.62,u*.1,u*.24,K.black);return}const bone=(rot)=>{x.save();x.rotate(rot);d.r(-u*.72,-u*.12,u*1.44,u*.24,K.pale);[[-.8,-.18],[-.8,.18],[.8,-.18],[.8,.18]].forEach(([a,b])=>d.c(a*u,b*u,u*.2,K.pale));d.r(-u*.6,-u*.02,u*1.2,u*.08,K.grey);x.restore()};bone(.75);bone(-.75);
+    d.c(0,-u*.05,u*.42,K.pale);d.r(-u*.26,u*.22,u*.52,u*.26,K.pale);d.e(-u*.15,-u*.08,u*.11,u*.13,K.black);d.e(u*.15,-u*.08,u*.11,u*.13,K.black);d.r(-u*.04,u*.08,u*.08,u*.1,K.black);for(let i=0;i<3;i++)d.r(-u*.18+i*u*.14,u*.32,u*.05,u*.12,K.black)},
   P(d,x,s){const u=s/2;x.fillStyle=K.black;x.beginPath();x.moveTo(0,-u*.98);x.bezierCurveTo(-u*.25,-u*.6,-u*1.2,-u*.15,-u*.82,u*.42);x.bezierCurveTo(-u*.55,u*.78,-u*.15,u*.6,0,u*.3);x.bezierCurveTo(u*.15,u*.6,u*.55,u*.78,u*.82,u*.42);x.bezierCurveTo(u*1.2,-u*.15,u*.25,-u*.6,0,-u*.98);x.fill();
     d.p([[-u*.08,u*.2],[u*.08,u*.2],[u*.34,u*.98],[-u*.34,u*.98]],K.black);d.e(-u*.42,-u*.06,u*.12,u*.24,K.grey2,.5);d.c(-u*.5,u*.3,u*.06,K.grey)},
 };
@@ -648,7 +674,7 @@ function symbol(suit,size,rot=0){
 function put(x,img,cx,cy){x.drawImage(img,Math.round(cx-img.width/2),Math.round(cy-img.height/2))}
 
 // ================= Figure =================
-const CLOTH={C:[K.red,K.red2,K.gold],D:[K.green,K.green2,K.gold3],S:[K.blue,K.blue2,K.blue3],B:[K.orange,K.gold2,K.green3],
+const CLOTH={Z:[K.purple2,K.black,K.pale],C:[K.red,K.red2,K.gold],D:[K.green,K.green2,K.gold3],S:[K.blue,K.blue2,K.blue3],B:[K.orange,K.gold2,K.green3],
   H:[K.red,K.red2,K.gold3],Q:[K.blue,K.blue2,K.gold3],F:[K.green,K.green2,K.gold3],P:[K.grey2,K.black,K.grey3]};
 function figure(rank,suit){
   const c=mk(44,64),x=c.getContext('2d'),d=P(x),[M,D,L]=CLOTH[suit]||CLOTH.C;
@@ -729,7 +755,7 @@ function index(x,d,s,col,g,mini=true){
   glyph(d,g,7,7,col,false);glyph(d,g,43,71,col,true);
   if(mini&&SUIT_DRAW[s]){const m=symbol(s,7);put(x,m,20,11);put(x,m,36,76)}
 }
-const FRAME={C:[K.red,K.gold,K.red2],D:[K.gold,K.gold3,K.gold2],S:[K.blue,K.blue3,K.blue2],B:[K.green,K.green3,K.green2],
+const FRAME={Z:[K.purple,K.pale,K.purple2],C:[K.red,K.gold,K.red2],D:[K.gold,K.gold3,K.gold2],S:[K.blue,K.blue3,K.blue2],B:[K.green,K.green3,K.green2],
   H:[K.red,K.pink,K.red2],Q:[K.blue,K.blue3,K.blue2],F:[K.green,K.green3,K.green2],P:[K.black,K.grey,K.black]};
 function cardImg(c){
   const ds=disp(c.suit),key=`${c.kind}${ds}${c.rank}${c.troll||''}`;if(IMG[key])return IMG[key];
@@ -839,6 +865,7 @@ const PROP_DRAW={
   contratto(d,x){d.r(9,6,22,28,K.paper);d.e(9,20,3,14,K.gold2);d.e(31,20,3,14,K.gold2);for(let i=0;i<5;i++)d.r(13,10+i*3.5,14,1.2,K.brown);d.l([[13,29],[17,26],[20,30],[25,25]],K.red,1.4);
     d.p([[28,30],[32,24],[36,30],[34,36],[30,36]],K.orange);d.p([[31,30],[32,27],[34,31],[33,35]],K.glow)},
 };
+function flameImg(){if(IMG.flame)return IMG.flame;const c=mk(30,30),x=c.getContext('2d'),d=P(x);d.p([[15,1],[22,10],[26,19],[22,27],[15,29],[8,27],[4,19],[8,11],[11,15]],K.red);d.p([[15,8],[20,15],[21,22],[15,27],[9,22],[10,16],[13,18]],K.orange);d.p([[15,15],[18,20],[15,26],[12,21]],K.glow);pixelize(c,K.ink);return IMG.flame=c.toDataURL()}
 function propImg(n){const key='pr'+n;if(IMG[key])return IMG[key];const c=mk(40,40),x=c.getContext('2d');PROP_DRAW[n](P(x),x);pixelize(c,K.ink);return IMG[key]=c.toDataURL()}
 function setTable(id){const t=TABLES[id]||TABLES.pivello;const tw=$('#tablewrap');
   tw.style.background=`linear-gradient(rgba(8,6,10,.32),rgba(8,6,10,.32)),url(${tableTile(id)})`;tw.style.backgroundSize='auto,96px 96px';
@@ -1061,7 +1088,7 @@ const OBJ=[
   {id:'legnaia',name:'Legnaia',desc:e=>`Prendi almeno ${e?4:6} Bastoni`,reward:{t:'add',v:2},ev:m=>req(m,c=>normal(c)&&c.suit==='B',E(m,4,6))},
   {id:'napo',name:'Napoletana di Presa',desc:()=>'Tra le tue prese: Asso, Due e Tre dello stesso seme',reward:{t:'mul',v:2},ev:m=>{
     let best=0,possible=false,done=false;
-    for(const s of [...IT,...FR]){const h=[1,2,3].filter(r=>m.P.captured.some(c=>normal(c)&&c.suit===s&&c.rank===r)).length;best=Math.max(best,h);if(h===3)done=true;
+    for(const s of ALLS){const h=[1,2,3].filter(r=>m.P.captured.some(c=>normal(c)&&c.suit===s&&c.rank===r)).length;best=Math.max(best,h);if(h===3)done=true;
       if([1,2,3].every(r=>m.deck.some(c=>normal(c)&&c.suit===s&&c.rank===r&&!m.O.captured.includes(c)&&!m.burned.includes(c))))possible=true}
     return {done,failed:!possible,prog:`${best}/3`}}},
   {id:'ultima',name:'Ultima Parola',desc:()=>'Fai l’ultima presa',reward:{t:'add',v:2},ev:m=>({done:m.P.lastTrick,failed:m.O.lastTrick||(m.over&&!m.P.lastTrick),prog:`presa ${m.trickNo} di ${m.trickNo+remTricks()}`})},
@@ -1082,8 +1109,8 @@ const OBJ=[
   {id:'svelte',name:'Mani Svelte',desc:e=>`Usa ${e?1:2} trucch${e?'o':'i'} in questa partita`,reward:{t:'add',v:2},ok:()=>RUN.trucchi.length>0,ev:m=>{const n=E(m,1,2);return {done:m.trucchiUsati>=n,failed:false,prog:`${Math.min(m.trucchiUsati,n)}/${n}`}}},
   {id:'piombino',name:'Piombino',desc:e=>`Fai ${e?1:2} Piomb${e?'o':'i'}`,reward:{t:'add',v:2},ev:m=>{const n=E(m,1,2);return {done:m.P.piombi>=n,failed:false,prog:`${Math.min(m.P.piombi,n)}/${n}`}}},
   {id:'coppia',name:'Coppia Reale',desc:()=>'Prendi Re e Cavallo dello stesso seme',reward:{t:'add',v:2},ev:m=>{
-    const ok=s=>[9,10].every(r=>m.P.captured.some(c=>normal(c)&&c.suit===s&&c.rank===r));const done=[...IT,...FR].some(ok);
-    const poss=[...IT,...FR].some(s=>[9,10].every(r=>m.deck.some(c=>normal(c)&&c.suit===s&&c.rank===r&&!m.O.captured.includes(c)&&!m.burned.includes(c))));
+    const ok=s=>[9,10].every(r=>m.P.captured.some(c=>normal(c)&&c.suit===s&&c.rank===r));const done=ALLS.some(ok);
+    const poss=ALLS.some(s=>[9,10].every(r=>m.deck.some(c=>normal(c)&&c.suit===s&&c.rank===r&&!m.O.captured.includes(c)&&!m.burned.includes(c))));
     return {done,failed:!done&&!poss,prog:'da fare'}}},
   {id:'digiuno',name:'Digiuno',desc:e=>`L’avversario prende al massimo ${e?2:1} Ass${e?'i':'o'}`,reward:{t:'mul',v:1.5},ev:m=>{const n=m.O.captured.filter(c=>normal(c)&&c.rank===1).length,lim=E(m,2,1);return {done:m.over&&n<=lim,failed:n>lim,prog:`lui ne ha ${n}`}}},
   {id:'tretre',name:'Tre per Tre',desc:e=>`Prendi almeno ${e?2:3} Tre`,reward:{t:'add',v:2},ev:m=>req(m,c=>normal(c)&&c.rank===3,E(m,2,3))},
@@ -1093,15 +1120,15 @@ const rewTxt=r=>r.t==='add'?`+${r.v} Molt`:`×${r.v} Molt`;
 
 // ================= Avversari =================
 const NPC={
-  pivello:{name:'Il Pivellino',molt:1.25,rnd:.5,cheat:false,quirk:'Gioca un po’ a caso. Suda freddo.',mossa:null,pal:[[14,30,26],[22,46,40],[34,66,56],[60,96,80]]},
-  zia:{name:'Zia Assunta',molt:1.75,rnd:.18,cheat:false,quirk:'Ogni Coppa che prende vale +5 FICHE per lei.',mossa:'Caffè corretto: ogni 3 prese di fila guadagna +0.25 Molt.',pal:[[38,22,16],[56,34,24],[82,50,32],[120,80,48]]},
-  nonna:{name:'Nonna Pina',molt:2.0,rnd:.15,cheat:false,quirk:'I suoi Re valgono 30 FICHE invece di 10.',mossa:'“Mangia, mangia!”: ogni 3 prese di fila ti scarica tutti i trucchi.',pal:[[34,22,26],[52,34,38],[78,50,56],[118,78,84]]},
-  prete:{name:'Don Ottavio',molt:2.0,rnd:.1,cheat:false,quirk:'Benedice il mazzo: i tuoi accusi non valgono niente.',mossa:'Penitenza: ogni 3 prese di fila ti toglie 0.5 Molt guadagnato con le giocate.',pal:[[20,20,24],[32,30,36],[50,46,54],[86,80,92]]},
-  capitano:{name:'Il Capitano',molt:2.25,rnd:.05,cheat:false,quirk:'Le Spade che prende valgono +5 FICHE.',mossa:'Arrembaggio: ogni 3 prese di fila ti ruba la tua ultima presa.',pal:[[12,24,36],[18,38,56],[28,56,82],[60,96,130]]},
-  baro:{name:'Il Baro',molt:2.25,rnd:0,cheat:true,quirk:'Conosce la tua mano. A inizio partita ti sfila la carta migliore.',mossa:'Asso nella manica: ogni 3 prese di fila ti ruba la carta migliore e ti rifila la peggiore.',pal:[[18,18,36],[28,28,54],[44,42,80],[70,66,120]]},
-  prestigiatore:{name:'Il Prestigiatore',molt:2.5,rnd:0,cheat:false,quirk:'A inizio partita trasforma una tua carta in uno Spettro.',mossa:'Puff!: ogni 3 prese di fila trasforma un’altra tua carta in uno Spettro.',pal:[[26,14,34],[40,22,52],[60,32,76],[98,56,118]]},
-  vecchio:{name:'Il Vecchietto del Bar',molt:2.5,rnd:0,cheat:false,quirk:'Sessant’anni di tressette: conta ogni carta, e l’ultima presa per lui vale 90.',mossa:'“Ma che fai?!”: ogni 3 prese di fila ti rimischia la mano nel mazzo e ti fa ripescare.',pal:[[32,26,18],[48,40,28],[70,58,40],[104,88,58]]},
-  diavolo:{name:'Il Diavolo',molt:3.0,rnd:0,cheat:false,quirk:'Ogni Asso che prende vale 60 FICHE invece di 30.',mossa:'Fiamma: ogni 3 prese di fila brucia la carta più preziosa che hai preso.',pal:[[30,10,12],[48,16,18],[72,24,26],[110,40,36]]},
+  pivello:{name:'Il Pivellino',molt:1.1,rnd:.5,cheat:false,quirk:'Gioca un po’ a caso. Suda freddo.',mossa:null,pal:[[14,30,26],[22,46,40],[34,66,56],[60,96,80]]},
+  zia:{name:'Zia Assunta',molt:1.6,rnd:.18,cheat:false,quirk:'Ogni Coppa che prende vale +5 FICHE per lei.',mossa:'Caffè corretto: ogni 3 prese di fila guadagna +0.25 Molt.',pal:[[38,22,16],[56,34,24],[82,50,32],[120,80,48]]},
+  nonna:{name:'Nonna Pina',molt:1.85,rnd:.15,cheat:false,quirk:'I suoi Re valgono 30 FICHE invece di 10.',mossa:'“Mangia, mangia!”: ogni 3 prese di fila ti scarica tutti i trucchi.',pal:[[34,22,26],[52,34,38],[78,50,56],[118,78,84]]},
+  prete:{name:'Don Ottavio',molt:1.85,rnd:.1,cheat:false,quirk:'Benedice il mazzo: i tuoi accusi non valgono niente.',mossa:'Penitenza: ogni 3 prese di fila ti toglie 0.5 Molt guadagnato con le giocate.',pal:[[20,20,24],[32,30,36],[50,46,54],[86,80,92]]},
+  capitano:{name:'Il Capitano',molt:2.1,rnd:.05,cheat:false,quirk:'Le Spade che prende valgono +5 FICHE.',mossa:'Arrembaggio: ogni 3 prese di fila ti ruba la tua ultima presa.',pal:[[12,24,36],[18,38,56],[28,56,82],[60,96,130]]},
+  baro:{name:'Il Baro',molt:2.1,rnd:0,cheat:true,quirk:'Conosce la tua mano. A inizio partita ti sfila la carta migliore.',mossa:'Asso nella manica: ogni 3 prese di fila ti ruba la carta migliore e ti rifila la peggiore.',pal:[[18,18,36],[28,28,54],[44,42,80],[70,66,120]]},
+  prestigiatore:{name:'Il Prestigiatore',molt:2.35,rnd:0,cheat:false,quirk:'A inizio partita trasforma una tua carta in uno Spettro.',mossa:'Puff!: ogni 3 prese di fila trasforma un’altra tua carta in uno Spettro.',pal:[[26,14,34],[40,22,52],[60,32,76],[98,56,118]]},
+  vecchio:{name:'Il Vecchietto del Bar',molt:2.35,rnd:0,cheat:false,quirk:'Sessant’anni di tressette: conta ogni carta, e l’ultima presa per lui vale 90.',mossa:'“Ma che fai?!”: ogni 3 prese di fila ti rimischia la mano nel mazzo e ti fa ripescare.',pal:[[32,26,18],[48,40,28],[70,58,40],[104,88,58]]},
+  diavolo:{name:'Il Diavolo',molt:2.85,rnd:0,cheat:false,quirk:'Ogni Asso che prende vale 60 FICHE invece di 30.',mossa:'Fiamma: ogni 3 prese di fila brucia la carta più preziosa che hai preso.',pal:[[30,10,12],[48,16,18],[72,24,26],[110,40,36]]},
 };
 Object.keys(NPC).forEach(k=>NPC[k].id=k);
 const MIDDLE=['zia','nonna','prete','capitano','baro','prestigiatore','vecchio'];
@@ -1146,7 +1173,7 @@ function createMatch(boss){
 function remTricks(){return M?Math.floor((M.P.hand.length+M.O.hand.length+M.stock.length+M.table.length)/2):0}
 function accusiAvail(S){
   const n=S.hand.filter(normal),out=[],dec=S.declared;
-  for(const s of [...IT,...FR]){const k='nap'+s;if(!dec[k]&&[1,2,3].every(r=>n.some(c=>c.suit===s&&c.rank===r)))out.push({k,v:90,full:90,name:`Napoletana di ${SUIT_NAME[s]}`,cards:[1,2,3].map(r=>n.find(c=>c.suit===s&&c.rank===r))})}
+  for(const s of ALLS){const k='nap'+s;if(!dec[k]&&[1,2,3].every(r=>n.some(c=>c.suit===s&&c.rank===r)))out.push({k,v:90,full:90,name:`Napoletana di ${SUIT_NAME[s]}`,cards:[1,2,3].map(r=>n.find(c=>c.suit===s&&c.rank===r))})}
   for(const [r,nm] of [[3,'Tre'],[2,'Due'],[1,'Assi']]){const cs=n.filter(c=>c.rank===r),k='r'+r;if(cs.length>=3){const full=cs.length>=4?120:90,prev=dec[k]||0;if(full>prev)out.push({k,v:full-prev,full,name:`${cs.length>=4?'Quattro':'Tre'} ${nm}`,cards:cs})}}
   return out;
 }
@@ -1165,13 +1192,13 @@ function aiAccusi(){
 }
 function accusi(hand){
   const out=[];let f=0;const n=hand.filter(normal);
-  for(const s of [...IT,...FR])if([1,2,3].every(r=>n.some(c=>c.suit===s&&c.rank===r))){out.push(`Napoletana di ${SUIT_NAME[s]}`);f+=90}
+  for(const s of ALLS)if([1,2,3].every(r=>n.some(c=>c.suit===s&&c.rank===r))){out.push(`Napoletana di ${SUIT_NAME[s]}`);f+=90}
   for(const [r,nm] of [[3,'Tre'],[2,'Due'],[1,'Assi']]){const k=n.filter(c=>c.rank===r).length;if(k>=3){out.push(`${k>=4?'Quattro':'Tre'} ${nm}`);f+=k>=4?120:90}}
   return {out,f};
 }
 
 // ================= Punteggio =================
-function cardBase(c){if(c.troll==='marcio')return -40;if(c.troll==='spettro')return -20;if(c.troll==='bomba')return 0;return c.rank===1?30:PTS(c.rank)?10:0}
+function cardBase(c){if(c.kind==='n'&&c.suit==='Z')return (c.rank===1?30:PTS(c.rank)?10:0)+5;if(c.troll==='marcio')return -40;if(c.troll==='spettro')return -20;if(c.troll==='bomba')return 0;return c.rank===1?30:PTS(c.rank)?10:0}
 function cardFiche(c,s){
   let v=cardBase(c);if(c.kind==='troll'){const st=s==='P'?amu('santino'):null;if(st&&v<0)return st.tier===4?10:Math.round(v*(1-st.val/100));return v}
   if(s==='P'){if(RUN&&RUN.char==='straniero'&&c.kind==='n'&&c.rank>=8)v+=5;if(PTS(c.rank)===0)v+=aV('scartine');if(c.kind==='n'&&c.suit==='C')v+=aV('oste')}
@@ -1269,8 +1296,9 @@ function playerPlay(c){
 }
 function openJolly(c){
   const ls=M.table.length?es(M.table[0].card):null;
-  let opts=suitsInPlay();if(ls&&ls!=='X')opts=[ls,...opts.filter(s=>s!==ls)];
-  modal(`<div class="title">Jolly ${RANK_NAME[c.rank]}</div><div class="small">Di che seme lo giochi?${ls&&ls!=='X'?` Per stare nella presa serve ${SUIT_NAME[ls]}.`:''}</div>
+  const live=new Set([...M.stock,...M.P.hand,...M.O.hand].filter(x=>x!==c&&!isWild(x)).map(x=>x.suit));
+  let opts=SUIT_ORDER.filter(x=>live.has(x));if(ls&&ls!=='X')opts=[ls,...opts.filter(s=>s!==ls)];if(!opts.length)opts=suitsInPlay();
+  modal(`<div class="title">Jolly ${RANK_NAME[c.rank]}</div><div class="small">Di che seme lo giochi? Puoi scegliere solo i semi ancora in gioco.${ls&&ls!=='X'?` Per stare nella presa serve ${SUIT_NAME[ls]}.`:''}</div>
   <div class="choices">${opts.map(s=>`<button class="suitbtn" data-s="${s}"><img src="${symbol(disp(s),22).toDataURL()}" alt="">${SUIT_NAME[s]}</button>`).join('')}</div>
   <div class="row"><button class="btn ghost" id="m-x">Annulla</button></div>`);
   $('#modal').querySelectorAll('.suitbtn').forEach(b=>b.onclick=()=>{c.playSuit=b.dataset.s;closeModal();M.busy=true;log(`Giochi ${cardName(c)}`);playCard('P',c)});
@@ -1458,7 +1486,7 @@ function pop(text,cls,who){
   fx.appendChild(el);setTimeout(()=>el.remove(),1600);bumpScore();
 }
 function toast(msg,cls=''){const t=document.createElement('div');t.className='toast '+cls;t.textContent=msg;$('#toasts').appendChild(t);setTimeout(()=>t.remove(),3300)}
-function log(s){if(!M)return;M.log.unshift(s);M.log=M.log.slice(0,8)}
+function log(s){if(!M)return;M.log.unshift(s);M.log=M.log.slice(0,40)}
 function bumpScore(){['#p-total','#p-molt','#p-fiche'].forEach(s=>{const e=$(s);e.classList.remove('bump');void e.offsetWidth;e.classList.add('bump')})}
 function modal(html,wide){$('#modal').innerHTML=html;$('#modal').classList.toggle('wide',!!wide);$('#overlay').hidden=false}
 function closeModal(){$('#overlay').hidden=true;$('#modal').innerHTML=''}
@@ -1494,7 +1522,6 @@ function render(){
   $('#objs').innerHTML=M.objs.map(o=>`<li class="obj ${o.done?'done':o.failed?'failed':''}"><b>${o.d.name}</b><span class="rw">${rewTxt(o.d.reward)}</span><span class="d">${tr(o.d.desc(M.easy))}</span><span class="pg">${o.done?'✔ completato':o.failed?'✘ sfumato':o.prog}</span></li>`).join('');
   $('#stats').innerHTML=`<div><b>${M.P.tricksWon}</b><span>tue prese</span></div><div><b>${M.O.tricksWon}</b><span>sue prese</span></div><div><b>${remTricks()}</b><span>prese rimaste</span></div>`;
   $('#amus').innerHTML=RUN.amuleti.length?RUN.amuleti.map(a=>`<li><img class="ic" src="${iconImg(a)}" alt=""><div><b>${ITEMS[a].name} ${tierTag(ITEMS[a])}</b><span>${tr(ITEMS[a].desc)}</span></div></li>`).join(''):'<li><span>Nessuno. Si comprano al negozio.</span></li>';
-  $('#log').innerHTML=M.log.map(l=>`<li>${l}</li>`).join('');
 
   const nSeen=M.O.hand.filter(c=>c.seen||c.shown).length;
   $('#opp-lbl').textContent=`Mano di ${M.boss.name} · ${M.O.hand.length} carte`+(nSeen?` · ${nSeen} scoperte`:'');
@@ -1510,7 +1537,8 @@ function render(){
   [0,1].forEach(i=>{const sl=$('#slot-'+i);sl.innerHTML='';sl.classList.remove('win');const t=M.table[i];
     if(t){const b=cardEl(t.card,true);b.tabIndex=-1;sl.appendChild(b);sl.insertAdjacentHTML('beforeend',`<span class="who">${t.who==='P'?'tu':'lui'}</span>`);if(M.lastWin===t.who)sl.classList.add('win')}});
 
-  $('#streak').innerHTML=Array.from({length:8},(_,i)=>`<i class="${i<M.P.streak?'on':''}"></i>`).join('')+(M.P.streak>8?`<b style="font-family:var(--f-display);margin-left:4px">${M.P.streak}</b>`:'');
+  {const sk=M.P.streak,el=$('#streak'),was=+(el.dataset.n||0);el.className='streakbox'+(sk?' hot':'')+(sk>was?' pop':'');el.dataset.n=sk;
+   el.innerHTML=`<img src="${flameImg()}" alt=""><span class="sn">${sk}</span><span class="sl"><span>Prese di fila</span><span class="sp">${[1,2,3].map(i=>`<i class="${(sk%3||(sk?3:0))>=i?'on':''}"></i>`).join('')}</span><span>${sk?`Striscia tra ${3-(sk%3)||3}`:'Vinci una presa'}</span></span>`}
 
   let txt='';
   const modeTxt={'mano-own':`Mano Lesta: scegli la carta da dare (ancora ${M.act?.left||0})`,'mano-opp':'Mano Lesta: ora scegli una delle sue carte scoperte','tint':`Tintura: scegli la carta da ridipingere (ancora ${M.act?.left||0})`,'pesca-own':'Pesca Truccata: scegli la carta da rimettere nel mazzo','wand':`Bacchetta: scegli la carta da trasformare in Jolly (ancora ${M.act?.left||0})`};
@@ -1524,7 +1552,7 @@ function render(){
   if(M.mode)$('#b-cancel').onclick=cancelMode;
   $('#hint').querySelectorAll('[data-acc]').forEach(b=>b.onclick=()=>playerAccusa(+b.dataset.acc));
 
-  const pw=$('#powers');pw.innerHTML='';
+  const pw=$('#powers');pw.innerHTML='';pw.style.setProperty('--pcols',(RUN.trucchi.length+RUN.poteri.length)>3?2:1);
   RUN.trucchi.forEach(id=>{const it=ITEMS[id],lvl=M.charge[id]||0,so=soglia(id);const b=document.createElement('button');b.type='button';
     b.className='tr tile'+(lvl?' ready':'');b.disabled=!trUsable(id);
     b.title=`${tr(it.desc)} Si carica ogni ${so} prese di fila: ${it.lv.map((l,i)=>`liv ${i+1} ${l}`).join(', ')}.`;
@@ -1646,7 +1674,8 @@ let PACK=null;
 const PACK_STYLES=[
   {name:'Pacchetto del Tabaccaio',c:[K.red,K.red2,K.pink]},{name:'Busta della Fiera',c:[K.blue,K.blue2,K.blue3]},
   {name:'Mazzetto del Circolo',c:[K.green,K.green2,K.green3]},{name:'Bustina Maledetta',c:[K.purple,K.purple2,K.purple3]},
-  {name:'Scatola della Nonna',c:[K.orange,K.gold2,K.gold3]}];
+  {name:'Scatola della Nonna',c:[K.orange,K.gold2,K.gold3]},
+  {name:'Cassetta del Becchino',c:[K.grey2,K.black,K.pale],bones:true}];
 function packArt(st){
   const W=60,H=92,cn=mk(W,H),x=cn.getContext('2d'),d=P(x),[c1,c2,c3]=st.c;
   d.r(2,6,W-4,H-12,K.ink);d.r(3,7,W-6,H-14,c1);
@@ -1656,21 +1685,22 @@ function packArt(st){
   for(let i=0;i<W;i+=4){d.p([[i,7],[i+2,10],[i+4,7]],K.grey3);d.p([[i,H-7],[i+2,H-10],[i+4,H-7]],K.grey3)}
   for(let i=4;i<W-4;i+=3)d.r(i,14,2,1,c3);
   d.r(10,26,40,40,K.ink);d.r(11,27,38,38,K.gold);d.r(13,29,34,34,K.cream);
-  put(x,symbol('D',18),30,42);
-  [['C',17,33],['S',43,33],['B',17,57],['P',43,57]].forEach(([s,a,b])=>put(x,symbol(s,7),a,b));
+  put(x,symbol(st.bones?'Z':'D',18),30,42);
+  (st.bones?[['Z',17,33],['Z',43,33],['Z',17,57],['Z',43,57]]:[['C',17,33],['S',43,33],['B',17,57],['P',43,57]]).forEach(([s,a,b])=>put(x,symbol(s,7),a,b));
   d.r(22,56,16,6,K.red);d.r(23,57,14,4,K.gold3);
   return {top:(()=>{const t=mk(W,16);t.getContext('2d').drawImage(cn,0,0);return t.toDataURL()})(),
           body:(()=>{const b=mk(W,H-16);b.getContext('2d').drawImage(cn,0,-16);return b.toDataURL()})()};
 }
 function mkTroll(){const t=pick(['marcio','bomba','spettro']);return t==='marcio'?{kind:'troll',troll:'marcio',suit:pick(IT),rank:3}:{kind:'troll',troll:t,suit:'X',rank:4}}
-function genPack(){
-  const fr=()=>({kind:'n',suit:pick(FR),rank:rint(1,10)}),jo=()=>({kind:'jolly',suit:'J',rank:rint(1,10)});
+function genPack(st){
+  const fr=()=>({kind:'n',suit:pick(FR),rank:rint(1,10)}),jo=()=>({kind:'jolly',suit:'J',rank:rint(1,10)}),os=()=>({kind:'n',suit:'Z',rank:rint(1,10)});
+  if(st&&st.bones){const out=[os(),os(),os(),os(),os(),os(),jo(),mkTroll(),{kind:'troll',troll:'spettro',suit:'X',rank:4},pick([os,jo])()];return shuffle(out)}
   const out=[fr(),fr(),fr()];
   for(let i=0;i<3;i++)out.push({kind:'n',suit:pick(IT),rank:rint(1,10)});
   out.push(jo(),jo(),mkTroll(),pick([fr,jo,mkTroll])());
   return shuffle(out);
 }
-function showPack(fromShop,style){setPal(SHOP_PAL);const cards=genPack(),st=style||pick(PACK_STYLES);PACK={cards,stage:'closed',sel:new Set(),forced:cards.findIndex(c=>c.kind==='troll'),name:st.name,art:packArt(st),fromShop:!!fromShop};renderPack();show('pack');setMusic('shop')}
+function showPack(fromShop,style){setPal(SHOP_PAL);const st=style||pick(PACK_STYLES),cards=genPack(st);PACK={cards,stage:'closed',sel:new Set(),forced:cards.findIndex(c=>c.kind==='troll'),name:st.name,art:packArt(st),fromShop:!!fromShop};renderPack();show('pack');setMusic('shop')}
 function renderPack(){
   const P_=PACK,box=$('#packbox'),max=3,open=P_.stage==='open';
   box.innerHTML=`<div class="eyebrow">${P_.fromShop?'Comprato in bottega':`Hai battuto ${RUN.beaten.at(-1).name} · prossimo: ${RUN.bosses[RUN.stage].name}`}</div>
@@ -1715,7 +1745,7 @@ async function openPackAnim(){
 let SHOP=null;
 const PACK_PRICE=175;
 function cardPrice(c){if(c.kind==='jolly')return 140;let p=c.rank===1?95:(c.rank===2||c.rank===3)?75:c.rank>=8?60:40;if(FR.includes(c.suit))p+=20;return p}
-function genSingle(){const r=Math.random();if(r<.2)return {kind:'jolly',suit:'J',rank:rint(1,10)};if(r<.6)return {kind:'n',suit:pick(FR),rank:rint(1,10)};return {kind:'n',suit:pick(IT),rank:rint(1,10)}}
+function genSingle(){const r=Math.random();if(r>.85)return {kind:'n',suit:'Z',rank:rint(1,10)};if(r<.2)return {kind:'jolly',suit:'J',rank:rint(1,10)};if(r<.6)return {kind:'n',suit:pick(FR),rank:rint(1,10)};return {kind:'n',suit:pick(IT),rank:rint(1,10)}}
 function rollShop(){
   const seen=new Set(RUN.seen),win=[[0,1],[0,1,2],[1,2,3],[2,3,4],[2,3,4]][Math.min(RUN.stage,4)];
   const of=t=>{const fams=new Set();return shuffle(Object.keys(ITEMS).filter(k=>{const it=ITEMS[k];if(it.type!==t||seen.has(k)||!win.includes(it.tier))return false;
@@ -1804,6 +1834,7 @@ function renderMenu(confirm){
     <button class="btn" id="pm-back">Torna alla partita</button>
     <button class="btn ghost" id="pm-music">Musica: ${MUS.on?'sì':'no'}</button>
     <button class="btn ghost" id="pm-sfx">Effetti: ${muted?'no':'sì'}</button>
+    ${M&&!M.over&&!$('#scr-game').hidden?'<button class="btn ghost" id="pm-log">Cronaca della partita</button>':''}
     <button class="btn red" id="pm-restart" ${RUN?'':'disabled'}>Ricomincia la run</button>
     <div class="small">Premi Esc per chiudere.</div>`;
   if(confirm){$('#pm-yes').onclick=restartRun;$('#pm-no').onclick=()=>renderMenu(false);$('#pm-no').focus();return}
@@ -1811,6 +1842,7 @@ function renderMenu(confirm){
   $('#pm-music').onclick=()=>{toggleMusic();renderMenu(false);$('#pm-music').focus()};
   $('#pm-sfx').onclick=()=>{muted=!muted;const b=$('#b-mute');if(b)b.textContent='Effetti: '+(muted?'no':'sì');renderMenu(false);$('#pm-sfx').focus()};
   $('#pm-restart').onclick=()=>renderMenu(true);
+  if($('#pm-log'))$('#pm-log').onclick=()=>{$('#pausebox').innerHTML=`<div class="title" id="pause-t">Cronaca</div><div class="receipt" style="max-height:55vh;overflow:auto"><ol id="log" style="margin:0;padding-left:18px">${M.log.map(l=>`<li>${l}</li>`).join('')||'<li>Ancora niente.</li>'}</ol></div><button class="btn" id="pm-b2">Indietro</button>`;$('#pm-b2').onclick=()=>renderMenu(false);$('#pm-b2').focus()};
   $('#pm-back').focus();
 }
 function openMenu(){PAUSED=true;renderMenu(false);$('#pause').hidden=false}
@@ -1850,6 +1882,7 @@ function showDebug(){
   <div class="small">${Object.values(TROLL).map(t=>`<b style="color:#8bd14f;font-weight:400">${t.name}</b>: ${t.desc}`).join('<br>')}<br><b style="color:var(--magic);font-weight:400">Jolly</b>: ${JOLLY_DESC}</div>
   <h2>Semi stranieri (dai pacchetti)</h2>${set(FR)}
   <h2>Mazzo di partenza</h2>${set(IT)}
+  <h2>Ossa (Cassetta del Becchino)</h2>${set(['Z'])}
   <h2>Obiettivi (${OBJ.length})</h2><div class="dbgrid">${OBJ.map(o=>`<div class="dbitem"><div><b>${o.name}</b><span class="rw">${rewTxt(o.reward)}</span><div style="margin-top:4px">${o.desc(false)}</div><div class="small">Versione facile: ${o.desc(true)}</div>${o.ok?'<div class="small">Solo se il mazzo lo permette</div>':''}</div></div>`).join('')}</div>
   </div>`;
   const run=(extra={})=>{const id=$('#dbg-boss').value,bosses=makeLadder();let stage=bosses.findIndex(b=>b.id===id);
