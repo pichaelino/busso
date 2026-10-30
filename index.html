@@ -257,18 +257,22 @@ button{font:inherit;color:inherit}
 .polaroid::before{content:"";position:absolute;top:-8px;left:50%;width:70px;height:16px;margin-left:-35px;background:rgba(242,214,122,.75);transform:rotate(2deg)}
 .polaroid .portrait{width:66px;height:66px;border:0;border-radius:2px;animation:none;background:#2a2236}
 .pol-eye{font-family:var(--f-receipt);font-size:12px;color:#6a5a50}
-.pol-name{font-family:var(--f-chalk);font-size:26px;line-height:1;color:#2a1d18}
+.pol-name{font-family:var(--f-chalk);font-size:26px;line-height:1;color:#2a1d18;overflow-wrap:anywhere}
+.polaroid>div{min-width:0}
 .polaroid .bossmolt{margin-top:4px}
 .slate{background:#28332c;background-image:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.07),transparent 60%),radial-gradient(ellipse at 80% 90%,rgba(255,255,255,.05),transparent 50%);border:9px solid #6b4426;outline:2px solid var(--edge);border-radius:4px;box-shadow:inset 0 0 22px rgba(0,0,0,.65),0 5px 0 var(--edge);padding:8px 12px 10px;color:#ecebe4}
 .sl-h{font-family:var(--f-chalk);font-size:22px;color:#f0e9d0;opacity:.85;border-bottom:2px dashed rgba(236,235,228,.35);margin-bottom:4px}
 .sl-lbl{font-family:var(--f-chalk);font-size:21px;line-height:1.1}
-.sl-eq{display:flex;align-items:baseline;gap:6px;font-family:var(--f-num);font-weight:700}
+.slate{min-width:0;overflow:hidden}
+.sl-eq{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 6px;font-family:var(--f-num);font-weight:700;min-width:0}
+.sl-tot{flex-basis:100%;text-align:right;line-height:1;white-space:nowrap}
 .sl-n{font-size:30px;text-shadow:0 0 3px rgba(255,255,255,.35);font-variant-numeric:tabular-nums}
 .sl-n.f{color:#a9d4ff}.sl-n.m{color:#ffa497}
-.sl-n.t{margin-left:auto;font-size:36px;color:#fff3c2}
+.sl-n.t{font-size:36px;color:#fff3c2}
 .sl-op{font-family:var(--f-chalk);font-size:18px;color:#cfd6cc}
-.sl-lui{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px;padding-top:6px;border-top:2px dashed rgba(236,235,228,.3);font-size:18px;color:#cfd6cc}
-.sl-n.t2{font-family:var(--f-num);font-weight:700;font-size:24px;color:#ffd0c8}
+.sl-lui{display:flex;flex-wrap:wrap;gap:0 8px;justify-content:space-between;align-items:baseline;margin-top:6px;padding-top:6px;border-top:2px dashed rgba(236,235,228,.3);font-size:18px;color:#cfd6cc}
+.sl-lui #o-label{min-width:0;flex:1 1 60%;overflow-wrap:anywhere}
+.sl-n.t2{margin-left:auto;font-family:var(--f-num);font-weight:700;font-size:24px;color:#ffd0c8}
 .chalkbar{height:8px;margin-top:8px;border-radius:4px;background:repeating-linear-gradient(90deg,#ffa497 0 6px,transparent 6px 9px);opacity:.9}
 .chalkbar span{display:block;height:100%;background:repeating-linear-gradient(90deg,#a9d4ff 0 6px,#28332c 6px 9px);transition:width .4s}
 .sl-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:8px;text-align:center}
@@ -293,7 +297,7 @@ button{font:inherit;color:inherit}
 .tier.t0{background:#7a7684}.tier.t1{background:#3f8f4a}.tier.t2{background:#3767b0}.tier.t3{background:#7b3fa6}.tier.t4{background:linear-gradient(135deg,#e2a83a,#f6d67a);color:#2a1d18}
 
 /* abilità a colonna accanto al mazzo */
-#powers{display:grid;grid-template-columns:repeat(var(--pcols,1),minmax(0,170px));gap:6px;justify-content:end;align-content:center;min-height:0}
+#powers{display:grid;grid-template-columns:repeat(var(--pcols,1),minmax(0,160px));gap:6px;justify-content:end;align-content:center;min-height:0}
 #powers .tr.tile{flex-direction:row;width:auto;max-width:none;padding:4px 8px 4px 4px;gap:8px;text-align:left;align-items:center}
 #powers .tr.tile>div{align-items:flex-start}
 #powers .tr.tile .ic{width:42px;height:42px}
@@ -342,6 +346,9 @@ body{-webkit-user-select:none;user-select:none}
 #prop-l{left:16px;transform:rotate(-8deg)}#prop-r{right:16px;transform:rotate(7deg)}
 #tablewrap>*:not(#props){position:relative;z-index:1}
 #tablewrap>#toasts,#tablewrap>#fx{position:absolute}
+#tablewrap>#toasts{z-index:25}#tablewrap>#fx{z-index:20}
+@media (min-width:761px) and (min-height:521px){#mid{overflow:hidden}.sl-n{font-size:26px}.sl-n.t{font-size:32px}.sl-stats b{font-size:17px}.sl-stats span{font-size:13px}.slate{padding-bottom:6px}}
+#powers{max-height:100%;overflow-y:auto}
 @media (max-width:1100px){#props img{width:80px}}
 @media (max-width:860px){#props img{width:56px;top:20px}}
 
@@ -474,8 +481,64 @@ body{-webkit-user-select:none;user-select:none}
 }
 .card.armed{transform:translateY(-18px)!important;z-index:3;outline:3px solid var(--gold);outline-offset:2px}
 .sl-more{display:none;font-family:var(--f-chalk);font-size:12px;color:#cfd6cc;text-align:right;margin-top:1px}
-#rotate{display:none;position:fixed;inset:0;z-index:90;background:#0a0805;color:var(--ink);align-items:center;justify-content:center;text-align:center;padding:24px;font-family:var(--f-display);font-size:20px}
-@media (orientation:landscape) and (max-height:500px) and (hover:none){#rotate{display:flex}}
+@media (orientation:landscape) and (max-height:520px){
+  :root{--cw:58px;--cw-opp:30px;--cw-table:54px}
+  body{overflow:auto}
+  #app{height:auto}
+  .screen{padding-block:6px}
+  .center{align-items:flex-start}
+  .center>*{margin-block:auto}
+  #scr-game{display:grid;height:100vh;height:100dvh;grid-template-columns:200px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"a t" "b t";gap:8px}
+  #side-a{flex-direction:column;gap:6px;padding-right:0}
+  .polaroid{flex-direction:row;width:auto;align-items:center;padding:4px 6px;gap:6px;transform:rotate(-1deg)}
+  .polaroid::before{width:40px;margin-left:-20px;height:9px;top:-5px}
+  .polaroid .portrait{width:38px;height:38px}
+  .pol-eye{display:none}
+  .pol-name{font-size:16px;text-align:left}
+  .polaroid .bossmolt{font-size:10px;padding:1px 5px;margin-top:1px}
+  .slate{border-width:5px;padding:3px 8px 5px;cursor:pointer}
+  .sl-h,.sl-stats,.chalkbar{display:none}
+  .sl-lbl{font-size:14px}.sl-n{font-size:18px}.sl-n.t{font-size:24px}.sl-op{font-size:12px}
+  .sl-lui{font-size:12px;margin-top:2px;padding-top:2px}.sl-n.t2{font-size:16px}
+  .sl-more{display:block!important;font-size:11px}
+  #side-a .receipt,#side-b{display:none}
+  #tablewrap{min-height:0;padding:4px 8px 6px;gap:2px}
+  #props,#opp-lbl{display:none}
+  .hand{padding-top:10px;min-height:calc(var(--cw)*1.571 + 12px)}
+  .hand.opp{padding-top:0;min-height:calc(var(--cw-opp)*1.571 + 2px)}
+  #mid{grid-template-columns:auto auto auto minmax(0,1fr);grid-template-areas:"pw st tr in";gap:10px;align-content:center}
+  #powers{grid-area:pw;display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-template-columns:none;gap:4px;overflow-x:auto;overflow-y:hidden;max-width:244px;max-height:none;justify-content:start}
+  #powers .tr.tile{flex-direction:column;width:54px;max-width:54px;padding:3px;gap:1px;align-items:center}
+  #powers .tr.tile .ic{width:30px;height:30px}
+  #powers .tr.tile>div{align-items:center}
+  #powers .tr.tile b{display:flex;flex-direction:column;align-items:center;font-size:8.5px;line-height:1.05;max-width:52px;text-align:center;overflow:hidden}
+  #powers .tr.tile .sub{display:none}
+  #powers .tr.tile .pips{margin:1px 0 0}
+  #stock-wrap{grid-area:st}#trick{grid-area:tr;justify-content:center;gap:6px;min-height:calc(var(--cw-table)*1.571 + 18px)}#info{grid-area:in;align-items:center;min-width:76px}
+  .slot .who{bottom:-16px;font-size:9px}
+  #stock-wrap .lbl{font-size:10px}
+  .streakbox{padding:3px 6px;gap:4px;border-radius:8px}.streakbox img{width:24px;height:24px}.streakbox .sn{font-size:22px}.streakbox .sl{display:none}
+  #b-deck{font-size:10px;padding:3px 6px}
+  #hint{font-size:12px;min-height:16px;gap:6px}
+  .accbtn{font-size:12px;padding:4px 10px}.accbtn b{font-size:15px}
+  .card.legal:hover,.card.pick:hover{transform:none}
+  .card.legal{animation:none}
+  .pop.banner{font-size:13px;padding:3px 9px}.pop{font-size:13px}
+  #toasts{top:4px}.toast{font-size:12px;padding:4px 8px}
+  #b-menu{top:calc(6px + env(safe-area-inset-top,0px));right:calc(6px + env(safe-area-inset-right,0px));font-size:10px;padding:4px 7px}
+  .titlebox{gap:8px}.logo{font-size:52px}.fan{height:104px}#f11{display:none}.fan img{width:52px;margin:0 -10px}.blurb{display:none}
+  .introbox,.bigbox{padding:10px;gap:8px}
+  .portrait{width:64px;height:64px}
+  .shopcols{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .orow{grid-template-columns:34px minmax(0,1fr) auto;gap:6px;padding:4px 6px}.orow .oi{width:34px;height:34px}.orow .ot span{-webkit-line-clamp:1}
+  .srow{padding:6px 8px}.srow b{font-size:14px}
+  #shopbox>div:last-child{position:sticky;bottom:0;background:var(--panel);padding-block:6px;z-index:2}
+  .packarea{min-height:200px}.packobj{width:110px}.packgrid .card{width:min(100%,64px)}
+  .chargrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .charcard{padding:8px;gap:4px}.charcard .portrait{width:60px;height:60px}.cprev img{width:36px}
+  .sumcols{grid-template-columns:1fr 1fr}.bigtot{font-size:26px}.verdict{font-size:30px}
+  #modal{padding:10px}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
@@ -515,7 +578,7 @@ body{-webkit-user-select:none;user-select:none}
       <div class="slate">
         <div class="sl-h">Lavagna</div>
         <div class="sl-lbl">Tu</div>
-        <div class="sl-eq"><span class="sl-n f" id="p-fiche">0</span><span class="sl-op">FICHE ×</span><span class="sl-n m" id="p-molt">1</span><span class="sl-op">=</span><span class="sl-n t" id="p-total">0</span></div>
+        <div class="sl-eq"><span class="sl-n f" id="p-fiche">0</span><span class="sl-op">FICHE ×</span><span class="sl-n m" id="p-molt">1</span><span class="sl-tot"><span class="sl-op">=</span> <span class="sl-n t" id="p-total">0</span></span></div>
         <div class="sl-lbl sl-lui"><span id="o-label">Lui</span><span class="sl-n t2" id="o-total">0</span></div>
         <div class="chalkbar"><span id="bar-p" style="width:50%"></span></div>
         <div class="sl-more">tocca per obiettivi e amuleti</div>
@@ -550,7 +613,6 @@ body{-webkit-user-select:none;user-select:none}
   <section id="scr-debug" class="screen" hidden style="overflow:auto"><div class="bigbox panel" id="debugbox" style="margin:0 auto;max-width:1180px"></div></section>
   <section id="scr-end" class="screen center" hidden><div class="introbox panel" id="endbox" style="text-align:center;align-items:center"></div></section>
 </main>
-<div id="rotate">Gira il telefono in verticale per giocare</div>
 <div id="overlay" hidden><div id="modal" class="panel"></div></div>
 <div id="pause" hidden><div class="panel" id="pausebox" role="dialog" aria-modal="true" aria-labelledby="pause-t"></div></div>
 <button class="btn ghost sm" id="b-menu" type="button" hidden>Menu · Esc</button>
@@ -1622,7 +1684,7 @@ function render(){
   if(M.mode)$('#b-cancel').onclick=cancelMode;
   $('#hint').querySelectorAll('[data-acc]').forEach(b=>b.onclick=()=>playerAccusa(+b.dataset.acc));
 
-  const pw=$('#powers');pw.innerHTML='';pw.style.setProperty('--pcols',(RUN.trucchi.length+RUN.poteri.length)>3?2:1);
+  const pw=$('#powers');pw.innerHTML='';{const n=RUN.trucchi.length+RUN.poteri.length;pw.style.setProperty('--pcols',n>3?2:1)}
   RUN.trucchi.forEach(id=>{const it=ITEMS[id],lvl=M.charge[id]||0,so=soglia(id);const b=document.createElement('button');b.type='button';
     b.className='tr tile'+(lvl?' ready':'');b.disabled=!trUsable(id);
     b.title=`${tr(it.desc)} Si carica ogni ${so} prese di fila: ${it.lv.map((l,i)=>`liv ${i+1} ${l}`).join(', ')}.`;
@@ -1922,12 +1984,13 @@ function restartRun(){GEN++;closeMenu();closeModal();M=null;PACK=null;SHOP=null;
 addEventListener('keydown',e=>{if(e.key!=='Escape'||$('#splash'))return;e.preventDefault();$('#pause').hidden?openMenu():closeMenu()});
 $('#b-menu').onclick=openMenu;
 function showInfo(){if(!M)return;modal(`<div class="title">Obiettivi e amuleti</div><div class="receipt"><div class="rc-h">Obiettivi</div><ul class="objs">${$('#objs').innerHTML}</ul></div><div class="receipt"><div class="rc-h">Amuleti</div><ul class="amus">${$('#amus').innerHTML}</ul></div><div class="row"><button class="btn" id="m-x">Chiudi</button></div>`);$('#m-x').onclick=closeModal}
-document.querySelector('.slate').onclick=()=>{if(matchMedia('(max-width:760px)').matches)showInfo()};
+document.querySelector('.slate').onclick=()=>{if(matchMedia('(max-width:760px), (orientation:landscape) and (max-height:520px)').matches)showInfo()};
 const _show=show;show=function(id){_show(id);$('#b-menu').hidden=(id==='title'||id==='debug')};
 
 // ================= Avvio =================
 $('#fan').innerHTML=[{kind:'n',suit:'D',rank:1},{kind:'n',suit:'C',rank:10},{kind:'jolly',suit:'J',rank:3},{kind:'n',suit:'S',rank:9},{kind:'n',suit:'B',rank:8}].map((c,i)=>`<img src="${cardImg(c)}" alt="" style="transform:rotate(${(i-2)*11}deg) translateY(${Math.abs(i-2)*8}px)">`).join('');
 setPal(TITLE_PAL);
+if(matchMedia('(hover: none), (pointer: coarse)').matches)$('#f11').textContent='Ruota il telefono in orizzontale per una migliore esperienza';
 $('#b-deck').onclick=()=>showDeck(false);
 $('#b-new').onclick=()=>{unlockAudio();showChar()};
 $('#b-rules').onclick=rules;$('#b-rules2').onclick=rules;
