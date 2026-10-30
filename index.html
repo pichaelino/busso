@@ -362,6 +362,8 @@ body{-webkit-user-select:none;user-select:none}
 .orow .ot b{font-family:var(--f-display);font-size:14px;line-height:1.1}
 .orow .ot span{font-size:12px;line-height:1.2;color:#4a3a30;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .orow .btn{padding:6px 10px;font-size:13px;white-space:nowrap}
+.orow .ot span.tier,.orow .ot span.tag{display:inline-block;-webkit-line-clamp:unset;overflow:visible;color:#fff;vertical-align:middle}
+.orow .ot span.tier.t4{color:#2a1d18}
 .orow .pk{display:flex;flex-direction:column;width:30px;margin:0 auto}
 .orow .pk img{width:30px;height:auto;image-rendering:pixelated;display:block}
 .srow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;text-align:left;background:var(--panel-2);border:2px solid var(--edge);border-radius:8px;box-shadow:0 3px 0 var(--edge);padding:9px 12px;cursor:pointer;color:var(--ink)}
@@ -410,6 +412,70 @@ body{-webkit-user-select:none;user-select:none}
   .packitem .ds{display:none}
   .portrait{width:84px;height:84px}
 }
+@media (max-width:760px){
+  :root{--cw:70px;--cw-opp:34px;--cw-table:70px}
+  body{overflow:auto}
+  #app{height:auto}
+  #scr-game{display:flex;flex-direction:column;height:100vh;height:100dvh;padding-block:6px;gap:6px}
+  #side-a{flex-direction:row;align-items:stretch;gap:6px;flex:none;padding-right:76px}
+  .polaroid{flex:none;width:92px;flex-direction:column;align-items:center;gap:2px;padding:5px;transform:rotate(-1.5deg)}
+  .polaroid::before{width:44px;margin-left:-22px;height:10px;top:-5px}
+  .polaroid .portrait{width:42px;height:42px}
+  .pol-eye{display:none}
+  .pol-name{font-size:15px;text-align:center}
+  .polaroid .bossmolt{font-size:11px;padding:1px 5px;margin-top:1px}
+  .slate{flex:1;min-width:0;border-width:5px;padding:3px 8px 5px;cursor:pointer}
+  .sl-h,.sl-stats,.chalkbar{display:none}
+  .sl-lbl{font-size:15px}
+  .sl-n{font-size:20px}.sl-n.t{font-size:24px}.sl-op{font-size:12px}
+  .sl-lui{font-size:13px;margin-top:2px;padding-top:2px}.sl-n.t2{font-size:17px}
+  .sl-more{display:block!important}
+  #side-a .receipt,#side-b{display:none}
+  #tablewrap{flex:1;min-height:0;padding:6px 6px 8px;gap:4px}
+  #props{display:none}
+  #opp-lbl{font-size:10px}
+  .hand{padding-top:14px}
+  .hand.opp{padding-top:2px}
+  #mid{grid-template-columns:auto 1fr auto;grid-template-areas:"pw pw pw" "st tr in";gap:6px;align-content:center}
+  #powers{grid-area:pw;display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:6px;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+  #powers .tr.tile{flex:none;flex-direction:column;padding:4px;gap:2px;width:66px}
+  #powers .tr.tile .ic{width:34px;height:34px}
+  #powers .tr.tile b{font-size:10px;text-align:center;line-height:1.05}
+  #powers .tr.tile .sub{display:none}
+  #powers .tr.tile>div{align-items:center}
+  #powers .tr.tile .pips{justify-content:center}
+  #stock-wrap{grid-area:st}#trick{grid-area:tr;justify-content:center;gap:8px;min-height:calc(var(--cw-table)*1.571 + 22px)}#info{grid-area:in}
+  .slot .who{bottom:-18px;font-size:10px}
+  .streakbox{padding:4px 6px;gap:4px;border-radius:8px}.streakbox img{width:26px;height:26px}.streakbox .sn{font-size:24px}.streakbox .sl{display:none}
+  #b-deck{font-size:11px;padding:4px 6px}
+  #hint{font-size:12.5px;min-height:18px;gap:6px}
+  .accbtn{font-size:13px;padding:6px 10px}.accbtn b{font-size:16px}.accbtn .num{margin-left:4px}
+  .card.legal:hover,.card.pick:hover{transform:none}
+  .card.legal{animation:none}
+  .pop.banner{font-size:14px;padding:4px 10px}
+  .pop{font-size:15px}
+  #b-menu{top:calc(8px + env(safe-area-inset-top,0px));right:calc(8px + env(safe-area-inset-right,0px));font-size:11px;padding:6px 8px}
+  .toast{font-size:13px;padding:5px 9px}
+  .introbox,.bigbox{padding:10px}
+  .portrait{width:72px;height:72px}
+  .orow{grid-template-columns:38px minmax(0,1fr) auto;gap:8px}
+  .orow .oi{width:38px;height:38px}
+  .packarea{min-height:250px}
+  .packobj{width:130px}
+  .packgrid .card{width:100%}
+  .fan{height:110px}.fan img{width:60px;margin:0 -12px}
+  .charcard{padding:10px;gap:6px}.charcard .portrait{width:76px;height:76px}
+  .cprev img{width:40px}
+  #modal{padding:10px}
+  .sumcols{grid-template-columns:1fr}
+  .bigtot{font-size:30px}
+  .verdict{font-size:34px}
+  #shopbox>div:last-child{position:sticky;bottom:0;background:var(--panel);padding-block:8px;z-index:2}
+}
+.card.armed{transform:translateY(-18px)!important;z-index:3;outline:3px solid var(--gold);outline-offset:2px}
+.sl-more{display:none;font-family:var(--f-chalk);font-size:12px;color:#cfd6cc;text-align:right;margin-top:1px}
+#rotate{display:none;position:fixed;inset:0;z-index:90;background:#0a0805;color:var(--ink);align-items:center;justify-content:center;text-align:center;padding:24px;font-family:var(--f-display);font-size:20px}
+@media (orientation:landscape) and (max-height:500px) and (hover:none){#rotate{display:flex}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
@@ -452,6 +518,7 @@ body{-webkit-user-select:none;user-select:none}
         <div class="sl-eq"><span class="sl-n f" id="p-fiche">0</span><span class="sl-op">FICHE ×</span><span class="sl-n m" id="p-molt">1</span><span class="sl-op">=</span><span class="sl-n t" id="p-total">0</span></div>
         <div class="sl-lbl sl-lui"><span id="o-label">Lui</span><span class="sl-n t2" id="o-total">0</span></div>
         <div class="chalkbar"><span id="bar-p" style="width:50%"></span></div>
+        <div class="sl-more">tocca per obiettivi e amuleti</div>
         <div class="sl-stats" id="stats"></div>
       </div>
       <div class="receipt"><div class="rc-h">Obiettivi</div><ul class="objs" id="objs"></ul></div>
@@ -483,6 +550,7 @@ body{-webkit-user-select:none;user-select:none}
   <section id="scr-debug" class="screen" hidden style="overflow:auto"><div class="bigbox panel" id="debugbox" style="margin:0 auto;max-width:1180px"></div></section>
   <section id="scr-end" class="screen center" hidden><div class="introbox panel" id="endbox" style="text-align:center;align-items:center"></div></section>
 </main>
+<div id="rotate">Gira il telefono in verticale per giocare</div>
 <div id="overlay" hidden><div id="modal" class="panel"></div></div>
 <div id="pause" hidden><div class="panel" id="pausebox" role="dialog" aria-modal="true" aria-labelledby="pause-t"></div></div>
 <button class="btn ghost sm" id="b-menu" type="button" hidden>Menu · Esc</button>
@@ -515,6 +583,7 @@ const TROLL={
 const JOLLY_DESC='Si gioca sempre. Quando la cali scegli tu il seme.';
 const $=s=>document.querySelector(s);
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const TOUCH=matchMedia('(hover: none)').matches||matchMedia('(max-width:760px)').matches;
 let PAUSED=false,GEN=0;
 const sleep=async ms=>{const g=GEN;await new Promise(r=>setTimeout(r,RM?ms*.4:ms));while(PAUSED&&g===GEN)await new Promise(r=>setTimeout(r,120));if(g!==GEN)await new Promise(()=>{})};
 const pick=a=>a[Math.floor(Math.random()*a.length)];
@@ -1279,7 +1348,7 @@ function aiChoose(){
 }
 
 async function playCard(s,card){
-  const S=M[s];S.hand.splice(S.hand.indexOf(card),1);if(card===M.myDraw)M.myDraw=null;
+  const S=M[s];S.hand.splice(S.hand.indexOf(card),1);M.armed=null;if(card===M.myDraw)M.myDraw=null;
   M.table.push({who:s,card});M.played.add(card.id);SFX.play();
   if(s==='O')log(`${M.boss.name} gioca ${cardName(card)}`);
   render();
@@ -1416,7 +1485,7 @@ function onHandClick(c){
   if(M.mode==='wand'){if(c.kind==='jolly'){toast('È già un Jolly');return}const old=cardName(c);Object.assign(c,{kind:'jolly',suit:'J',troll:undefined,tinted:false,playSuit:null});if(c.rank===4&&old.startsWith('Lo'))c.rank=rint(4,7);stepDone(`${old} diventa ${cardName(c)}`);return}
   if(M.mode==='tint'){if(c.kind!=='n'){toast('Questa carta non si può ridipingere');return}openTint(c);return}
   if(M.mode==='pesca-own'){const k=M.act.idx,top=M.stock[k];M.P.hand[M.P.hand.indexOf(c)]=top;M.stock[k]=c;done(`Peschi ${cardName(top)}, ${cardName(c)} finisce nel mazzo`);return}
-  if(!M.mode)playerPlay(c);
+  if(!M.mode){if(TOUCH&&isMyTurn()&&legalSet(M.P.hand).has(c.id)&&M.armed!==c){M.armed=c;SFX.play();render();return}M.armed=null;playerPlay(c)}
 }
 function onOppClick(c){if(M.mode==='mano-opp'&&M.act.pending&&(c.seen||c.shown)){const p=M.act.pending;M.act.pending=null;swapWith(p,c)}}
 function cancelMode(){M.mode=null;M.act=null;render()}
@@ -1544,6 +1613,7 @@ function render(){
   const modeTxt={'mano-own':`Mano Lesta: scegli la carta da dare (ancora ${M.act?.left||0})`,'mano-opp':'Mano Lesta: ora scegli una delle sue carte scoperte','tint':`Tintura: scegli la carta da ridipingere (ancora ${M.act?.left||0})`,'pesca-own':'Pesca Truccata: scegli la carta da rimettere nel mazzo','wand':`Bacchetta: scegli la carta da trasformare in Jolly (ancora ${M.act?.left||0})`};
   if(M.mode)txt=modeTxt[M.mode];
   else if(M.over)txt='Fine smazzata';
+  else if(isMyTurn()&&M.armed)txt='Tocca di nuovo la carta per giocarla';
   else if(isMyTurn()){if(M.table.length){const ls=es(M.table[0].card);txt=ls==='X'?'Ha giocato una carta senza seme: rispondi con quello che vuoi':M.P.hand.some(c=>!isWild(c)&&c.suit===ls)?`Rispondi a ${SUIT_NAME[ls]}`:`Non hai ${SUIT_NAME[ls]}: scarta quello che vuoi`}else txt='Tocca a te: esci con una carta'}
   else txt=`${M.boss.name} ci pensa…`;
   if(M.P.doubleMul>1&&!M.mode)txt+=` · Raddoppio ×${M.P.doubleMul} attivo`;
@@ -1564,7 +1634,7 @@ function render(){
   const mh=$('#my-hand');mh.innerHTML='';
   const mine=isMyTurn(),legal=legalSet(M.P.hand),picking=['mano-own','tint','pesca-own','wand'].includes(M.mode);
   sortHand(M.P.hand).forEach(c=>{let cls='';if(picking)cls='pick';else if(M.mode==='mano-opp')cls=c===M.act?.pending?'sel':'illegal';else if(mine)cls=legal.has(c.id)?'legal':'illegal';
-    if(c===M.myDraw)cls+=' fresh';const b=cardEl(c,true,cls);if(c===M.myDraw)b.insertAdjacentHTML('beforeend','<span class="badge new">Nuova</span>');b.onclick=()=>onHandClick(c);mh.appendChild(b)});
+    if(c===M.myDraw)cls+=' fresh';if(c===M.armed)cls+=' armed';const b=cardEl(c,true,cls);if(c===M.myDraw)b.insertAdjacentHTML('beforeend','<span class="badge new">Nuova</span>');b.onclick=()=>onHandClick(c);mh.appendChild(b)});
   fitRow(mh);
 }
 addEventListener('resize',()=>{if(M&&!$('#scr-game').hidden){fitRow($('#my-hand'));fitRow($('#opp-hand'))}});
@@ -1834,7 +1904,7 @@ function renderMenu(confirm){
     <button class="btn" id="pm-back">Torna alla partita</button>
     <button class="btn ghost" id="pm-music">Musica: ${MUS.on?'sì':'no'}</button>
     <button class="btn ghost" id="pm-sfx">Effetti: ${muted?'no':'sì'}</button>
-    ${M&&!M.over&&!$('#scr-game').hidden?'<button class="btn ghost" id="pm-log">Cronaca della partita</button>':''}
+    ${M&&!M.over&&!$('#scr-game').hidden?'<button class="btn ghost" id="pm-info">Obiettivi e amuleti</button><button class="btn ghost" id="pm-log">Cronaca della partita</button>':''}
     <button class="btn red" id="pm-restart" ${RUN?'':'disabled'}>Ricomincia la run</button>
     <div class="small">Premi Esc per chiudere.</div>`;
   if(confirm){$('#pm-yes').onclick=restartRun;$('#pm-no').onclick=()=>renderMenu(false);$('#pm-no').focus();return}
@@ -1842,6 +1912,7 @@ function renderMenu(confirm){
   $('#pm-music').onclick=()=>{toggleMusic();renderMenu(false);$('#pm-music').focus()};
   $('#pm-sfx').onclick=()=>{muted=!muted;const b=$('#b-mute');if(b)b.textContent='Effetti: '+(muted?'no':'sì');renderMenu(false);$('#pm-sfx').focus()};
   $('#pm-restart').onclick=()=>renderMenu(true);
+  if($('#pm-info'))$('#pm-info').onclick=()=>{closeMenu();showInfo()};
   if($('#pm-log'))$('#pm-log').onclick=()=>{$('#pausebox').innerHTML=`<div class="title" id="pause-t">Cronaca</div><div class="receipt" style="max-height:55vh;overflow:auto"><ol id="log" style="margin:0;padding-left:18px">${M.log.map(l=>`<li>${l}</li>`).join('')||'<li>Ancora niente.</li>'}</ol></div><button class="btn" id="pm-b2">Indietro</button>`;$('#pm-b2').onclick=()=>renderMenu(false);$('#pm-b2').focus()};
   $('#pm-back').focus();
 }
@@ -1850,6 +1921,8 @@ function closeMenu(){$('#pause').hidden=true;PAUSED=false}
 function restartRun(){GEN++;closeMenu();closeModal();M=null;PACK=null;SHOP=null;unlockAudio();showChar()}
 addEventListener('keydown',e=>{if(e.key!=='Escape'||$('#splash'))return;e.preventDefault();$('#pause').hidden?openMenu():closeMenu()});
 $('#b-menu').onclick=openMenu;
+function showInfo(){if(!M)return;modal(`<div class="title">Obiettivi e amuleti</div><div class="receipt"><div class="rc-h">Obiettivi</div><ul class="objs">${$('#objs').innerHTML}</ul></div><div class="receipt"><div class="rc-h">Amuleti</div><ul class="amus">${$('#amus').innerHTML}</ul></div><div class="row"><button class="btn" id="m-x">Chiudi</button></div>`);$('#m-x').onclick=closeModal}
+document.querySelector('.slate').onclick=()=>{if(matchMedia('(max-width:760px)').matches)showInfo()};
 const _show=show;show=function(id){_show(id);$('#b-menu').hidden=(id==='title'||id==='debug')};
 
 // ================= Avvio =================

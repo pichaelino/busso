@@ -1,4 +1,4 @@
-# Busso! — Tressette roguelike (v9)
+# Busso! — Tressette roguelike (v10)
 
 Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un tasto per saltarlo).
 
@@ -83,6 +83,14 @@ Corno Rosso, Ferro di Cavallo, Gatto Nero, L'Oste, Ruota della Fortuna, Scartine
 ## Negozio
 Sempre almeno 1 trucco, 1 amuleto, 1 potere + 1 casuale. Un oggetto visto in vetrina non torna più nella stessa run.
 Vende anche 2 carte singole (scartine 40, figure 60, Due e Tre 75, Assi 95, semi stranieri +20, Jolly 140) e un pacchetto da 10 carte (175 FICHE). Il negozio sta in una schermata sola, senza scorrere.
+
+## Telefono (sotto i 760 px)
+- Layout verticale su una sola schermata: in alto la foto dell'avversario e la lavagna compatta (tocca la lavagna per vedere obiettivi e amuleti), poi il tavolo.
+- Trucchi e poteri in una fila che scorre in orizzontale sopra il Mazzo; carte e tavolo ridimensionati, oggetti degli angoli nascosti.
+- Tocca una carta per alzarla, tocca di nuovo per giocarla: niente giocate per sbaglio.
+- Menu di pausa con "Obiettivi e amuleti" e "Cronaca della partita".
+- Negozio in colonna con il pulsante "Avanti" sempre visibile in basso.
+- In orizzontale su schermi bassi compare l'invito a girare il telefono.
 
 ## Seme delle Ossa
 - Nuovo seme a tema (Ossa, simbolo teschio e ossa incrociate, bordo viola). Ogni carta di Ossa vale 5 FICHE in più a chi la prende; chi non ha Ossa non può rispondere.
