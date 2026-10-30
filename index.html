@@ -12,6 +12,7 @@
   --gold:#f2b33f; --gold-d:#9c6714; --ok:#53c26f; --magic:#9b5de5; --magic-d:#5b2b96; --cream:#f3e6cc;
   --f-display:'Pixelify Sans','Courier New',monospace;
   --f-body:'Rubik',system-ui,'Segoe UI',sans-serif;
+  --f-num:'Rubik',system-ui,'Segoe UI',sans-serif;
   --cw:84px; --cw-opp:50px; --cw-table:84px;
   color-scheme:dark;
 }
@@ -36,7 +37,7 @@ button{font:inherit;color:inherit}
 .btn:focus-visible,.card:focus-visible,.tr:focus-visible,.dcard:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .btn[disabled]{opacity:.45;cursor:not-allowed}
 .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;align-items:center}
-.coin{font-family:var(--f-display);font-weight:700;color:#fff;background:var(--fiche);border:2px solid var(--edge);border-radius:6px;padding:2px 8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.coin{font-family:var(--f-num);font-weight:700;color:#fff;background:var(--fiche);border:2px solid var(--edge);border-radius:6px;padding:2px 8px;font-variant-numeric:tabular-nums;white-space:nowrap}
 
 .titlebox{max-width:640px;width:100%;display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center}
 .logo{font-family:var(--f-display);font-weight:700;font-size:clamp(64px,16vw,120px);line-height:.9;color:var(--gold);text-shadow:4px 4px 0 var(--molt-d)}
@@ -50,7 +51,7 @@ button{font:inherit;color:inherit}
 .introhead{display:flex;gap:16px;align-items:center}
 .portrait{width:112px;height:112px;image-rendering:pixelated;background:radial-gradient(circle at 50% 40%,#3a2f48,#15111b);border:2px solid var(--edge);border-radius:10px;flex:none;animation:bob 2.6s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-3px) rotate(-1deg)}}
-.bossmolt{display:inline-block;margin-top:6px;background:var(--molt);color:#fff;font-family:var(--f-display);font-weight:700;font-size:15px;padding:3px 8px;border-radius:6px;border:2px solid var(--edge)}
+.bossmolt{display:inline-block;margin-top:6px;background:var(--molt);color:#fff;font-family:var(--f-num);font-weight:700;font-size:15px;padding:3px 8px;border-radius:6px;border:2px solid var(--edge)}
 .mossa{background:var(--panel-2);border:2px dashed var(--molt);border-radius:8px;padding:8px 10px;font-size:14px}
 .mossa b{font-family:var(--f-display);font-size:13px;color:var(--molt);letter-spacing:.02em;display:block}
 .ladder{display:flex;gap:6px;width:100%}
@@ -66,13 +67,13 @@ button{font:inherit;color:inherit}
 .opphead{display:flex;gap:10px;align-items:center}
 .opphead .portrait{width:60px;height:60px;animation:none}
 .eq{display:flex;align-items:stretch;gap:6px}
-.box{flex:1;border:2px solid var(--edge);border-radius:8px;padding:4px 8px;text-align:right;font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1;font-variant-numeric:tabular-nums;color:#fff}
-.box small{display:block;font-size:11px;letter-spacing:.02em;opacity:.85;font-weight:600}
+.box{flex:1;border:2px solid var(--edge);border-radius:8px;padding:4px 8px;text-align:right;font-family:var(--f-num);font-weight:700;font-size:28px;line-height:1;font-variant-numeric:tabular-nums;color:#fff}
+.box small{display:block;font-family:var(--f-display);font-size:11px;letter-spacing:.02em;opacity:.85;font-weight:600}
 .box.f{background:var(--fiche);box-shadow:inset 0 -4px 0 var(--fiche-d)}
 .box.m{background:var(--molt);box-shadow:inset 0 -4px 0 var(--molt-d)}
 .x{align-self:center;font-family:var(--f-display);font-size:24px;color:var(--molt)}
 .totrow{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px}
-.tot{font-family:var(--f-display);font-weight:700;font-size:30px;font-variant-numeric:tabular-nums}
+.tot{font-family:var(--f-num);font-weight:700;font-size:30px;font-variant-numeric:tabular-nums}
 .vs{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;padding-top:8px;border-top:2px dashed var(--panel-2);gap:8px}
 .vs .tot{font-size:22px;color:var(--muted)}
 .bar{height:10px;border-radius:4px;background:var(--molt-d);border:2px solid var(--edge);overflow:hidden;margin-top:8px}
@@ -83,7 +84,7 @@ button{font:inherit;color:inherit}
 .obj{display:grid;grid-template-columns:1fr auto;gap:2px 8px;background:var(--panel-2);border:2px solid var(--edge);border-radius:8px;padding:6px 8px}
 .obj b{font-family:var(--f-display);font-size:15px;font-weight:600}
 .obj .d{grid-column:1/-1;font-size:13px;color:var(--muted);line-height:1.2}
-.rw{font-family:var(--f-display);font-size:12px;font-weight:700;background:var(--molt);color:#fff;border-radius:5px;padding:2px 6px;align-self:start;white-space:nowrap}
+.rw{font-family:var(--f-num);font-size:12px;font-weight:700;background:var(--molt);color:#fff;border-radius:5px;padding:2px 6px;align-self:start;white-space:nowrap}
 .pg{grid-column:1/-1;font-size:13px;font-variant-numeric:tabular-nums}
 .obj.done{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok) inset}
 .obj.done .pg{color:var(--ok)}
@@ -96,7 +97,7 @@ button{font:inherit;color:inherit}
 .amus span{color:var(--muted)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center}
 .stats div{background:var(--panel-2);border-radius:6px;padding:4px}
-.stats b{display:block;font-family:var(--f-display);font-size:20px;font-variant-numeric:tabular-nums}
+.stats b{display:block;font-family:var(--f-num);font-weight:700;font-size:20px;font-variant-numeric:tabular-nums}
 .stats span{font-size:12px;color:var(--muted)}
 #log{list-style:none;margin:6px 0 0;padding:0;font-size:13px;display:flex;flex-direction:column;gap:3px;color:var(--muted)}
 #log li:first-child{color:var(--ink)}
@@ -123,7 +124,7 @@ button{font:inherit;color:inherit}
 #stock-wrap,#info{display:flex;flex-direction:column;align-items:center;gap:6px}
 #stock{position:relative;width:var(--cw-table);aspect-ratio:56/88}
 #stock img{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;filter:drop-shadow(0 2px 0 rgba(0,0,0,.6))}
-#stock-n{font-family:var(--f-display);font-size:18px;color:var(--ink)}
+#stock-n{font-family:var(--f-num);font-weight:700;font-size:18px;color:var(--ink)}
 #trick{display:flex;gap:14px;align-items:center;min-height:calc(var(--cw-table)*1.571 + 26px)}
 .slot{width:var(--cw-table);aspect-ratio:56/88;border:2px dashed var(--felt-line);border-radius:6px;position:relative;display:flex;align-items:center;justify-content:center}
 .slot .card{width:100%;animation:dealin .25s ease-out}
@@ -157,7 +158,7 @@ button{font:inherit;color:inherit}
 .tag.M{background:var(--magic)}
 
 #fx{position:absolute;inset:0;pointer-events:none;z-index:20;overflow:hidden}
-.pop{position:absolute;transform:translate(-50%,-50%);font-family:var(--f-display);font-weight:700;font-size:22px;color:#fff;padding:3px 9px;border:2px solid var(--edge);border-radius:6px;white-space:nowrap;animation:pop 1.5s ease-out forwards}
+.pop{position:absolute;transform:translate(-50%,-50%);font-family:var(--f-num);font-weight:700;font-size:22px;color:#fff;padding:3px 9px;border:2px solid var(--edge);border-radius:6px;white-space:nowrap;animation:pop 1.5s ease-out forwards}
 .pop.fiche{background:var(--fiche)}
 .pop.molt{background:var(--molt)}
 .pop.gold{background:var(--gold);color:#1d120a}
@@ -187,7 +188,7 @@ button{font:inherit;color:inherit}
 .lines li span:last-child{white-space:nowrap}
 .lines.f li span:last-child{color:#8cc4ff}
 .lines.m li span:last-child{color:#ff8a80}
-.bigtot{font-family:var(--f-display);font-weight:700;font-size:40px;text-align:right;font-variant-numeric:tabular-nums}
+.bigtot{font-family:var(--f-num);font-weight:700;font-size:40px;text-align:right;font-variant-numeric:tabular-nums}
 .verdict{font-family:var(--f-display);font-weight:700;font-size:44px;text-align:center;line-height:1}
 .verdict.win{color:var(--gold);text-shadow:3px 3px 0 var(--molt-d)}
 .verdict.lose{color:var(--molt);text-shadow:3px 3px 0 var(--edge)}
@@ -211,8 +212,19 @@ button{font:inherit;color:inherit}
 .bigbox{max-width:980px;width:100%;display:flex;flex-direction:column;gap:14px}
 .packgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;justify-items:center}
 .packgrid .card{width:min(100%,96px);cursor:pointer}
-.packgrid .card.flip{animation:flip .35s ease-out backwards}
-@keyframes flip{0%{transform:rotateY(90deg)}100%{transform:none}}
+.packarea{position:relative;min-height:330px}
+.packstage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;pointer-events:none}
+.packobj{pointer-events:auto;border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;width:180px;filter:drop-shadow(0 8px 0 rgba(0,0,0,.45));animation:packbob 2.4s ease-in-out infinite;transition:opacity .4s,transform .4s}
+.packobj img{width:100%;image-rendering:pixelated;display:block;transition:transform .55s cubic-bezier(.3,.6,.4,1),opacity .55s}
+.packobj:hover{animation-play-state:paused;transform:translateY(-6px) rotate(-2deg)}
+.packobj:focus-visible{outline:3px solid var(--gold);outline-offset:6px}
+@keyframes packbob{50%{transform:translateY(-6px) rotate(1.5deg)}}
+.packobj.shake{animation:packshake .6s linear}
+@keyframes packshake{0%,100%{transform:none}15%{transform:rotate(-6deg) translateX(-4px)}30%{transform:rotate(5deg) translateX(4px)}45%{transform:rotate(-4deg)}60%{transform:rotate(3deg) scale(1.04)}80%{transform:rotate(-2deg) scale(1.06)}}
+.packobj.torn{animation:none}
+.packobj.torn .pk-top{transform:translate(70px,-120px) rotate(38deg);opacity:0}
+.packobj.gone{opacity:0;transform:translateY(80px) scale(.9)}
+.packgrid .card{transform-style:preserve-3d}
 .packitem{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font-size:13px;line-height:1.2;min-width:0}
 .packitem .nm{font-family:var(--f-display);font-size:12px}
 .packitem .ds{color:var(--muted);font-size:12px}
@@ -223,6 +235,15 @@ button{font:inherit;color:inherit}
 .offer .ds{font-size:13px;line-height:1.25;flex:1}
 .offer.sold{opacity:.35}
 .inv{display:flex;gap:16px;flex-wrap:wrap}
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.service{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;background:var(--panel-2);border:2px solid var(--edge);border-radius:10px;box-shadow:0 4px 0 var(--edge);padding:14px 16px;cursor:pointer}
+.service:hover:not([disabled]){border-color:var(--gold)}
+.service[disabled]{opacity:.5;cursor:not-allowed}
+.sv-t{font-family:var(--f-display);font-weight:700;font-size:20px;color:var(--ink)}
+.sv-d{font-size:15px;color:var(--muted);line-height:1.3;flex:1}
+.sv-p{font-size:16px}
+.num{font-family:var(--f-num);font-weight:700}
+@media (max-width:860px){.services{grid-template-columns:1fr}}
 .dbg h2{margin:8px 0 2px;font-family:var(--f-display);font-size:20px;color:var(--gold)}
 .dbgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
 .dbitem{display:flex;gap:10px;align-items:flex-start;background:var(--panel-2);border:2px solid var(--edge);border-radius:8px;padding:8px;font-size:13px;line-height:1.25;min-width:0}
@@ -261,7 +282,7 @@ button{font:inherit;color:inherit}
       <div class="fan" id="fan"></div>
       <div class="logo">Busso!</div>
       <div class="tagline">Tressette roguelike</div>
-      <p class="blurb">Cinque avversari, uno dopo l'altro, fino al Diavolo. Fai prese di fila per caricare i trucchi, spendi le fiche al negozio e apri pacchetti che riempiono il mazzo di semi stranieri, jolly e carte troll.</p>
+      <p class="blurb">Cinque avversari, uno dopo l'altro, fino al Diavolo. Fai prese di fila per caricare i trucchi, spendi le FICHE al negozio e apri pacchetti che riempiono il mazzo di semi stranieri, jolly e carte troll.</p>
       <div class="row">
         <button class="btn" id="b-new">Nuova partita</button>
         <button class="btn ghost" id="b-rules">Regole</button>
@@ -285,7 +306,7 @@ button{font:inherit;color:inherit}
       <div class="panel">
         <div class="ph">Il tuo punteggio</div>
         <div class="eq" style="margin-top:6px">
-          <div class="box f"><small>Fiche</small><span id="p-fiche">0</span></div>
+          <div class="box f"><small>FICHE</small><span id="p-fiche">0</span></div>
           <div class="x">×</div>
           <div class="box m"><small>Molt</small><span id="p-molt">1</span></div>
         </div>
@@ -336,9 +357,9 @@ const RANK_NAME={1:'Asso',2:'Due',3:'Tre',4:'Quattro',5:'Cinque',6:'Sei',7:'Sett
 const STR={3:10,2:9,1:8,10:7,9:6,8:5,7:4,6:3,5:2,4:1};
 const PTS=r=>r===1?3:([2,3,8,9,10].includes(r)?1:0);
 const TROLL={
-  marcio:{name:'Tre Marcio',desc:'Vale come un Tre del suo seme, ma chi lo prende perde 40 fiche.'},
+  marcio:{name:'Tre Marcio',desc:'Vale come un Tre del suo seme, ma chi lo prende perde 40 FICHE.'},
   bomba:{name:'La Bomba',desc:'Si gioca sempre. Fa saltare la presa: nessuno prende niente, e chi l’ha giocata esce dopo.'},
-  spettro:{name:'Lo Spettro',desc:'Si gioca sempre ma non prende mai. Chi lo raccoglie perde 20 fiche.'},
+  spettro:{name:'Lo Spettro',desc:'Si gioca sempre ma non prende mai. Chi lo raccoglie perde 20 FICHE.'},
 };
 const JOLLY_DESC='Si gioca sempre. Quando la cali scegli tu il seme.';
 const $=s=>document.querySelector(s);
@@ -520,13 +541,15 @@ function base(x,d,bg,l1,l2,speck,key){
   d.r(1,0,54,88,K.ink);d.r(0,1,56,86,K.ink);d.r(2,1,52,86,bg);d.r(1,2,54,84,bg);
   const R=seedRand(key);for(let i=0;i<90;i++)d.r(2+Math.floor(R()*52),2+Math.floor(R()*84),1,1,speck);
   const box=(o,col)=>{d.r(o,o,56-o*2,1,col);d.r(o,88-o-1,56-o*2,1,col);d.r(o,o,1,88-o*2,col);d.r(56-o-1,o,1,88-o*2,col)};
-  box(3,l1);box(5,l2);
+  box(2,l1);box(3,l1);box(5,l2);
 }
-function glyph(d,g,X,Y,col,flip){g.forEach((r,i)=>[...r].forEach((ch,j)=>{if(ch==='X')flip?d.r(X+2-j,Y+4-i,1,1,col):d.r(X+j,Y+i,1,1,col)}))}
+function glyph(d,g,X,Y,col,flip,k=2){g.forEach((r,i)=>[...r].forEach((ch,j)=>{if(ch==='X')flip?d.r(X+(2-j)*k,Y+(4-i)*k,k,k,col):d.r(X+j*k,Y+i*k,k,k,col)}))}
 function index(x,d,c,col,g){
-  glyph(d,g,7,7,col,false);glyph(d,g,46,76,col,true);
-  if(SUIT_DRAW[c.suit]){const m=symbol(c.suit,6);put(x,m,16,10);put(x,m,40,78)}
+  glyph(d,g,7,7,col,false);glyph(d,g,43,71,col,true);
+  if(SUIT_DRAW[c.suit]){const m=symbol(c.suit,7);put(x,m,20,11);put(x,m,36,76)}
 }
+const FRAME={C:[K.red,K.gold,K.red2],D:[K.gold,K.gold3,K.gold2],S:[K.blue,K.blue3,K.blue2],B:[K.green,K.green3,K.green2],
+  H:[K.red,K.pink,K.red],Q:[K.orange,K.gold3,K.red2],F:[K.black,K.grey,K.black],P:[K.blue2,K.grey,K.blue2]};
 function cardImg(c){
   const key=`${c.kind}${c.suit}${c.rank}${c.troll||''}`;if(IMG[key])return IMG[key];
   const cn=mk(56,88),x=cn.getContext('2d'),d=P(x);
@@ -538,27 +561,26 @@ function cardImg(c){
     else{sd.p([[8,46],[8,22],[12,10],[22,5],[32,10],[36,22],[36,46],[31,41],[26,47],[22,41],[18,47],[13,41]],K.grey3);sd.p([[30,10],[36,22],[36,46],[31,41],[30,30]],K.grey);
       sd.e(16,23,3.2,5,K.black);sd.e(28,23,3.2,5,K.black);sd.e(22,34,3,4.5,K.black);sd.c(16,22,1,K.lime);sd.c(28,22,1,K.lime)}
     pixelize(s,K.ink);x.drawImage(s,6,18);
-    const g=GL[c.troll==='bomba'?'Q':'J'];glyph(d,g,7,7,K.lime,false);glyph(d,g,46,76,K.lime,true);
+    const g=GL[c.troll==='bomba'?'Q':'J'];glyph(d,g,7,7,K.lime,false);glyph(d,g,43,71,K.lime,true);
     return IMG[key]=cn.toDataURL();
   }
   if(c.kind==='jolly'){
     base(x,d,K.grey3,K.purple,K.gold,K.purple3,key);
     for(let y=8;y<82;y+=8)for(let X=8;X<50;X+=8)if(((X+y)/8)%2===0)d.p([[X,y-3],[X+3,y],[X,y+3],[X-3,y]],K.purple3);
     const j=pixelize(jester(),K.ink);x.drawImage(j,6,18);
-    glyph(d,GL[c.rank],7,7,K.purple,false);glyph(d,GL[c.rank],46,76,K.purple,true);
-    d.r(38,7,11,15,K.purple);GL[c.rank].forEach((r,i)=>[...r].forEach((ch,j)=>{if(ch==='X')d.r(40+j*2,9+i*2,2,2,K.gold3)}));
+    glyph(d,GL[c.rank],7,7,K.purple,false);glyph(d,GL[c.rank],43,71,K.purple,true);
     return IMG[key]=cn.toDataURL();
   }
   const fr=FR.includes(c.suit),rot=c.kind==='troll';
+  const FC=FRAME[c.suit]||FRAME.C;
   if(rot)base(x,d,K.paper,K.olive,K.lime,K.olive,key);
-  else if(fr)base(x,d,K.cream,K.blue,K.blue3,K.paper,key);
-  else base(x,d,K.cream,K.red,K.gold,K.paper,key);
+  else base(x,d,K.cream,FC[0],FC[1],K.paper,key);
   const r=c.rank,tilt=(c.suit==='S'||c.suit==='B');
-  if(r===1){put(x,symbol(c.suit,30),28,44);[[11,13],[45,13],[11,75],[45,75]].forEach(([a,b])=>d.p([[a,b-2],[a+2,b],[a,b+2],[a-2,b]],fr?K.blue:K.gold2))}
+  if(r===1){put(x,symbol(c.suit,30),28,44);[[45,13],[11,75]].forEach(([a,b])=>d.p([[a,b-2],[a+2,b],[a,b+2],[a-2,b]],FC[2]))}
   else if(r<=7)PIPS[r].forEach(([ci,ri])=>{const rr=tilt?(ci===0?-.45:ci===2?.45:0):0;put(x,symbol(c.suit,13,rr),COLS[ci],ri===.5?35.5:ROWS[ri])});
   else{const f=figure(r,c.suit);pixelize(f.c,K.ink);x.drawImage(f.c,6,20);put(x,symbol(c.suit,10),6+f.hold[0],20+f.hold[1])}
   if(rot){const R=seedRand(key+'m');for(let i=0;i<7;i++){const a=8+R()*40,b=10+R()*66;d.c(a,b,1.5+R()*2.5,K.lime);d.c(a+1,b+1,1,K.olive)}for(let i=0;i<5;i++)d.r(8+Math.floor(R()*40),8+Math.floor(R()*70),1,1,K.black)}
-  index(x,d,c,rot?K.olive:INK[c.suit],GL[r]);
+  index(x,d,c,rot?K.olive:FC[2],GL[r]);
   return IMG[key]=cn.toDataURL();
 }
 function backImg(){
@@ -667,28 +689,28 @@ function iconImg(id){
 
 // ================= Oggetti =================
 const ITEMS={
-  occhio:{type:'T',name:'Occhio Lungo',icon:'eye',soglia:2,price:115,desc:'Vedi la sua mano.',lv:['per 2 prese','per 3 prese','per 5 prese']},
-  sbirciata:{type:'T',name:'Sbirciata',icon:'peek',soglia:2,price:110,desc:'Guarda le prime carte del tallone e riordinale.',lv:['prime 2, puoi invertirle','prime 3, scegli la prima','prime 4, scegli la prima']},
-  tintura:{type:'T',name:'Tintura',icon:'paint',soglia:3,price:125,desc:'Cambia il seme di carte in mano.',lv:['1 carta','2 carte','3 carte']},
-  mano:{type:'T',name:'Mano Lesta',icon:'swap',soglia:3,price:135,desc:'Scambia carte con l’avversario.',lv:['1 carta, la sua a caso','2 carte, vedi la sua mano','3 carte, vedi la sua mano']},
-  pesca:{type:'T',name:'Pesca Truccata',icon:'fish',soglia:3,price:120,desc:'Scambia una tua carta con una del tallone.',lv:['scegli tra le prime 2','scegli tra le prime 3','scegli tra le prime 4']},
-  doppio:{type:'T',name:'Raddoppio',icon:'x2',soglia:4,price:125,desc:'La prossima presa che vinci vale di più.',lv:['fiche ×2','fiche ×3','fiche ×4']},
-  ladro:{type:'M',name:'Mano del Ladro',icon:'sack',price:100,desc:'Ruba l’ultima presa fatta dall’avversario.'},
-  pioggia:{type:'M',name:'Pioggia d’Assi',icon:'rain',price:95,desc:'Mischia due Assi in più nel tallone.'},
-  ribaltone:{type:'M',name:'Ribaltone',icon:'flip',price:110,desc:'Scambia tutta la tua mano con la sua. Solo quando esci tu.'},
-  terremoto:{type:'M',name:'Terremoto',icon:'quake',price:95,desc:'La sua mano torna nel tallone, si rimischia e lui ripesca.'},
-  malocchio:{type:'M',name:'Malocchio',icon:'evil',price:105,desc:'Toglie 0.5 al Molt dell’avversario (minimo 1).'},
-  fiammifero:{type:'M',name:'Fiammifero',icon:'match',price:95,desc:'Brucia le prime 2 carte del tallone. Le vedi bruciare.'},
-  corno:{type:'A',name:'Corno Rosso',icon:'horn',price:130,desc:'+1 Molt fisso.'},
-  ferro:{type:'A',name:'Ferro di Cavallo',icon:'shoe',price:145,desc:'×1.5 Molt se fai più prese dell’avversario.'},
-  gatto:{type:'A',name:'Gatto Nero',icon:'cat',price:120,desc:'L’ultima presa vale 60 fiche in più.'},
-  oste:{type:'A',name:'L’Oste',icon:'cup',price:120,desc:'Ogni Coppa che prendi vale +5 fiche.'},
-  ruota:{type:'A',name:'Ruota della Fortuna',icon:'wheel',price:140,desc:'+0.5 Molt per ogni Asso che prendi.'},
-  scartine:{type:'A',name:'Scartine d’Oro',icon:'coin',price:130,desc:'Le scartine (4, 5, 6, 7) valgono 5 fiche.'},
-  lente:{type:'A',name:'Lente',icon:'lens',price:120,desc:'Vedi sempre la prima carta del tallone.'},
-  sigaro:{type:'A',name:'Sigaro del Nonno',icon:'cigar',price:140,desc:'+1 Molt per ogni obiettivo completato.'},
-  calamita:{type:'A',name:'Calamita',icon:'magnet',price:160,desc:'I trucchi si caricano con una presa di fila in meno.'},
-  salvadanaio:{type:'A',name:'Salvadanaio',icon:'piggy',price:120,desc:'+30 fiche in più a ogni vittoria.'},
+  occhio:{type:'T',name:'Occhio Lungo',icon:'eye',soglia:2,price:150,desc:'Vedi la sua mano.',lv:['per 2 prese','per 3 prese','per 5 prese']},
+  sbirciata:{type:'T',name:'Sbirciata',icon:'peek',soglia:2,price:145,desc:'Guarda le prime carte del tallone e riordinale.',lv:['prime 2, puoi invertirle','prime 3, scegli la prima','prime 4, scegli la prima']},
+  tintura:{type:'T',name:'Tintura',icon:'paint',soglia:3,price:160,desc:'Cambia il seme di carte in mano.',lv:['1 carta','2 carte','3 carte']},
+  mano:{type:'T',name:'Mano Lesta',icon:'swap',soglia:3,price:175,desc:'Scambia carte con l’avversario.',lv:['1 carta, la sua a caso','2 carte, vedi la sua mano','3 carte, vedi la sua mano']},
+  pesca:{type:'T',name:'Pesca Truccata',icon:'fish',soglia:3,price:155,desc:'Scambia una tua carta con una del tallone.',lv:['scegli tra le prime 2','scegli tra le prime 3','scegli tra le prime 4']},
+  doppio:{type:'T',name:'Raddoppio',icon:'x2',soglia:4,price:160,desc:'La prossima presa che vinci vale di più.',lv:['FICHE ×2','FICHE ×3','FICHE ×4']},
+  ladro:{type:'M',name:'Mano del Ladro',icon:'sack',price:130,desc:'Ruba l’ultima presa fatta dall’avversario.'},
+  pioggia:{type:'M',name:'Pioggia d’Assi',icon:'rain',price:125,desc:'Mischia due Assi in più nel tallone.'},
+  ribaltone:{type:'M',name:'Ribaltone',icon:'flip',price:145,desc:'Scambia tutta la tua mano con la sua. Solo quando esci tu.'},
+  terremoto:{type:'M',name:'Terremoto',icon:'quake',price:125,desc:'La sua mano torna nel tallone, si rimischia e lui ripesca.'},
+  malocchio:{type:'M',name:'Malocchio',icon:'evil',price:135,desc:'Toglie 0.5 al Molt dell’avversario (minimo 1).'},
+  fiammifero:{type:'M',name:'Fiammifero',icon:'match',price:125,desc:'Brucia le prime 2 carte del tallone. Le vedi bruciare.'},
+  corno:{type:'A',name:'Corno Rosso',icon:'horn',price:170,desc:'+1 Molt fisso.'},
+  ferro:{type:'A',name:'Ferro di Cavallo',icon:'shoe',price:190,desc:'×1.5 Molt se fai più prese dell’avversario.'},
+  gatto:{type:'A',name:'Gatto Nero',icon:'cat',price:155,desc:'L’ultima presa vale 60 FICHE in più.'},
+  oste:{type:'A',name:'L’Oste',icon:'cup',price:155,desc:'Ogni Coppa che prendi vale +5 FICHE.'},
+  ruota:{type:'A',name:'Ruota della Fortuna',icon:'wheel',price:180,desc:'+0.5 Molt per ogni Asso che prendi.'},
+  scartine:{type:'A',name:'Scartine d’Oro',icon:'coin',price:170,desc:'Le scartine (4, 5, 6, 7) valgono 5 FICHE.'},
+  lente:{type:'A',name:'Lente',icon:'lens',price:155,desc:'Vedi sempre la prima carta del tallone.'},
+  sigaro:{type:'A',name:'Sigaro del Nonno',icon:'cigar',price:180,desc:'+1 Molt per ogni obiettivo completato.'},
+  calamita:{type:'A',name:'Calamita',icon:'magnet',price:210,desc:'I trucchi si caricano con una presa di fila in meno.'},
+  salvadanaio:{type:'A',name:'Salvadanaio',icon:'piggy',price:155,desc:'+30 FICHE in più a ogni vittoria.'},
 };
 const TYPE_NAME={T:'Trucco',A:'Amuleto',M:'Potere'};
 const soglia=id=>Math.max(1,ITEMS[id].soglia-(has('calamita')?1:0));
@@ -724,10 +746,10 @@ const rewTxt=r=>r.t==='add'?`+${r.v} Molt`:`×${r.v} Molt`;
 // ================= Avversari =================
 const BOSSES=[
   {id:'pivello',name:'Il Pivellino',molt:1,rnd:.5,cheat:false,nObj:2,quirk:'Gioca un po’ a caso. Suda freddo.',mossa:null,pal:[[14,30,26],[22,46,40],[34,66,56],[60,96,80]]},
-  {id:'zia',name:'Zia Assunta',molt:1.5,rnd:.18,cheat:false,nObj:2,quirk:'Ogni Coppa che prende vale +5 fiche per lei.',mossa:'Caffè corretto: ogni 3 prese di fila guadagna +0.25 Molt.',pal:[[38,22,16],[56,34,24],[82,50,32],[120,80,48]]},
+  {id:'zia',name:'Zia Assunta',molt:1.5,rnd:.18,cheat:false,nObj:2,quirk:'Ogni Coppa che prende vale +5 FICHE per lei.',mossa:'Caffè corretto: ogni 3 prese di fila guadagna +0.25 Molt.',pal:[[38,22,16],[56,34,24],[82,50,32],[120,80,48]]},
   {id:'baro',name:'Il Baro',molt:2,rnd:0,cheat:true,nObj:3,quirk:'Conosce la tua mano. A inizio partita ti sfila la carta migliore.',mossa:'Asso nella manica: ogni 3 prese di fila ti ruba la carta migliore e ti rifila la peggiore.',pal:[[18,18,36],[28,28,54],[44,42,80],[70,66,120]]},
   {id:'vecchio',name:'Il Vecchietto del Bar',molt:2.25,rnd:0,cheat:false,nObj:3,quirk:'Sessant’anni di tressette: conta ogni carta, e l’ultima presa per lui vale 90.',mossa:'“Ma che fai?!”: ogni 3 prese di fila ti rimischia la mano nel tallone e ti fa ripescare.',pal:[[32,26,18],[48,40,28],[70,58,40],[104,88,58]]},
-  {id:'diavolo',name:'Il Diavolo',molt:2.75,rnd:0,cheat:false,nObj:3,quirk:'Ogni Asso che prende vale 60 fiche invece di 30.',mossa:'Fiamma: ogni 3 prese di fila brucia la carta più preziosa che hai preso.',pal:[[30,10,12],[48,16,18],[72,24,26],[110,40,36]]},
+  {id:'diavolo',name:'Il Diavolo',molt:2.75,rnd:0,cheat:false,nObj:3,quirk:'Ogni Asso che prende vale 60 FICHE invece di 30.',mossa:'Fiamma: ogni 3 prese di fila brucia la carta più preziosa che hai preso.',pal:[[30,10,12],[48,16,18],[72,24,26],[110,40,36]]},
 ];
 const TITLE_PAL=[[24,18,28],[38,28,42],[58,40,56],[96,60,70]];
 const SHOP_PAL=[[26,22,18],[40,34,26],[62,52,36],[100,84,52]];
@@ -900,18 +922,18 @@ async function resolveTrick(){
     if(lastNow)W.lastTrick=true;
     M.lastWin=w;
     const fiche=cards.reduce((t,c)=>t+cardFiche(c,w),0);let d=0;
-    if(fiche)pop(`${fiche>0?'+':''}${fiche} fiche`,fiche<0?'bad':w==='P'?'fiche':'gold');
+    if(fiche)pop(`${fiche>0?'+':''}${fiche} FICHE`,fiche<0?'bad':w==='P'?'fiche':'gold');
     if(w==='P'){
       const Pp=M.P;Pp.streak++;Pp.maxStreak=Math.max(Pp.maxStreak,Pp.streak);M.O.streak=0;
-      if(Pp.doubleMul>1&&fiche>0){const extra=fiche*(Pp.doubleMul-1);Pp.bonusFiche+=extra;d+=350;setTimeout(()=>pop(`Raddoppio +${extra} fiche`,'fiche'),d);log(`Raddoppio: +${extra} fiche`);Pp.doubleMul=1}
+      if(Pp.doubleMul>1&&fiche>0){const extra=fiche*(Pp.doubleMul-1);Pp.bonusFiche+=extra;d+=350;setTimeout(()=>pop(`Raddoppio +${extra} FICHE`,'fiche'),d);log(`Raddoppio: +${extra} FICHE`);Pp.doubleMul=1}
       if(normal(oc)&&oc.rank===1){d+=350;addMolt(.5,'Strozzo',d)}
       if(Pp.streak%3===0){d+=350;addMolt(1,`Striscia di ${Pp.streak}`,d)}
       if(a.who==='P'&&!isWild(oc)&&oc.suit!==es(pc)&&cardBase(oc)>0){d+=350;addMolt(.5,'Piombo',d)}
       if(normal(pc)&&pc.suit==='S'&&pc.rank===3)Pp.lamaDone=true;
       if(pc.kind==='jolly')Pp.jollyWin=true;
       chargeTrucchi();
-      SFX.win();log(`Prendi tu (${fiche} fiche)`);
-    }else{M.P.streak=0;M.O.streak++;SFX.lose();log(`Prende ${M.boss.name} (${fiche} fiche)`)}
+      SFX.win();log(`Prendi tu (${fiche} FICHE)`);
+    }else{M.P.streak=0;M.O.streak++;SFX.lose();log(`Prende ${M.boss.name} (${fiche} FICHE)`)}
     if(W.lastTrick){d+=350;const lf=30+(w==='P'&&has('gatto')?60:0)+(w==='O'&&M.boss.id==='vecchio'?60:0);setTimeout(()=>pop(`Ultima presa +${lf}`,w==='P'?'fiche':'gold'),d)}
     announce(updateObjectives(),d+400);
     render();
@@ -1106,7 +1128,7 @@ function render(){
 addEventListener('resize',()=>{if(M&&!$('#scr-game').hidden){fitRow($('#my-hand'));fitRow($('#opp-hand'))}});
 
 // ================= Vista mazzo =================
-const PURGE_COST=45;
+const PURGE_COST=200;
 function showDeck(purge){
   const inMatch=!!M&&!M.over&&!purge&&!$('#scr-game').hidden;
   const cards=inMatch?M.deck:RUN.deck.map((t,i)=>({...t,_i:i}));
@@ -1115,7 +1137,7 @@ function showDeck(purge){
   const order=[...SUIT_ORDER.map(s=>SUIT_NAME[s]),'Jolly','Troll'];
   const live=inMatch?cards.filter(c=>!status(c)).length:cards.length;
   modal(`<div class="title">${purge?'Togli una carta dal mazzo':'Il mazzo'}</div>
-  <div class="small">${inMatch?`${cards.length} carte in tutto. ${live} ancora in giro, nel tallone o in mano sua: possono capitare a te o a lui.`:`${cards.length} carte.${purge?` Tocca la carta da eliminare (costa ${PURGE_COST} fiche).`:''}`}</div>
+  <div class="small">${inMatch?`${cards.length} carte in tutto. ${live} ancora in giro, nel tallone o in mano sua: possono capitare a te o a lui.`:`${cards.length} carte.${purge?` Tocca la carta da eliminare (costa ${PURGE_COST} FICHE).`:''}`}</div>
   ${inMatch?`<div class="legend"><span><i style="background:var(--gold)"></i>in mano tua</span><span><i style="background:#555"></i>presa da te</span><span><i style="background:#8a3a20"></i>presa da lui</span><span><i style="background:#222"></i>bruciata</span><span><i style="background:var(--cream)"></i>ancora in giro</span></div>`:''}
   ${order.filter(g=>groups[g]).map(g=>`<div class="dgroup"><h4>${g} · ${groups[g].length}</h4><div class="dcards">${groups[g].sort((a,b)=>str(b)-str(a)).map(c=>`<button class="dcard st-${status(c)}${purge?' purge':''}" ${purge?`data-i="${c._i}"`:'tabindex="-1"'} title="${cardName(c)} — ${cardDesc(c)}"><img src="${cardImg(c)}" alt="${cardName(c)}"></button>`).join('')}</div></div>`).join('')}
   <div class="row"><button class="btn" id="m-x">Chiudi</button></div>`,true);
@@ -1135,7 +1157,7 @@ function showIntro(){
   <div style="font-size:16px">${b.quirk}</div>
   ${b.mossa?`<div class="mossa"><b>La sua mossa</b>${b.mossa}</div>`:''}
   <div><div class="ph">Obiettivi di questa partita</div><ul class="objs">${M.objs.map(o=>`<li class="obj"><b>${o.d.name}</b><span class="rw">${rewTxt(o.d.reward)}</span><span class="d">${o.d.desc}</span></li>`).join('')}</ul></div>
-  <div class="small">Mazzo da ${M.deck.length} carte. Vinci se a fine smazzata il tuo Fiche × Molt supera il suo; a parità vince lui.</div>
+  <div class="small">Mazzo da ${M.deck.length} carte. Vinci se a fine smazzata il tuo FICHE × Molt supera il suo; a parità vince lui.</div>
   <div class="row" style="justify-content:flex-start"><button class="btn" id="b-go">Si gioca!</button><button class="btn ghost" id="b-deck2">Vedi mazzo</button></div>`;
   $('#b-go').onclick=startMatch;$('#b-deck2').onclick=()=>showDeck(false);show('intro');
 }
@@ -1144,7 +1166,7 @@ async function startMatch(){
   for(const s of ['P','O']){const a=accusi(M[s].hand);M[s].accusi=a.out;M[s].accusiFiche=a.f}
   $('#s-portrait').src=portraitImg(b.id);$('#s-name').textContent=b.name;$('#s-stage').textContent=RUN.stage+1;
   log(`Si comincia contro ${b.name}`);render();await sleep(300);
-  if(M.P.accusi.length){toast(`Accusi: ${M.P.accusi.join(', ')} (+${M.P.accusiFiche} fiche)`,'gold');log(`Accusi tuoi: ${M.P.accusi.join(', ')}`);SFX.big()}
+  if(M.P.accusi.length){toast(`Accusi: ${M.P.accusi.join(', ')} (+${M.P.accusiFiche} FICHE)`,'gold');log(`Accusi tuoi: ${M.P.accusi.join(', ')}`);SFX.big()}
   if(M.O.accusi.length){toast(`${b.name} accusa: ${M.O.accusi.join(', ')} (+${M.O.accusiFiche})`);log(`${b.name} accusa ${M.O.accusi.join(', ')}`)}
   if(b.id==='baro'){
     const best=M.P.hand.slice().sort((x,y)=>(cardBase(y)*3+str(y))-(cardBase(x)*3+str(x)))[0],worst=M.O.hand.slice().sort(cheap)[0];
@@ -1161,11 +1183,11 @@ function endMatch(){
   const col=(t,s,id,cls)=>`<div class="sumcol panel" style="background:var(--panel-2)"><h3>${t}</h3>
     <ul class="lines f">${s.fl.map(r=>`<li><span>${r[0]}</span><span>${r[1]}</span></li>`).join('')}</ul>
     <ul class="lines m" style="margin-top:6px">${s.ml.map(r=>`<li><span>${r[0]}</span><span>${r[1]}</span></li>`).join('')}</ul>
-    <div class="eq" style="margin-top:8px"><div class="box f"><small>Fiche</small>${s.fiche}</div><div class="x">×</div><div class="box m"><small>Molt</small>${fmt(s.molt)}</div></div>
+    <div class="eq" style="margin-top:8px"><div class="box f"><small>FICHE</small>${s.fiche}</div><div class="x">×</div><div class="box m"><small>Molt</small>${fmt(s.molt)}</div></div>
     <div class="bigtot" id="${id}">0</div><div class="classic">Al tressette vero: ${classic(cls)} punti</div></div>`;
   modal(`<div class="sumcols">${col('Tu',sp,'t-p','P')}${col(M.boss.name,so,'t-o','O')}</div>
     <div class="verdict" id="verdict" style="visibility:hidden">${win?'Vittoria!':'Sconfitta'}</div>
-    ${win?`<div class="row" id="earnrow" style="visibility:hidden"><span class="small">Nel borsellino: vittoria 120 · distacco +${gap} · obiettivi +${objB}${pig?` · salvadanaio +${pig}`:''}</span><span class="coin">+${earn} fiche</span></div>`:''}
+    ${win?`<div class="row" id="earnrow" style="visibility:hidden"><span class="small">Nel borsellino: vittoria 120 · distacco +${gap} · obiettivi +${objB}${pig?` · salvadanaio +${pig}`:''}</span><span class="coin">+${earn} FICHE</span></div>`:''}
     <div class="row"><button class="btn" id="m-next" disabled>${win?(RUN.stage===4?'Fine del giro':'Apri il pacchetto'):'Continua'}</button></div>`);
   const count=(el,to,dur)=>new Promise(res=>{const t0=performance.now();let lt=0;const st=t=>{const k=Math.min(1,(t-t0)/dur);el.textContent=Math.round(to*k);if(t-lt>60){SFX.tick();lt=t}k<1?requestAnimationFrame(st):res()};requestAnimationFrame(st)});
   (async()=>{await count($('#t-p'),sp.total,RM?10:1100);await count($('#t-o'),so.total,RM?10:900);
@@ -1177,7 +1199,25 @@ function endMatch(){
 
 // ================= Pacchetto =================
 let PACK=null;
-const PACK_NAMES=['Pacchetto del Tabaccaio','Busta della Fiera','Mazzetto del Circolo','Bustina Maledetta','Scatola della Nonna'];
+const PACK_STYLES=[
+  {name:'Pacchetto del Tabaccaio',c:[K.red,K.red2,K.pink]},{name:'Busta della Fiera',c:[K.blue,K.blue2,K.blue3]},
+  {name:'Mazzetto del Circolo',c:[K.green,K.green2,K.green3]},{name:'Bustina Maledetta',c:[K.purple,K.purple2,K.purple3]},
+  {name:'Scatola della Nonna',c:[K.orange,K.gold2,K.gold3]}];
+function packArt(st){
+  const W=60,H=92,cn=mk(W,H),x=cn.getContext('2d'),d=P(x),[c1,c2,c3]=st.c;
+  d.r(2,6,W-4,H-12,K.ink);d.r(3,7,W-6,H-14,c1);
+  d.r(3,7,4,H-14,c2);d.r(W-7,7,4,H-14,c2);d.r(9,7,2,H-14,c3);d.r(13,7,1,H-14,c3);
+  for(let y=7;y<H-7;y++){const sx=Math.round(18+(y-7)*.35);d.r(sx,y,2,1,c3)}
+  for(let i=0;i<W;i+=4){d.r(i,0,4,7,K.grey3);d.r(i,H-7,4,7,K.grey3);d.r(i+2,0,2,7,K.grey);d.r(i,H-7,2,7,K.grey)}
+  for(let i=0;i<W;i+=4){d.p([[i,7],[i+2,10],[i+4,7]],K.grey3);d.p([[i,H-7],[i+2,H-10],[i+4,H-7]],K.grey3)}
+  for(let i=4;i<W-4;i+=3)d.r(i,14,2,1,c3);
+  d.r(10,26,40,40,K.ink);d.r(11,27,38,38,K.gold);d.r(13,29,34,34,K.cream);
+  put(x,symbol('D',18),30,42);
+  [['C',17,33],['S',43,33],['B',17,57],['P',43,57]].forEach(([s,a,b])=>put(x,symbol(s,7),a,b));
+  d.r(22,56,16,6,K.red);d.r(23,57,14,4,K.gold3);
+  return {top:(()=>{const t=mk(W,16);t.getContext('2d').drawImage(cn,0,0);return t.toDataURL()})(),
+          body:(()=>{const b=mk(W,H-16);b.getContext('2d').drawImage(cn,0,-16);return b.toDataURL()})()};
+}
 function mkTroll(){const t=pick(['marcio','bomba','spettro']);return t==='marcio'?{kind:'troll',troll:'marcio',suit:pick(IT),rank:3}:{kind:'troll',troll:t,suit:'X',rank:4}}
 function genPack(){
   const fr=()=>({kind:'n',suit:pick(FR),rank:rint(1,10)}),jo=()=>({kind:'jolly',suit:'J',rank:rint(1,10)});
@@ -1186,23 +1226,44 @@ function genPack(){
   out.push(jo(),jo(),mkTroll(),pick([fr,jo,mkTroll])());
   return shuffle(out);
 }
-function showPack(){setPal(SHOP_PAL);const cards=genPack();PACK={cards,open:false,sel:new Set(),forced:cards.findIndex(c=>c.kind==='troll'),name:pick(PACK_NAMES),anim:false};renderPack();show('pack')}
+function showPack(){setPal(SHOP_PAL);const cards=genPack(),st=pick(PACK_STYLES);PACK={cards,stage:'closed',sel:new Set(),forced:cards.findIndex(c=>c.kind==='troll'),name:st.name,art:packArt(st)};renderPack();show('pack')}
 function renderPack(){
-  const P_=PACK,box=$('#packbox'),max=3;
+  const P_=PACK,box=$('#packbox'),max=3,open=P_.stage==='open';
   box.innerHTML=`<div class="eyebrow">Hai battuto ${RUN.beaten.at(-1).name} · prossimo: ${BOSSES[RUN.stage].name}</div>
   <div class="title">${P_.name} · 10 carte</div>
-  <div class="small">${P_.open?`Scegli fino a ${max} carte da aggiungere al mazzo. La carta troll marcata “maledetta” entra comunque. Le carte nuove le può pescare anche l’avversario.`:'Aprilo e guarda cosa c’è dentro.'}</div>
-  <div class="packgrid" id="pg"></div>
-  <div class="row">${P_.open?`<button class="btn" id="pk-ok">Aggiungi ${P_.sel.size} ${P_.sel.size===1?'carta':'carte'}${P_.forced>=0?' + la maledetta':''}</button>`:'<button class="btn red" id="pk-open">Apri il pacchetto</button>'}<span class="coin">${RUN.fiche} fiche</span></div>`;
+  <div class="small">${open?`Scegli fino a ${max} carte da aggiungere al mazzo. La carta troll marcata “maledetta” entra comunque. Le carte nuove le può pescare anche l’avversario.`:'Tocca il pacchetto per strapparlo.'}</div>
+  <div class="packarea"><div class="packgrid" id="pg"></div>
+    ${open?'':`<div class="packstage"><button class="packobj" id="pk-obj" type="button" aria-label="Apri il pacchetto"><img class="pk-top" src="${P_.art.top}" alt=""><img class="pk-body" src="${P_.art.body}" alt=""></button></div>`}</div>
+  <div class="row">${open?`<button class="btn" id="pk-ok">Aggiungi ${P_.sel.size} ${P_.sel.size===1?'carta':'carte'}${P_.forced>=0?' + la maledetta':''}</button>`:'<button class="btn red" id="pk-open">Apri il pacchetto</button>'}<span class="coin">${RUN.fiche} FICHE</span></div>`;
+  if(!open){$('#pk-open').onclick=openPackAnim;$('#pk-obj').onclick=openPackAnim;return}
   const g=$('#pg');
   P_.cards.forEach((c,i)=>{const it=document.createElement('div');it.className='packitem';
-    const b=cardEl(c,P_.open,(P_.open&&P_.anim?'flip ':'')+((P_.sel.has(i)||(P_.open&&i===P_.forced))?'sel':''));b.style.animationDelay=(i*70)+'ms';
-    if(P_.open)b.onclick=()=>{if(i===P_.forced)return;if(P_.sel.has(i))P_.sel.delete(i);else if(P_.sel.size<max)P_.sel.add(i);else return;P_.anim=false;SFX.play();renderPack()};
+    const b=cardEl(c,true,(P_.sel.has(i)||i===P_.forced)?'sel':'');
+    b.onclick=()=>{if(i===P_.forced)return;if(P_.sel.has(i))P_.sel.delete(i);else if(P_.sel.size<max)P_.sel.add(i);else return;SFX.play();renderPack()};
     it.appendChild(b);
-    if(P_.open)it.insertAdjacentHTML('beforeend',`<span class="nm">${cardName(c)}</span><span class="ds">${i===P_.forced?'<b style="color:#8bd14f">Maledetta: entra da sola.</b> ':''}${cardDesc(c)}</span>`);
+    it.insertAdjacentHTML('beforeend',`<span class="nm">${cardName(c)}</span><span class="ds">${i===P_.forced?'<b style="color:#8bd14f">Maledetta: entra da sola.</b> ':''}${cardDesc(c)}</span>`);
     g.appendChild(it)});
-  if(!P_.open)$('#pk-open').onclick=()=>{P_.open=true;P_.anim=true;SFX.magic();renderPack()};
-  else $('#pk-ok').onclick=()=>{[...P_.sel,...(P_.forced>=0?[P_.forced]:[])].forEach(i=>RUN.deck.push({...P_.cards[i]}));SFX.big();showShop()};
+  $('#pk-ok').onclick=()=>{[...P_.sel,...(P_.forced>=0?[P_.forced]:[])].forEach(i=>RUN.deck.push({...P_.cards[i]}));SFX.big();showShop()};
+}
+async function openPackAnim(){
+  const P_=PACK;if(P_.stage!=='closed')return;P_.stage='opening';
+  const obj=$('#pk-obj'),btn=$('#pk-open');btn.disabled=true;
+  obj.classList.add('shake');SFX.draw();await sleep(600);
+  obj.classList.add('torn');SFX.magic();await sleep(380);
+  const pr=obj.getBoundingClientRect(),cx=pr.left+pr.width/2,cy=pr.top+pr.height*.45,g=$('#pg');
+  const els=P_.cards.map(c=>{const it=document.createElement('div');it.className='packitem';const b=cardEl(c,false);it.appendChild(b);g.appendChild(it);return b});
+  els.forEach(b=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${cx-(r.left+r.width/2)}px,${cy-(r.top+r.height/2)}px) scale(.45) rotate(${rint(-25,25)}deg)`;b.style.opacity='0'});
+  void g.offsetWidth;
+  els.forEach((b,i)=>{b.style.transition=`transform .55s cubic-bezier(.2,.9,.3,1.25) ${i*90}ms, opacity .15s ${i*90}ms`;b.style.transform='';b.style.opacity='1'});
+  for(let i=0;i<els.length;i++)setTimeout(()=>beep(300+i*40,.04,'triangle',.04),i*90);
+  setTimeout(()=>obj.classList.add('gone'),250);
+  await sleep(560+els.length*90);
+  for(let i=0;i<els.length;i++){
+    const b=els[i],c=P_.cards[i];b.style.transition='transform .13s ease-in';b.style.transform='rotateY(90deg)';await sleep(130);
+    b.querySelector('img').src=cardImg(c);b.insertAdjacentHTML('beforeend',badgeFor(c));
+    b.style.transition='transform .13s ease-out';b.style.transform='';c.kind==='troll'?SFX.lose():c.kind==='jolly'?SFX.molt():SFX.play();await sleep(70);
+  }
+  await sleep(350);P_.stage='open';renderPack();
 }
 
 // ================= Negozio =================
@@ -1221,16 +1282,16 @@ function renderShop(){
   const box=$('#shopbox');
   const canBuy=o=>!o.sold&&RUN.fiche>=o.price&&(ITEMS[o.k].type!=='T'||RUN.trucchi.length<4)&&(ITEMS[o.k].type!=='A'||RUN.amuleti.length<5)&&(ITEMS[o.k].type!=='M'||RUN.poteri.length<3);
   box.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-    <div><div class="eyebrow">Bottega del Barbiere · prossimo: ${BOSSES[RUN.stage].name}</div><div class="title">Spendi le tue fiche</div></div>
-    <span class="coin" style="font-size:22px">${RUN.fiche} fiche</span></div>
-  <div class="small">Una vittoria normale paga un oggetto; una vittoria larga, con tanti punti di distacco, ne paga due. I trucchi si caricano con le prese di fila, i poteri si usano una volta, gli amuleti lavorano sempre.</div>
+    <div><div class="eyebrow">Bottega del Barbiere · prossimo: ${BOSSES[RUN.stage].name}</div><div class="title">Spendi le tue FICHE</div></div>
+    <span class="coin" style="font-size:22px">${RUN.fiche} FICHE</span></div>
+  <div class="small">Più distacco fai sull’avversario, più FICHE guadagni. I trucchi si caricano con le prese di fila, i poteri si usano una volta, gli amuleti lavorano sempre.</div>
   <div class="shopgrid">${SHOP.items.map((o,i)=>{const it=ITEMS[o.k];return `<div class="offer ${o.sold?'sold':''}"><img src="${iconImg(o.k)}" alt=""><span class="tag ${it.type}">${TYPE_NAME[it.type]}</span><b>${it.name}</b>
     <span class="ds">${it.desc}${it.type==='T'?`<br><span style="color:#7d1f1b">Carica: ${it.soglia} prese di fila · ${it.lv.join(' / ')}</span>`:''}</span>
-    <button class="btn ${it.type==='M'?'':'blue'} sm" data-i="${i}" ${canBuy(o)?'':'disabled'}>${o.sold?'Venduto':`Compra · ${o.price}`}</button></div>`}).join('')}</div>
-  <div class="row" style="justify-content:flex-start">
-    <button class="btn ghost sm" id="sh-roll" ${RUN.fiche>=SHOP.reroll?'':'disabled'}>Rimescola la vetrina · ${SHOP.reroll}</button>
-    <button class="btn ghost sm" id="sh-purge" ${RUN.fiche>=PURGE_COST&&!RUN.purged&&RUN.deck.length>30?'':'disabled'}>Togli una carta dal mazzo · ${PURGE_COST}</button>
-    <button class="btn ghost sm" id="sh-deck">Vedi mazzo (${RUN.deck.length})</button>
+    <button class="btn ${it.type==='M'?'':'blue'} sm" data-i="${i}" ${canBuy(o)?'':'disabled'}>${o.sold?'Venduto':`Compra · <span class="num">${o.price}</span>`}</button></div>`}).join('')}</div>
+  <div class="services">
+    <button class="service" id="sh-roll" ${RUN.fiche>=SHOP.reroll?'':'disabled'}><span class="sv-t">Rimescola gli oggetti</span><span class="sv-d">Cambia tutta la vetrina. Il prezzo sale di 10 ogni volta.</span><span class="coin sv-p">${SHOP.reroll} FICHE</span></button>
+    <button class="service" id="sh-purge" ${RUN.fiche>=PURGE_COST&&!RUN.purged&&RUN.deck.length>30?'':'disabled'}><span class="sv-t">Togli una carta dal mazzo</span><span class="sv-d">${RUN.purged?'Già usato in questo negozio.':RUN.deck.length<=30?'Il mazzo è già al minimo di 30 carte.':'Elimina per sempre una carta che non vuoi, anche una troll. Una volta per negozio.'}</span><span class="coin sv-p">${PURGE_COST} FICHE</span></button>
+    <button class="service" id="sh-deck"><span class="sv-t">Vedi mazzo</span><span class="sv-d">${RUN.deck.length} carte in tutto.</span></button>
   </div>
   <div class="inv">
     <div><span class="ph">Trucchi ${RUN.trucchi.length}/4</span>${RUN.trucchi.map(k=>`<img class="ic" src="${iconImg(k)}" title="${ITEMS[k].name}" alt="${ITEMS[k].name}">`).join('')}</div>
@@ -1249,7 +1310,7 @@ function showEnd(won,p,o){
   setPal(won?BOSSES[4].pal:TITLE_PAL);M=null;
   $('#endbox').innerHTML=won?`<div class="logo" style="font-size:72px">Busso!</div><div class="verdict win">Hai battuto il Diavolo</div>
     <p class="blurb">${RUN.beaten.map(b=>`${b.name} ${b.p} a ${b.o}`).join(' · ')}.</p>
-    <div class="small">Mazzo finale: ${RUN.deck.length} carte · Fiche avanzate: ${RUN.fiche}</div>
+    <div class="small">Mazzo finale: ${RUN.deck.length} carte · FICHE avanzate: ${RUN.fiche}</div>
     <button class="btn" id="b-again">Un altro giro</button>`
    :`<img class="portrait" src="${portraitImg(BOSSES[RUN.stage].id)}" alt=""><div class="verdict lose">Sconfitta</div><p class="blurb">${BOSSES[RUN.stage].name} ti batte ${o} a ${p}. Sei arrivato all’avversario ${RUN.stage+1} di 5.</p>${ladder()}
     <button class="btn" id="b-again">Ricomincia</button>`;
@@ -1259,12 +1320,12 @@ function rules(){
   modal(`<div class="title">Regole</div><ol class="rules">
   <li>Si parte con il mazzo toscano da 40. Dieci a testa, il resto è il tallone. Le carte pescate restano coperte.</li>
   <li>Rispondi al seme di uscita se puoi. Niente briscola: prende la più alta del seme di uscita. Forza: <b>3 · 2 · Asso · Re · Cavallo · Fante · 7 · 6 · 5 · 4</b>.</li>
-  <li><b>Fiche</b>: Asso 30, Tre / Due / figure 10, scartine 0, ultima presa 30. <b>Punteggio = Fiche × Molt</b>.</li>
+  <li><b>FICHE</b>: Asso 30, Tre / Due / figure 10, scartine 0, ultima presa 30. <b>Punteggio = FICHE × Molt</b>.</li>
   <li><b>Accusi</b> a inizio partita: Napoletana 90, tre Tre / Due / Assi 90, quattro 120.</li>
   <li><b>Giocate</b>: Strozzo (prendi un suo Asso) +0.5 Molt · Striscia (ogni 3 prese di fila) +1 · Piombo (sulla tua uscita lui scarta punti di un altro seme) +0.5.</li>
   <li><b>Trucchi</b>: si caricano con le prese di fila. Ogni trucco ha una soglia (2, 3 o 4): al doppio della soglia sale al livello 2, al triplo al livello 3.</li>
   <li><b>Poteri</b>: una sola volta, poi spariscono. <b>Amuleti</b>: sempre attivi.</li>
-  <li>Dopo ogni vittoria apri un <b>pacchetto da 10 carte</b>: semi stranieri, doppioni, <b>Jolly</b> (si giocano sempre, scegli tu il seme) e <b>carte troll</b>. Poi il negozio, dove spendi le fiche guadagnate.</li>
+  <li>Dopo ogni vittoria apri un <b>pacchetto da 10 carte</b>: semi stranieri, doppioni, <b>Jolly</b> (si giocano sempre, scegli tu il seme) e <b>carte troll</b>. Poi il negozio, dove spendi le FICHE guadagnate.</li>
   <li>Ogni avversario ha una <b>mossa</b> che scatta quando fa 3 prese di fila. Batti tutti e cinque.</li>
   </ol><div class="row"><button class="btn" id="m-x">Ho capito</button></div>`);
   $('#m-x').onclick=closeModal;
@@ -1288,7 +1349,7 @@ function showDebug(){
   <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><div class="eyebrow">Pagina di prova</div><div class="title">Galleria debug</div></div><button class="btn ghost sm" id="dbg-back">Torna al titolo</button></div>
   <div class="small">Tutte le carte, gli oggetti e gli avversari del gioco. “Prova” avvia una partita contro l’avversario scelto qui sotto con quell’oggetto già in tasca.</div>
   <div class="row" style="justify-content:flex-start"><span class="ph">Avversario per le prove</span><select id="dbg-boss" style="font:inherit;background:var(--panel-2);color:var(--ink);border:2px solid var(--edge);border-radius:6px;padding:4px 8px">${BOSSES.map((b,i)=>`<option value="${i}">${i+1}. ${b.name}</option>`).join('')}</select>
-    <button class="btn sm" id="dbg-all">Partita con tutto</button><button class="btn ghost sm" id="dbg-pack">Apri un pacchetto</button><button class="btn ghost sm" id="dbg-shop">Negozio con 999 fiche</button></div>
+    <button class="btn sm" id="dbg-all">Partita con tutto</button><button class="btn ghost sm" id="dbg-pack">Apri un pacchetto</button><button class="btn ghost sm" id="dbg-shop">Negozio con 999 FICHE</button></div>
   <h2>Avversari</h2><div class="dbgrid">${BOSSES.map((b,i)=>`<div class="dbitem"><img class="portrait" style="width:84px;height:84px;animation:none" src="${portraitImg(b.id)}" alt=""><div><b>${i+1}. ${b.name}</b><span class="bossmolt" style="margin:0 0 4px">Molt ×${fmt(b.molt)}</span><div>${b.quirk}</div>${b.mossa?`<div class="small" style="margin-top:4px">Mossa: ${b.mossa}</div>`:''}<div class="small">Obiettivi: ${b.nObj} · casualità ${Math.round(b.rnd*100)}%${b.cheat?' · bara':''}</div></div></div>`).join('')}</div>
   <h2>Trucchi</h2><div class="dbgrid">${byType('T')}</div>
   <h2>Poteri magici</h2><div class="dbgrid">${byType('M')}</div>

@@ -1,9 +1,11 @@
-# Busso! — Tressette roguelike (v3)
+# Busso! — Tressette roguelike (v4)
 
 ## Stile
-- Carte in pixel art più dettagliate. Denari oro con rosone verde, Coppe rosse con bordo d'oro: i due semi non si confondono più.
+- Carte in pixel art più dettagliate. Denari oro con rosone verde, Coppe rosse con bordo d'oro.
+- Il bordo di ogni carta ha il colore del seme: Coppe rosso, Denari oro, Spade blu, Bastoni verde, Cuori rosso, Quadri arancio, Fiori nero, Picche blu notte. Numeri negli angoli più grandi.
 - Niente effetto televisore: sfondo fisso a piastrelle di maiolica, colore diverso per ogni avversario.
-- Testo in Rubik (leggibile, minuscolo); titoli e numeri in Pixelify Sans. Niente tutto-maiuscolo.
+- Testo e numeri in Rubik (leggibili); titoli in Pixelify Sans. La parola FICHE è sempre in maiuscolo.
+- Il pacchetto è un oggetto vero: trema, si strappa in alto, le 10 carte volano fuori e si girano una a una.
 
 ## Struttura della run
 - Tressette a due con tallone. Chi prende pesca per primo; le pescate restano coperte. La mano avversaria è in ordine casuale.
@@ -17,9 +19,9 @@
 
 ## Economia
 - Guadagno per vittoria = 120 + distacco (fino a +110, in base al rapporto tra il tuo totale e il suo) + 10 per obiettivo (max +30). Tetto 260 (290 con Salvadanaio).
-- Prezzi: poteri 95–110, trucchi 110–135, amuleti 120–160 (+0/5/10 a caso).
-- Risultato: una vittoria normale paga un oggetto, una vittoria larga ne paga al massimo due. Le fiche non spese restano.
-- Rimescola vetrina 25 (+10 ogni volta). Togli una carta dal mazzo 45, una volta per negozio, mazzo minimo 30.
+- Prezzi (+30% rispetto alla v3): poteri 125–145, trucchi 145–175, amuleti 155–210 (+0/5/10 a caso).
+- Con questi prezzi una vittoria di misura spesso non basta per un oggetto: conviene risparmiare o vincere largo. Le FICHE non spese restano.
+- Rimescola vetrina 25 (+10 ogni volta). Togli una carta dal mazzo 200, una volta per negozio, mazzo minimo 30.
 
 ## Trucchi (si caricano con le prese di fila, max 4)
 Soglia S: a S prese di fila liv 1, a 2S liv 2, a 3S liv 3. Usarlo consuma la carica.
