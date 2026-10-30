@@ -419,7 +419,7 @@ body{-webkit-user-select:none;user-select:none}
   .packitem .ds{display:none}
   .portrait{width:84px;height:84px}
 }
-@media (max-width:760px){
+@media (max-width:760px) and (orientation:portrait){
   :root{--cw:70px;--cw-opp:34px;--cw-table:70px}
   body{overflow:auto}
   #app{height:auto}
@@ -481,14 +481,19 @@ body{-webkit-user-select:none;user-select:none}
 }
 .card.armed{transform:translateY(-18px)!important;z-index:3;outline:3px solid var(--gold);outline-offset:2px}
 .sl-more{display:none;font-family:var(--f-chalk);font-size:12px;color:#cfd6cc;text-align:right;margin-top:1px}
-@media (orientation:landscape) and (max-height:520px){
+@media (orientation:landscape) and (max-height:600px){
   :root{--cw:58px;--cw-opp:30px;--cw-table:54px}
   body{overflow:auto}
   #app{height:auto}
   .screen{padding-block:6px}
   .center{align-items:flex-start}
   .center>*{margin-block:auto}
-  #scr-game{display:grid;height:100vh;height:100dvh;grid-template-columns:200px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"a t" "b t";gap:8px}
+  #scr-game{display:grid;height:100vh;height:100dvh;grid-template-columns:clamp(130px,24vw,200px) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"a t" "b t";gap:6px}
+  .hand.opp{padding-right:72px}
+  #mid{grid-template-columns:auto auto auto minmax(64px,1fr)!important}
+  #info{min-width:0!important}
+  .pol-name{font-size:14px}.polaroid .portrait{width:30px;height:30px}
+  .sl-n{font-size:16px}.sl-n.t{font-size:20px}.sl-lbl{font-size:12px}.sl-lui{font-size:11px}.sl-n.t2{font-size:14px}.sl-more{font-size:10px}
   #side-a{flex-direction:column;gap:6px;padding-right:0}
   .polaroid{flex-direction:row;width:auto;align-items:center;padding:4px 6px;gap:6px;transform:rotate(-1deg)}
   .polaroid::before{width:40px;margin-left:-20px;height:9px;top:-5px}
@@ -645,7 +650,7 @@ const TROLL={
 const JOLLY_DESC='Si gioca sempre. Quando la cali scegli tu il seme.';
 const $=s=>document.querySelector(s);
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const TOUCH=matchMedia('(hover: none)').matches||matchMedia('(max-width:760px)').matches;
+const TOUCH=matchMedia('(hover: none)').matches||matchMedia('(pointer: coarse)').matches||matchMedia('(max-width:760px)').matches;
 let PAUSED=false,GEN=0;
 const sleep=async ms=>{const g=GEN;await new Promise(r=>setTimeout(r,RM?ms*.4:ms));while(PAUSED&&g===GEN)await new Promise(r=>setTimeout(r,120));if(g!==GEN)await new Promise(()=>{})};
 const pick=a=>a[Math.floor(Math.random()*a.length)];
@@ -1984,7 +1989,7 @@ function restartRun(){GEN++;closeMenu();closeModal();M=null;PACK=null;SHOP=null;
 addEventListener('keydown',e=>{if(e.key!=='Escape'||$('#splash'))return;e.preventDefault();$('#pause').hidden?openMenu():closeMenu()});
 $('#b-menu').onclick=openMenu;
 function showInfo(){if(!M)return;modal(`<div class="title">Obiettivi e amuleti</div><div class="receipt"><div class="rc-h">Obiettivi</div><ul class="objs">${$('#objs').innerHTML}</ul></div><div class="receipt"><div class="rc-h">Amuleti</div><ul class="amus">${$('#amus').innerHTML}</ul></div><div class="row"><button class="btn" id="m-x">Chiudi</button></div>`);$('#m-x').onclick=closeModal}
-document.querySelector('.slate').onclick=()=>{if(matchMedia('(max-width:760px), (orientation:landscape) and (max-height:520px)').matches)showInfo()};
+document.querySelector('.slate').onclick=()=>{if(matchMedia('(max-width:760px), (orientation:landscape) and (max-height:600px)').matches)showInfo()};
 const _show=show;show=function(id){_show(id);$('#b-menu').hidden=(id==='title'||id==='debug')};
 
 // ================= Avvio =================
