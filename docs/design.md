@@ -1,4 +1,4 @@
-# Busso! — Tressette roguelike (v7)
+# Busso! — Tressette roguelike (v8)
 
 Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un tasto per saltarlo).
 
@@ -49,6 +49,23 @@ Un gioco di 10INCH FEET GAMES. All'avvio c'è lo splash dello studio (clic o un 
 - Prezzi (v7, +15%): poteri ~180–215, trucchi ~205–255, amuleti ~225–305. Carte singole 40–140, pacchetto 175.
 - Con questi prezzi una vittoria di misura spesso non basta per un oggetto: conviene risparmiare o vincere largo. Le FICHE non spese restano.
 - Rimescola vetrina 25 (+10 ogni volta). Togli una carta dal mazzo 200, una volta per negozio, mazzo minimo 30.
+
+## Identità visiva (v8)
+- Colonna sinistra: foto segnaletica dell'avversario (polaroid con nastro), **lavagna da bar** col punteggio scritto a gesso (FICHE × Molt = totale, poi l'avversario, prese), obiettivi, amuleti e cronaca su **scontrini**.
+- Ogni avversario ha il suo **tavolo**: tovaglia/panno con motivo e due oggetti negli angoli.
+  Pivellino panno verde, lattina e telefono crepato · Zia Assunta tovaglia a fiori, flacone di pillole e moka · Nonna Pina tovaglia a quadri, piatto di pasta e mattarello · Don Ottavio velluto viola con croci, rosario e candela · Il Capitano assi di legno, rum e bussola · Il Baro panno da bisca, dadi e posacenere · Il Prestigiatore velluto nero stellato, cilindro col coniglio e bacchetta · Il Vecchietto formica da bar, bicchiere di rosso e giornale · Il Diavolo pietra con crepe di fuoco, teschio con candela e contratto che brucia.
+- La carta appena pescata è evidenziata nella mano (alone dorato, etichetta "Nuova").
+- Trucchi e poteri come tessere grandi sotto il tavolo; l'accuso è un pulsante rosso grande e pulsante accanto al suggerimento.
+
+## Livelli degli oggetti (0–4)
+- Ogni oggetto ha un livello. Il negozio propone livelli diversi a seconda di quanto sei avanti: dopo la 1ª vittoria 0–2, dopo la 2ª 1–3, poi 2–4.
+- Prezzi per livello — amuleti 90/150/220/300/400, trucchi 110/170/230/290/360, poteri 80/130/180/230/290.
+- **Amuleti a famiglie**: lo stesso amuleto esiste a più livelli e cresce di potenza. Comprarne uno di livello più alto sostituisce quello che hai.
+  Corno Rosso (+0.25/+0.5/+1/+1.5/+2.5 Molt) · Ferro di Cavallo (×1.1→×2) · Gatto Nero (+20→+150 sull'ultima presa) · L'Oste (+2→+14 a Coppa) · Ruota della Fortuna (+0.1→+1 per Asso) · Scartine d'Oro (2→14) · Grappa della Casa (+0.1→+1 per Re) · Sigaro del Nonno (+0.25→+2 per obiettivo) · Salvadanaio (+10→+80 a vittoria) · Quadrifoglio (+0.05→+0.6 per carta straniera) · Orologio del Bar (ultime 1→5 prese doppie) · Santino (troll −25%→annullate, al liv 4 danno +10) · Ventaglio (Striscia +0.25→+1.5 Molt) · Pergamena (accusi +10%→+100%) · Lente (prima carta solo dopo una presa vinta → fino a 3 carte) · Calamita (liv 2–4).
+  Livelli 0 e 1: 15 amuleti ciascuno; livelli 2–4: 16.
+- **A inizio run** scegli un amuleto tra tre di livello 0 o 1.
+- Livelli di trucchi e poteri: Fiammifero e Monetina 0 · Occhio Lungo, Sbirciata, Spinta, Pioggia d'Assi, Calice, Grappino 1 · Tintura, Pesca, Raddoppio, Malocchio, Nebbia, Terremoto, Acquasanta 2 · Mano Lesta, Mano del Ladro, Specchio 3 · Bacchetta, Ribaltone 4.
+- Nuovi poteri: Monetina (+40 FICHE), Grappino (+0.5 Molt), Acquasanta (annulla la prossima mossa dell'avversario).
 
 ## Trucchi (si caricano con le prese di fila, max 4)
 Soglia S: a S prese di fila liv 1, a 2S liv 2, a 3S liv 3. Usarlo consuma la carica.
