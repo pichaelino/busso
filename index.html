@@ -319,6 +319,11 @@ button{font:inherit;color:inherit}
 @keyframes flick{50%{transform:scale(1.08) rotate(-3deg)}}
 .streakbox.pop{animation:spop .4s}
 @keyframes spop{40%{transform:scale(1.2)}}
+.motd{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--molt);color:#fff;border:3px solid var(--edge);border-radius:10px;padding:8px 18px 10px;box-shadow:0 5px 0 var(--molt-d),0 7px 0 var(--edge);transform:rotate(-2deg);animation:motd 2.4s ease-in-out infinite;max-width:100%}
+.motd-tag{font-family:var(--f-display);font-size:11px;letter-spacing:.08em;background:var(--gold);color:#1d120a;border:2px solid var(--edge);border-radius:4px;padding:0 6px;margin-top:-20px}
+.motd-txt{font-family:var(--f-chalk);font-size:28px;line-height:1.05;text-shadow:2px 2px 0 var(--molt-d)}
+@keyframes motd{50%{transform:rotate(1deg) scale(1.04)}}
+@media (orientation:landscape) and (max-height:600px){.motd{padding:4px 12px 6px}.motd-txt{font-size:20px}.motd-tag{font-size:9px;margin-top:-14px}}
 /* niente selezioni col doppio click */
 body{-webkit-user-select:none;user-select:none}
 html,body,*{touch-action:manipulation}
@@ -538,7 +543,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   .pop.banner{font-size:13px;padding:3px 9px}.pop{font-size:13px}
   #toasts{top:4px}.toast{font-size:12px;padding:4px 8px}
   #b-menu{top:calc(6px + env(safe-area-inset-top,0px));right:calc(6px + env(safe-area-inset-right,0px));font-size:10px;padding:4px 7px}
-  .titlebox{gap:8px}.logo{font-size:52px}.fan{height:104px}#f11{display:none}.fan img{width:52px;margin:0 -10px}.blurb{display:none}
+  .titlebox{gap:8px}.logo{font-size:52px;margin-top:22px}.fan{height:92px}#f11{display:none}.fan img{width:44px;margin:0 -8px}.blurb{display:none}
   .introbox,.bigbox{padding:10px;gap:8px}
   .portrait{width:64px;height:64px}
   .shopcols{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -563,6 +568,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
       <div class="fan" id="fan"></div>
       <div class="logo">Busso!</div>
       <div class="tagline">Tressette roguelike</div>
+      <div class="motd" role="note"><span class="motd-tag">Messaggio del giorno</span><span class="motd-txt">Ciao mazzo! Buona partita pipone!!!</span></div>
       <p class="small" id="f11" style="color:var(--gold);margin:0">Premi F11 per andare a schermo intero</p>
       <p class="blurb">Cinque avversari, uno dopo l'altro, fino al Diavolo. Fai prese di fila per caricare i trucchi, spendi le FICHE al negozio e apri pacchetti che riempiono il mazzo di semi stranieri, jolly e carte troll.</p>
       <div class="row">
