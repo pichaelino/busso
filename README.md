@@ -1,6 +1,6 @@
 # Busso! 🃏
 
-Un roguelike di carte basato sul **Tressette** a due, in stile sala giochi pixel-art.
+Un roguelike di carte basato sul **Tressette** a due, in pixel art.
 
 Affronta cinque avversari in fila — dal Pivellino al Diavolo — accumulando fiche e moltiplicatori, comprando trucchi, poteri magici e amuleti al negozio e arricchendo il mazzo con semi stranieri, Jolly e carte troll.
 
